@@ -2,6 +2,8 @@ import SharedLayout from 'components/SharedLayout/SharedLayout';
 import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
+
+
 const LoginPage = lazy(() => import('pages/LoginPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage'));
 const HomePage = lazy(() => import('pages/HomePage'));
