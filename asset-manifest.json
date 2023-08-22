@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/SambykaLight/YourPet-frontend/static/css/main.736d263a.css",
-    "main.js": "/SambykaLight/YourPet-frontend/static/js/main.f84d2808.js",
+    "main.css": "/SambykaLight/YourPet-frontend/static/css/main.b20022bc.css",
+    "main.js": "/SambykaLight/YourPet-frontend/static/js/main.b7b77bac.js",
     "static/js/637.0e3afccb.chunk.js": "/SambykaLight/YourPet-frontend/static/js/637.0e3afccb.chunk.js",
     "static/js/432.efda7292.chunk.js": "/SambykaLight/YourPet-frontend/static/js/432.efda7292.chunk.js",
-    "static/js/256.9cdfd1c2.chunk.js": "/SambykaLight/YourPet-frontend/static/js/256.9cdfd1c2.chunk.js",
+    "static/js/814.935a107d.chunk.js": "/SambykaLight/YourPet-frontend/static/js/814.935a107d.chunk.js",
     "static/js/918.eb308105.chunk.js": "/SambykaLight/YourPet-frontend/static/js/918.eb308105.chunk.js",
     "static/js/593.98a01eab.chunk.js": "/SambykaLight/YourPet-frontend/static/js/593.98a01eab.chunk.js",
     "static/js/426.68cb5e18.chunk.js": "/SambykaLight/YourPet-frontend/static/js/426.68cb5e18.chunk.js",
@@ -21,11 +21,11 @@
     "static/media/lg-bg-1x.png": "/SambykaLight/YourPet-frontend/static/media/lg-bg-1x.cf58327b31c66737de00.png",
     "static/media/mb-bg-1x.png": "/SambykaLight/YourPet-frontend/static/media/mb-bg-1x.0cd02ce1d43a46754e63.png",
     "index.html": "/SambykaLight/YourPet-frontend/index.html",
-    "main.736d263a.css.map": "/SambykaLight/YourPet-frontend/static/css/main.736d263a.css.map",
-    "main.f84d2808.js.map": "/SambykaLight/YourPet-frontend/static/js/main.f84d2808.js.map",
+    "main.b20022bc.css.map": "/SambykaLight/YourPet-frontend/static/css/main.b20022bc.css.map",
+    "main.b7b77bac.js.map": "/SambykaLight/YourPet-frontend/static/js/main.b7b77bac.js.map",
     "637.0e3afccb.chunk.js.map": "/SambykaLight/YourPet-frontend/static/js/637.0e3afccb.chunk.js.map",
     "432.efda7292.chunk.js.map": "/SambykaLight/YourPet-frontend/static/js/432.efda7292.chunk.js.map",
-    "256.9cdfd1c2.chunk.js.map": "/SambykaLight/YourPet-frontend/static/js/256.9cdfd1c2.chunk.js.map",
+    "814.935a107d.chunk.js.map": "/SambykaLight/YourPet-frontend/static/js/814.935a107d.chunk.js.map",
     "918.eb308105.chunk.js.map": "/SambykaLight/YourPet-frontend/static/js/918.eb308105.chunk.js.map",
     "593.98a01eab.chunk.js.map": "/SambykaLight/YourPet-frontend/static/js/593.98a01eab.chunk.js.map",
     "426.68cb5e18.chunk.js.map": "/SambykaLight/YourPet-frontend/static/js/426.68cb5e18.chunk.js.map",
@@ -34,7 +34,7 @@
     "150.8a8c090a.chunk.js.map": "/SambykaLight/YourPet-frontend/static/js/150.8a8c090a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.736d263a.css",
-    "static/js/main.f84d2808.js"
+    "static/css/main.b20022bc.css",
+    "static/js/main.b7b77bac.js"
   ]
 }
