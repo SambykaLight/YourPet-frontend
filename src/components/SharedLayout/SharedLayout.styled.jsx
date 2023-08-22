@@ -1,12 +1,12 @@
 import styled from '@emotion/styled';
-import mb_bg_1x from './backGroundImg/Mobile/mb-bg-1x.png';
-import mb_bg_2x from './backGroundImg/Mobile/mb-bg-2x.png';
+import mb_bg_1x from '../../images/Mobile/mb-bg-1x.png';
+import mb_bg_2x from '../../images/Mobile/mb-bg-2x.png';
 
-import tb_bg_1x from './backGroundImg/Tablet/tb-bg-1x.png';
-import tb_bg_2x from './backGroundImg/Tablet/tb-bg-2x.png';
+import tb_bg_1x from '../../images/Tablet/tb-bg-1x.png';
+import tb_bg_2x from '../../images/Tablet//tb-bg-2x.png';
 
-import lg_bg_1x from './backGroundImg/Desktop/lg-bg-1x.png';
-import lg_bg_2x from './backGroundImg/Desktop/lg-bg-2x.png';
+import lg_bg_1x from '../../images/Desktop/lg-bg-1x.png';
+import lg_bg_2x from '../../images/Desktop/lg-bg-2x.png';
 
 
 export const Section = styled.div`

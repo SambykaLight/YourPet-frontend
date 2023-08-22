@@ -17,12 +17,13 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    sans-serif; */
     background-color: #FEF9F9;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    font-family: var(--primary-font);
+  /* -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; */
 }
 
 code {
@@ -70,7 +71,7 @@ button {
   cursor: pointer;
 }
 
-.container {
+/* .container {
   padding-left: 20px;
   padding-right: 20px;
   margin-left: auto;
@@ -97,4 +98,4 @@ button {
     padding-right: 16px;
     width: 1280px;
   }
-}
+} */
