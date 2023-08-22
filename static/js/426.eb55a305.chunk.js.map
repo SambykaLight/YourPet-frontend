@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/426.eb55a305.chunk.js","mappings":"iKAQA,UANA,WACE,OACE,uCAEH,C","sources":["pages/AddPetPage.jsx"],"sourcesContent":["import React from 'react'\n\nfunction AddPetPage() {\n  return (\n    <div>AddPetPage</div>\n  )\n}\n\nexport default AddPetPage"],"names":[],"sourceRoot":""}

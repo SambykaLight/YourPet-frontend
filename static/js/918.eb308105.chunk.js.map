@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/918.eb308105.chunk.js","mappings":"mKAQA,UANA,WACE,OACE,qCAEH,C","sources":["pages/UserPage.jsx"],"sourcesContent":["import React from 'react'\n\nfunction UserPage() {\n  return (\n    <div>UserPage</div>\n  )\n}\n\nexport default UserPage"],"names":[],"sourceRoot":""}

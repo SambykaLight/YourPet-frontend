@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/593.98a01eab.chunk.js","mappings":"mKAQA,UANA,WACE,OACE,yCAEH,C","sources":["pages/PetsListPage.jsx"],"sourcesContent":["import React from 'react'\n\nfunction PetsListPage() {\n  return (\n    <div>PetsListPage</div>\n  )\n}\n\nexport default PetsListPage"],"names":[],"sourceRoot":""}

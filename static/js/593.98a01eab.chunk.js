@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkreact_homework_template=self.webpackChunkreact_homework_template||[]).push([[593],{2593:function(e,t,r){r.r(t);r(2791);var a=r(184);t.default=function(){return(0,a.jsx)("div",{children:"PetsListPage"})}}}]);
+//# sourceMappingURL=593.98a01eab.chunk.js.map
