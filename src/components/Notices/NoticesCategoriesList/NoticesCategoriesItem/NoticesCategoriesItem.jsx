@@ -1,26 +1,14 @@
 import { useState } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-
-// import { toast, ToastContainer } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
 
 import { LocationIcon } from '../../../SvgIcons/LocationIcon';
 import { IconTime } from '../../../SvgIcons/IconTime';
 import { FemaleIcon } from '../../../SvgIcons/FemaleIcon';
+import { MaleIcon } from '../../../SvgIcons/MaleIcon';
 import { AddToFavoriteIcon } from '../../../SvgIcons/AddToFavoriteIcon';
 
-// import { ReactComponent as Delete } from '../../../SvgIcons/Delete.svg';
-// import { ReactComponent as PawIcon } from '../../../SvgIcons/paw.svg';
-
-// import { fetchAddToFavorite, fetchDeleteFromFavorite } from 'Redux/auth/auth-operations';
-// import { fetchDeleteNotice } from 'Redux/notices/notices-operations';
-// import { isUserLogin, getUser } from 'Redux/auth/auth-selectors';
-
-// import ModalNotice from 'Components/ModalNotice/ModalNotice';
-// import ModalAcces from 'Components/ModalAcces/ModalAcces';
+import { ReactComponent as PawIcon } from '../../../SvgIcons/paw.svg';
 
 import css from './NoticesCategoriesItem.module.css';
-import { MaleIcon } from '../../../SvgIcons/MaleIcon';
 
 const CategoryItem = ({
   _id,
@@ -37,63 +25,14 @@ const CategoryItem = ({
   comments,
   ...restProps
 }) => {
-  // const dispatch = useDispatch();
  
-  // const [showModal, setShowModal] = useState(false);
-  // const [showModalAccess, setShowModalAccess] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
-  // const user = useSelector(getUser);
-  // const isLogin = useSelector(isUserLogin);
+  const handleLearnClick = () => {
+    setShowModal(true);
+  };
 
-  // const handleLearnClick = () => {
-  //   setShowModal(true);
-  // };
-
-  // const handleDeleteBtnClick = () => {
-  //   setShowModalAccess(true);
-  // };
-
-  // function handleCloseModal() {
-  //   setShowModal(false);
-  // }
-
-  //  function handleCloseModalAccess() {
-  //   setShowModalAccess(false);
-  // }
   const [favorite, setFavorite] = useState(false)
-
-  // const [favorite, setFavorite] = useState(() => {
-  //   if (isLogin && user && user.favorite && user.favorite.length > 0) {
-  //     if (user.favorite.includes(_id)) {
-  //       return true;
-  //     } else {
-  //       return false;
-  //     }
-  //   }
-  //   return false;
-  // });
-
-  // const handleDeleteClick = (_id) => {
-  //   dispatch(fetchDeleteNotice(_id));
-  //   setShowModalAccess(false);
-  // }
-  
-  // const handleFavoriteClick = () => {
-  //   if (!isLogin) {
-  //     toast.info(
-  //       'You must be registered or logged in to perform the operation'
-  //     );
-  //     return;
-  //   }
-
-  //   if (!favorite) {
-  //     dispatch(fetchAddToFavorite(_id));
-  //     setFavorite(true);
-  //   } else {
-  //     dispatch(fetchDeleteFromFavorite(_id));
-  //     setFavorite(false);
-  //   }
-  // };
 
   function calcAge(birthDatein) {
     const birthDate = new Date(birthDatein);
@@ -122,29 +61,9 @@ const CategoryItem = ({
               : css.favorite_btn
           }
           type="button"
-          // onClick={handleFavoriteClick}
         >
           <AddToFavoriteIcon id="svg" fill={favorite ? '#54adff' : 'none'} />
         </button>
-
-        {/* {owner._id === user._id && (
-          <button
-            className={css.delete_btn}
-            type="button"
-            onClick={handleDeleteBtnClick}
-          >
-            <Delete id="svg" />
-          </button>
-        )} */}
-
-        {/* {showModalAccess && (
-          <ModalAcces
-            onClose={handleCloseModalAccess}
-            title={title}
-            // handleDeleteClick={handleDeleteClick}
-            _id={_id}
-          />
-        )} */}
 
         <ul className={css.btn_list}>
           <p className={css.sell_btn}>{category}</p>
@@ -173,29 +92,11 @@ const CategoryItem = ({
         </ul>
 
         <h2 className={css.title}>{title}</h2>
-        {/* <button className={css.btn} onClick={handleLearnClick}>
+        <button className={css.btn} onClick={handleLearnClick}>
           Learn more
           <PawIcon />
-        </button> */}
-        {/* {showModal && (
-          <ModalNotice
-            _id={_id}
-            owner={owner}
-            onClose={handleCloseModal}
-            title={title}
-            name={name}
-            price={price}
-            birthday={birthday}
-            breed={breed}
-            place={place}
-            sex={sex}
-            category={category}
-            photoURL={photoURL}
-            comments={comments}
-          />
-        )} */}
+        </button>
       </div>
-      {/* <ToastContainer autoClose={1400} position="top-center" /> */}
     </li>
   );
 };
