@@ -6,6 +6,7 @@ import { FemaleIcon } from '../SvgIcons/FemaleIcon';
 import { MaleIcon } from '../SvgIcons/MaleIcon';
 import { AddToFavoriteIcon } from '../SvgIcons/AddToFavoriteIcon';
 
+import { ReactComponent as Delete } from '../SvgIcons/delete.svg';
 import { ReactComponent as PawIcon } from '../SvgIcons/paw.svg';
 
 import css from './PetsItem.module.css';
@@ -64,7 +65,12 @@ const CategoryItem = ({
         >
           <AddToFavoriteIcon id="svg" fill={favorite ? '#54adff' : 'none'} />
         </button>
-
+        <button
+            className={css.delete_btn}
+            type="button"
+          >
+            <Delete id="svg" />
+          </button>
         <ul className={css.btn_list}>
           <p className={css.sell_btn}>{category}</p>
           <li className={css.list_item}>
