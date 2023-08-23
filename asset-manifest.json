@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/SambykaLight/YourPet-frontend/static/css/main.6ba5545c.css",
-    "main.js": "/SambykaLight/YourPet-frontend/static/js/main.004aad2a.js",
+    "main.js": "/SambykaLight/YourPet-frontend/static/js/main.b2f8cf2f.js",
     "static/js/342.888105e7.chunk.js": "/SambykaLight/YourPet-frontend/static/js/342.888105e7.chunk.js",
     "static/js/732.cfee2f38.chunk.js": "/SambykaLight/YourPet-frontend/static/js/732.cfee2f38.chunk.js",
     "static/js/744.d9509489.chunk.js": "/SambykaLight/YourPet-frontend/static/js/744.d9509489.chunk.js",
@@ -26,7 +26,7 @@
     "static/media/error_red.svg": "/SambykaLight/YourPet-frontend/static/media/error_red.979527430babc874f1a86f2736f96771.svg",
     "static/media/check.svg": "/SambykaLight/YourPet-frontend/static/media/check.2a64553bc65df77be06926ee8669f056.svg",
     "main.6ba5545c.css.map": "/SambykaLight/YourPet-frontend/static/css/main.6ba5545c.css.map",
-    "main.004aad2a.js.map": "/SambykaLight/YourPet-frontend/static/js/main.004aad2a.js.map",
+    "main.b2f8cf2f.js.map": "/SambykaLight/YourPet-frontend/static/js/main.b2f8cf2f.js.map",
     "342.888105e7.chunk.js.map": "/SambykaLight/YourPet-frontend/static/js/342.888105e7.chunk.js.map",
     "732.cfee2f38.chunk.js.map": "/SambykaLight/YourPet-frontend/static/js/732.cfee2f38.chunk.js.map",
     "744.d9509489.chunk.js.map": "/SambykaLight/YourPet-frontend/static/js/744.d9509489.chunk.js.map",
@@ -41,6 +41,6 @@
   },
   "entrypoints": [
     "static/css/main.6ba5545c.css",
-    "static/js/main.004aad2a.js"
+    "static/js/main.b2f8cf2f.js"
   ]
 }
