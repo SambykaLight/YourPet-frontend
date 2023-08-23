@@ -1,14 +1,14 @@
 import { useState } from 'react';
 
-import { LocationIcon } from '../../../SvgIcons/LocationIcon';
-import { IconTime } from '../../../SvgIcons/IconTime';
-import { FemaleIcon } from '../../../SvgIcons/FemaleIcon';
-import { MaleIcon } from '../../../SvgIcons/MaleIcon';
-import { AddToFavoriteIcon } from '../../../SvgIcons/AddToFavoriteIcon';
+import { LocationIcon } from '../SvgIcons/LocationIcon';
+import { IconTime } from '../SvgIcons/IconTime';
+import { FemaleIcon } from '../SvgIcons/FemaleIcon';
+import { MaleIcon } from '../SvgIcons/MaleIcon';
+import { AddToFavoriteIcon } from '../SvgIcons/AddToFavoriteIcon';
 
-import { ReactComponent as PawIcon } from '../../../SvgIcons/paw.svg';
+import { ReactComponent as PawIcon } from '../SvgIcons/paw.svg';
 
-import css from './NoticesCategoriesItem.module.css';
+import css from './PetsItem.module.css';
 
 const CategoryItem = ({
   _id,

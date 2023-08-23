@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text } from './Home.styled'
 
-import NoticesCategoriesList from "../Notices/NoticesCategoriesList/NoticesCategoriesList"
+import NoticesCategoriesList from "../PetsList/PetsList"
 
 function Home() {
   return (

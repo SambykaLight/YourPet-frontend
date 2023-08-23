@@ -1,6 +1,6 @@
-import css from './NoticesCategoriesList.module.css';
-import CategoryItem from './NoticesCategoriesItem/NoticesCategoriesItem';
-import cat from "../../../data/cat.json"
+import css from './PetsList.module.css';
+import CategoryItem from '../PetsItem/PetsItem';
+import cat from "../PetsData/cat.json"
 const CategoryList = () => {
 
   return (
