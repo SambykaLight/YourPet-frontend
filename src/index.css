@@ -71,7 +71,7 @@ button {
   cursor: pointer;
 }
 
-/* .container {
+.container {
   padding-left: 20px;
   padding-right: 20px;
   margin-left: auto;
@@ -98,4 +98,4 @@ button {
     padding-right: 16px;
     width: 1280px;
   }
-} */
+}

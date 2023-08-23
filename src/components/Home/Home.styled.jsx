@@ -23,13 +23,12 @@ export const containerStyles = {
 
 export const titleStyles = {
   pt: { mobile: '25px', tablet: '52px', desktop: '188px' },
-  pr: { tablet: '148px', desktop: '0' },
   textAlign: { tablet: 'left' },
   display: { desktop: 'flex' },
   alignItems: { desktop: 'center' },
   fontFamily: 'var(--primary-font)',
   fontWeight: '800',
-  fontSize: { mobile: '32px', tablet: '68px' },
-  lineHeight: { mobile: '44px', tablet: '100px', desktop: '88px' },
-  width: { desktop: '501px' },
+  fontSize: { mobile: '10vw', tablet: '9vw', desktop: '5vw' },
+  lineHeight: { mobile: '13vw', tablet: '13vw', desktop: '7vw' },
+  width: { mobile: '90vw', tablet: '90vw', desktop: '40vw' },
 };
