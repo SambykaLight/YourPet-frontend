@@ -7,11 +7,6 @@ export const Textfield = styled(TextField)`
     color: #888888;
   }
 
-  &.success .muiinput-input: {
-    color: '#00C3AD'; // Ваш бажаний колір для стану 'success'
-  }
-
-  ,
   & .MuiFormHelperText-root {
     color: #00c3ad;
   }
