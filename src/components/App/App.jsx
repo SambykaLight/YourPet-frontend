@@ -28,6 +28,7 @@ export const App = () => {
     <b>Refreshing user...</b>
   ) : (
   <Routes>
+
     <Route path="/" element={<SharedLayout />}>
       <Route index element={<HomePage />} />
       <Route path="register" element={ <PublicRoute redirectTo="/login" component={<RegisterPage />} />} />
@@ -38,7 +39,7 @@ export const App = () => {
       <Route path="notices/" element={<PetsListPage />} />
 
       <Route path="notices/:category" element={<PetsListPage />} />
-
+      
       <Route path="friends" element={<OurFriendsPage />} />
       <Route path="news" element={<NewsPage />} />
       <Route path="*" element={<ErrorPage />} />
