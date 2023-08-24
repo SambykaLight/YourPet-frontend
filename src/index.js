@@ -7,9 +7,9 @@ import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter basename="SambykaLight/YourPet-frontend/">
+    <BrowserRouter basename="SambykaLight/YourPet-frontend">
       <>
-      <App />
+        <App />
       </>
     </BrowserRouter>
   </React.StrictMode>

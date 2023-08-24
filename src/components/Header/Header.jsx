@@ -1,30 +1,37 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import logo from './logo.png';
-// import loginSvg from './login.svg';
+import LogoIcon from './logo';
+import LoginIcon from './loginSvg';
+import {
+  HeaderContainer,
+  LogoContainer,
+  LinksContainer,
+  StyledLink,
+  AuthButtonsContainer,
+  AuthButton,
+} from './Header.styled';
 
 function Header() {
   return (
-    <div className="header">
-      <div className="logo">
+    <HeaderContainer>
+      <LogoContainer>
         <Link to="/">
-          <img alt="Logo" />
+          <LogoIcon />
         </Link>
-      </div>
-      <div className="links">
-        <Link to="/news">News</Link>
-        <Link to="/notices/sell">Find Pet</Link>
-        <Link to="/friends">Our friends</Link>
-      </div>
-      <div className="auth-buttons">
-        <button className="login-button">
-          {/* <img alt="Login" /> */}
+      </LogoContainer>
+      <LinksContainer>
+        <StyledLink to="/news">News</StyledLink>
+        <StyledLink to="/notices/sell">Find Pet</StyledLink>
+        <StyledLink to="/friends">Our friends</StyledLink>
+      </LinksContainer>
+      <AuthButtonsContainer>
+        <AuthButton>
           Log In
-        </button>
-        <button className="register-button">Register</button>
-      </div>
-    </div>
+          <LoginIcon />
+        </AuthButton>
+        <AuthButton>Registration</AuthButton>
+      </AuthButtonsContainer>
+    </HeaderContainer>
   );
 }
-
 export default Header;
