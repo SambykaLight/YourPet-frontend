@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/SambykaLight/YourPet-frontend/static/css/main.6ba5545c.css",
-    "main.js": "/SambykaLight/YourPet-frontend/static/js/main.b2f8cf2f.js",
-    "static/js/342.888105e7.chunk.js": "/SambykaLight/YourPet-frontend/static/js/342.888105e7.chunk.js",
-    "static/js/732.cfee2f38.chunk.js": "/SambykaLight/YourPet-frontend/static/js/732.cfee2f38.chunk.js",
+    "main.js": "/SambykaLight/YourPet-frontend/static/js/main.df7048ea.js",
+    "static/js/342.93fdfeda.chunk.js": "/SambykaLight/YourPet-frontend/static/js/342.93fdfeda.chunk.js",
+    "static/js/732.e40cbac7.chunk.js": "/SambykaLight/YourPet-frontend/static/js/732.e40cbac7.chunk.js",
     "static/js/744.d9509489.chunk.js": "/SambykaLight/YourPet-frontend/static/js/744.d9509489.chunk.js",
     "static/js/471.d3552e8f.chunk.js": "/SambykaLight/YourPet-frontend/static/js/471.d3552e8f.chunk.js",
     "static/js/593.98a01eab.chunk.js": "/SambykaLight/YourPet-frontend/static/js/593.98a01eab.chunk.js",
@@ -26,9 +26,9 @@
     "static/media/error_red.svg": "/SambykaLight/YourPet-frontend/static/media/error_red.979527430babc874f1a86f2736f96771.svg",
     "static/media/check.svg": "/SambykaLight/YourPet-frontend/static/media/check.2a64553bc65df77be06926ee8669f056.svg",
     "main.6ba5545c.css.map": "/SambykaLight/YourPet-frontend/static/css/main.6ba5545c.css.map",
-    "main.b2f8cf2f.js.map": "/SambykaLight/YourPet-frontend/static/js/main.b2f8cf2f.js.map",
-    "342.888105e7.chunk.js.map": "/SambykaLight/YourPet-frontend/static/js/342.888105e7.chunk.js.map",
-    "732.cfee2f38.chunk.js.map": "/SambykaLight/YourPet-frontend/static/js/732.cfee2f38.chunk.js.map",
+    "main.df7048ea.js.map": "/SambykaLight/YourPet-frontend/static/js/main.df7048ea.js.map",
+    "342.93fdfeda.chunk.js.map": "/SambykaLight/YourPet-frontend/static/js/342.93fdfeda.chunk.js.map",
+    "732.e40cbac7.chunk.js.map": "/SambykaLight/YourPet-frontend/static/js/732.e40cbac7.chunk.js.map",
     "744.d9509489.chunk.js.map": "/SambykaLight/YourPet-frontend/static/js/744.d9509489.chunk.js.map",
     "471.d3552e8f.chunk.js.map": "/SambykaLight/YourPet-frontend/static/js/471.d3552e8f.chunk.js.map",
     "593.98a01eab.chunk.js.map": "/SambykaLight/YourPet-frontend/static/js/593.98a01eab.chunk.js.map",
@@ -41,6 +41,6 @@
   },
   "entrypoints": [
     "static/css/main.6ba5545c.css",
-    "static/js/main.b2f8cf2f.js"
+    "static/js/main.df7048ea.js"
   ]
 }
