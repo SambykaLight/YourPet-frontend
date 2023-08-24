@@ -1,9 +1,10 @@
 import React from 'react'
+import NoticePage from 'components/Notices/NoticePage'
 
-function PetsListPage() {
-  return (
-    <div>PetsListPage</div>
-  )
+
+const PetsListPage = () => {
+  return <NoticePage/>
+   
 }
 
 export default PetsListPage
