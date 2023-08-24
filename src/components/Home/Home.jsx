@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Typography } from '@mui/material';
-import {containerStyles, titleStyles} from './Home.styled'
+import { containerStyles, titleStyles } from './Home.styled';
 
 function Home() {
   return (
