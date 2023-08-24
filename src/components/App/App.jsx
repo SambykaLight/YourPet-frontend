@@ -1,5 +1,5 @@
-import { PrivateRoute } from 'components/PrivateRoute/PrivateRoute';
-import { PublicRoute } from 'components/PublicRoute/PublicRoute';
+import  PrivateRoute  from 'components/PrivateRoute';
+import PublicRoute  from 'components/PublicRoute';
 import SharedLayout from 'components/SharedLayout/SharedLayout';
 import { useAuth } from 'hooks/useAuth';
 import { lazy, useEffect } from 'react';
@@ -30,14 +30,11 @@ export const App = () => {
   <Routes>
     <Route path="/" element={<SharedLayout />}>
       <Route index element={<HomePage />} />
-      <Route element={<PublicRoute />}>
-              <Route path="register" element={<RegisterPage />} />
-              <Route path="login" element={<LoginPage />} />
-            </Route>
-      <Route element={<PrivateRoute />}>
-              <Route path="user" element={<UserPage />} />
-              <Route path="add-pet" element={<AddPetPage />} />
-      </Route>
+      <Route path="register" element={ <PublicRoute redirectTo="/login" component={<RegisterPage />} />} />
+      <Route path="login" element={ <PublicRoute redirectTo="/login" component={<LoginPage />} />} />
+
+      <Route path="user" element={ <PrivateRoute redirectTo="/login" component={<UserPage />} />} />
+      <Route path="add-pet" element={ <PrivateRoute redirectTo="/login" component={<AddPetPage />} />} />
       <Route path="notices/" element={<PetsListPage />} />
 
       <Route path="notices/:category" element={<PetsListPage />} />

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { loginSchema } from '../Shcema/Schema';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {
   Button,
   IconButton,
@@ -22,6 +22,8 @@ import {
 } from './LoginForm.styled';
 import { ReactComponent as IconClose } from '../../images/icon/error_red.svg';
 import { ReactComponent as IconCheck } from '../../images/icon/check.svg';
+import authOperations from 'redux/auth/operations';
+
 
 const initialValues = {
   email: '',
@@ -30,69 +32,51 @@ const initialValues = {
 
 function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
-  const [validEmail, setValidEmail] = useState(false);
-  const [validPassword, setValidPassword] = useState(false);
+  const [validEmail, setValidEmail] = useState("");
+  const [validPassword, setValidPassword] = useState("");
 
-  //   const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
   };
 
-  const handleEmailChange = event => {
-    const { value } = event.target;
-    const validEmaile = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value);
-    setValidEmail(validEmaile);
+  const onHandleChange = ({ target: { name, value } }) => {
+    switch (name) {
+      case 'email':
+        const validEmaile = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value);
+         return setValidEmail(validEmaile);
+      case 'password':
+        const validPasswords =
+        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,16}$/i.test(value);
+         return setValidPassword(validPasswords);
+      default:
+        return;
+    }
   };
-
-  const handlePasswordChange = event => {
-    const { value } = event.target;
-    const validPasswords =
-      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,16}$/i.test(value);
-    setValidPassword(validPasswords);
-  };
-
-  //   const handleSubmitForm = (values, { resetForm }) => {
-  //     const newUser = {
-  //       name: values.name,
-  //       email: values.email,
-  //       password: values.password,
-  //     };
-  // dispatch(
-  //   register({
-  //     email: values.email,
-  //     password: values.password,
-  //   })
-  // );
-  //     resetForm();
-  //   };
 
   const handleSubmitForm = async (values, { setErrors, resetForm }) => {
     try {
       await loginSchema.validate(values, { abortEarly: false });
 
-      const newUser = {
-        email: values.email,
-        password: values.password,
-      };
-      console.log(newUser);
-      // dispatch(
-      //   register({
-      //     email: values.email,
-      //     password: values.password,
-      //   })
-      // );
+      dispatch(
+        authOperations.logIn({
+          email: values.email,
+          password: values.password,
+        })
+      );
 
       resetForm();
 
-      setValidEmail(false);
-      setValidPassword(false);
+      setValidEmail("");
+      setValidPassword("");
     } catch (validationErrors) {
-      const errors = {};
-      validationErrors.inner.forEach(error => {
-        errors[error.path] = error.message;
-      });
-      setErrors(errors);
+      console.log(validationErrors.message)
+      // const errors = {};
+      // validationErrors.inner.forEach(error => {
+      //   errors[error.path] = error.message;
+      // });
+      // setErrors(errors);
     }
   };
 
@@ -113,7 +97,7 @@ function LoginForm() {
                 margin="dense"
                 onChange={event => {
                   handleChange(event);
-                  handleEmailChange(event);
+                  onHandleChange(event);
                 }}
                 value={values.email}
                 error={touched.email && Boolean(errors.email)}
@@ -181,7 +165,7 @@ function LoginForm() {
                 }}
                 onChange={event => {
                   handleChange(event);
-                  handlePasswordChange(event);
+                  onHandleChange(event);
                 }}
                 value={values.password}
                 error={touched.password && Boolean(errors.password)}

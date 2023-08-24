@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import {useState} from 'react';
 import { Link } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { registerSchema } from '../Shcema/Schema';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {
   Button,
   IconButton,
@@ -22,6 +22,8 @@ import {
 } from './RegistrationForm.styled';
 import { ReactComponent as IconClose } from '../../images/icon/error_red.svg';
 import { ReactComponent as IconCheck } from '../../images/icon/check.svg';
+import authOperations from 'redux/auth/operations';
+
 
 const initialValues = {
   name: '',
@@ -33,13 +35,13 @@ const initialValues = {
 function RegistrationForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [validName, setValidName] = useState(false);
-  const [validEmail, setValidEmail] = useState(false);
-  const [validPassword, setValidPassword] = useState(false);
+  const [validName, setValidName] = useState("");
+  const [validEmail, setValidEmail] = useState("");
+  const [validPassword, setValidPassword] = useState("");
   const [validConfirmPass, setValidConfirmPass] = useState(false);
   const [pass, setPass] = useState('');
 
-  //   const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
   const handleTogglePasswordVisibility = field => {
     if (field === 'password') {
@@ -49,46 +51,28 @@ function RegistrationForm() {
     }
   };
 
-  const handleNameChange = event => {
-    const { value } = event.target;
-    const validNames = /^(?=.{2,16}$)[A-Za-z ]+$/i.test(value);
-    setValidName(validNames);
-  };
-
-  const handleEmailChange = event => {
-    const { value } = event.target;
-    const validEmaile = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value);
-    setValidEmail(validEmaile);
-  };
-
-  const handlePasswordChange = event => {
-    const { value } = event.target;
-    const validPasswords =
-      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,16}$/i.test(value);
-    setValidPassword(validPasswords);
-    setPass(value);
+  const onHandleChange = ({ target: { name, value } }) => {
+    switch (name) {
+      case 'name':
+        const validNames = /^(?=.{2,16}$)[A-Za-z ]+$/i.test(value);
+        return setValidName(validNames);
+      case 'email':
+        const validEmaile = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value);
+        return setValidEmail(validEmaile);
+      case 'password':
+        const validPasswords =
+            /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,16}$/i.test(value);
+            setPass(value);
+        return setValidPassword(validPasswords);
+      default:
+        return;
+    }
   };
 
   const handleConfirmPasswordChange = event => {
     const { value } = event.target;
     setValidConfirmPass(value === pass);
   };
-
-  //   const handleSubmitForm = (values, { resetForm }) => {
-  //     const newUser = {
-  //       name: values.name,
-  //       email: values.email,
-  //       password: values.password,
-  //     };
-  // dispatch(
-  //   register({
-  //     email: values.email,
-  //     password: values.password,
-  //   })
-  // );
-  //     resetForm();
-  //   };
-
   const handleSubmitForm = async (values, { setErrors, resetForm }) => {
     try {
       await registerSchema.validate(values, { abortEarly: false });
@@ -99,24 +83,22 @@ function RegistrationForm() {
         password: values.password,
       };
       console.log(newUser);
-      // dispatch(
-      //   register({
-      //     email: values.email,
-      //     password: values.password,
-      //   })
-      // );
+      dispatch(
+        authOperations.register(newUser)
+      );
 
       resetForm();
-      setValidName(false);
-      setValidEmail(false);
-      setValidPassword(false);
+      setValidName("");
+      setValidEmail("");
+      setValidPassword("");
       setValidConfirmPass(false);
     } catch (validationErrors) {
-      const errors = {};
-      validationErrors.inner.forEach(error => {
-        errors[error.path] = error.message;
-      });
-      setErrors(errors);
+      console.log(validationErrors.message)
+      // const errors = {};
+      // validationErrors.inner.forEach(error => {
+      //   errors[error.path] = error.message;
+      // });
+      // setErrors(errors);
     }
   };
 
@@ -137,7 +119,7 @@ function RegistrationForm() {
                 margin="dense"
                 onChange={event => {
                   handleChange(event);
-                  handleNameChange(event);
+                  onHandleChange(event);
                 }}
                 value={values.name}
                 error={touched.name && Boolean(errors.name)}
@@ -167,7 +149,7 @@ function RegistrationForm() {
                                 value: '',
                               },
                             });
-                            setValidName(false);
+                            setValidName("");
                           }}
                         />
                       ) : validName ? (
@@ -188,7 +170,7 @@ function RegistrationForm() {
                 margin="dense"
                 onChange={event => {
                   handleChange(event);
-                  handleEmailChange(event);
+                  onHandleChange(event);
                 }}
                 value={values.email}
                 error={touched.email && Boolean(errors.email)}
@@ -218,7 +200,7 @@ function RegistrationForm() {
                                 value: '',
                               },
                             });
-                            setValidEmail(false);
+                            setValidEmail("");
                           }}
                         />
                       ) : validEmail ? (
@@ -256,7 +238,7 @@ function RegistrationForm() {
                 }}
                 onChange={event => {
                   handleChange(event);
-                  handlePasswordChange(event);
+                  onHandleChange(event);
                 }}
                 value={values.password}
                 error={touched.password && Boolean(errors.password)}

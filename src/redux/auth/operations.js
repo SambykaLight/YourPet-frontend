@@ -24,6 +24,7 @@ const register = createAsyncThunk(
     try {
       const response = await axios.post('/api/users/register', credentials);
       setAuthHeader(response.data.token);
+      //response.data is {message: 'New account created'} but must be ...
       return response.data;
     } catch (e) {
       toast.error("Something's wrong. Please update page and try again");
@@ -40,6 +41,7 @@ const logIn = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
     // After successful login, add the token to the HTTP header
     setAuthHeader(response.data.token);
     //data must include {name, token, ...}
+    console.log(response.data)
     return response.data;
   } catch (error) {
     toast.error("Something's wrong. Please update page and try again");
