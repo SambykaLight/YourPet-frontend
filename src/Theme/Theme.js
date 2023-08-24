@@ -1,6 +1,17 @@
 import { createTheme } from '@mui/material';
 
-const theme = createTheme({ 
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#54ADFF',
+    },
+    error: {
+      main: '#F43F5E',
+    },
+    success: {
+      main: '#00C3AD',
+    },
+  },
   typography: {
     fontFamily: 'Manrope, Inter',
   },
