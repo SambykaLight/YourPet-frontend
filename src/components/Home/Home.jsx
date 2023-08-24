@@ -15,8 +15,8 @@ function Home() {
           Take good care of your small pets
         </Typography>
         <Title/>
-        <NoticeNav/>
         <NoticeSearch/>
+        <NoticeNav/>
         <PetsList/>
         
       </Container>

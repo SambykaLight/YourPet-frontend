@@ -1,13 +1,10 @@
 import { BsSearch } from 'react-icons/bs';
 
-
 import css from '../NoticeSearc/NoticesSearch.module.css';
 
 const NoticesSearch = () => {
-
-
   return (
-    <form className={css.form} >
+    <form className={css.form}>
       <div className={css.formContainer}>
         <input
           type="text"
@@ -20,7 +17,6 @@ const NoticesSearch = () => {
         <button className={css.btnSearch} type="submit">
           <BsSearch />
         </button>
-
       </div>
     </form>
   );

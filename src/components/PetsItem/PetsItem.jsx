@@ -27,11 +27,11 @@ const CategoryItem = ({
   ...restProps
 }) => {
  
-  const [showModal, setShowModal] = useState(false);
+  // const [showModal, setShowModal] = useState(false);
 
-  const handleLearnClick = () => {
-    setShowModal(true);
-  };
+  // const handleLearnClick = () => {
+  //   setShowModal(true);
+  // };
 
   const [favorite, setFavorite] = useState(false)
 
@@ -98,7 +98,7 @@ const CategoryItem = ({
         </ul>
 
         <h2 className={css.title}>{title}</h2>
-        <button className={css.btn} onClick={handleLearnClick}>
+        <button className={css.btn}>
           Learn more
           <PawIcon />
         </button>
