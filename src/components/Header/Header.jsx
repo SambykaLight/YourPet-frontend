@@ -1,36 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import LogoIcon from './logo';
-import LoginIcon from './loginSvg';
-import {
-  HeaderContainer,
-  LogoContainer,
-  LinksContainer,
-  StyledLink,
-  AuthButtonsContainer,
-  AuthButton,
-} from './Header.styled';
+
+import { HeaderContainer } from './Header.styled';
+import Navigation from 'components/Navigation/Navigation';
+import AuthNav from 'components/AuthNav/AuthNav';
+import { useSelector } from 'react-redux';
+import { selectIsLoggedIn } from 'redux/auth/selectors';
+import UserMenu from 'components/UserMenu/UserMenu';
 
 function Header() {
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   return (
     <HeaderContainer>
-      <LogoContainer>
-        <Link to="/">
-          <LogoIcon />
-        </Link>
-      </LogoContainer>
-      <LinksContainer>
-        <StyledLink to="/news">News</StyledLink>
-        <StyledLink to="/notices/sell">Find Pet</StyledLink>
-        <StyledLink to="/friends">Our friends</StyledLink>
-      </LinksContainer>
-      <AuthButtonsContainer>
-        <AuthButton>
-          Log In
-          <LoginIcon />
-        </AuthButton>
-        <AuthButton>Registration</AuthButton>
-      </AuthButtonsContainer>
+      <Navigation />
+      {isLoggedIn ? <UserMenu /> : <AuthNav />}
     </HeaderContainer>
   );
 }
