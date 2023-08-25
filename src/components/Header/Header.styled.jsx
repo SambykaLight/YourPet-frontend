@@ -9,11 +9,11 @@ export const HeaderContainer = styled.div`
   justify-content: space-between;
 
   @media (min-width: 320px) {
-    padding: 16px;
+    padding: 20px;
   }
 
   @media (min-width: 768px) {
-    padding: 16px 20px;
+    padding: 24px 32px;
   }
 
   @media (min-width: 1280px) {
@@ -68,10 +68,26 @@ export const AuthButton = styled.button`
   padding: 9px 41px;
   cursor: pointer;
 
+  &:last-child {
+    margin-right: 24px;
+  }
+
   &:hover {
     background-color: #fef9f9;
     border: 2px solid #ffc107;
     color: #ffc107;
     padding: 7px 39px;
+  }
+`;
+
+export const BurgerMenuButton = styled.button`
+  display: none;
+
+  @media (max-width: 768px) {
+    display: block;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
   }
 `;

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import LogoIcon from './logo';
 import LoginIcon from './loginSvg';
+import BurgerMenuIcon from './burgerMenuIcon';
 import {
   HeaderContainer,
   LogoContainer,
@@ -9,6 +10,7 @@ import {
   StyledLink,
   AuthButtonsContainer,
   AuthButton,
+  BurgerMenuButton,
 } from './Header.styled';
 
 function Header() {
@@ -30,6 +32,9 @@ function Header() {
           <LoginIcon />
         </AuthButton>
         <AuthButton>Registration</AuthButton>
+        <BurgerMenuButton>
+          <BurgerMenuIcon />
+        </BurgerMenuButton>
       </AuthButtonsContainer>
     </HeaderContainer>
   );
