@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import LogoIcon from './logo';
 import LoginIcon from './loginSvg';
 import BurgerMenuIcon from './burgerMenuIcon';
+import UserIcon from './userIcon';
+
 import {
   HeaderContainer,
   LogoContainer,
@@ -11,6 +13,7 @@ import {
   AuthButtonsContainer,
   AuthButton,
   BurgerMenuButton,
+  UserIconButton,
 } from './Header.styled';
 
 function Header() {
@@ -32,6 +35,11 @@ function Header() {
           <LoginIcon />
         </AuthButton>
         <AuthButton>Registration</AuthButton>
+
+        <UserIconButton>
+          <UserIcon />
+        </UserIconButton>
+
         <BurgerMenuButton>
           <BurgerMenuIcon />
         </BurgerMenuButton>
