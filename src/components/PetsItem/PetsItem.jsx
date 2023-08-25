@@ -26,20 +26,19 @@ const CategoryItem = ({
   comments,
   ...restProps
 }) => {
- 
   // const [showModal, setShowModal] = useState(false);
 
   // const handleLearnClick = () => {
   //   setShowModal(true);
   // };
 
-  const [favorite, setFavorite] = useState(false)
+  const [favorite, setFavorite] = useState(false);
 
   function calcAge(birthDatein) {
     const birthDate = new Date(birthDatein);
     const currentDate = new Date();
     const diffInMilliseconds = Math.abs(currentDate - birthDate);
-    const millisecondsPerYear = 1000 * 60 * 60 * 24 * 365.25; 
+    const millisecondsPerYear = 1000 * 60 * 60 * 24 * 365.25;
 
     if (diffInMilliseconds < millisecondsPerYear) {
       const millisecondsPerMonth = millisecondsPerYear / 12;
@@ -65,12 +64,9 @@ const CategoryItem = ({
         >
           <AddToFavoriteIcon id="svg" fill={favorite ? '#54adff' : 'none'} />
         </button>
-        <button
-            className={css.delete_btn}
-            type="button"
-          >
-            <Delete id="svg" />
-          </button>
+        <button className={css.delete_btn} type="button">
+          <Delete id="svg" />
+        </button>
         <ul className={css.btn_list}>
           <p className={css.sell_btn}>{category}</p>
           <li className={css.list_item}>
@@ -88,10 +84,13 @@ const CategoryItem = ({
             </button>
           </li>
           <li>
-            
             <button className={css.img_btn}>
-              {sex === 'female' ? <FemaleIcon id="svg" /> : <MaleIcon id="svg" />}
-              
+              {sex === 'female' ? (
+                <FemaleIcon id="svg" />
+              ) : (
+                <MaleIcon id="svg" />
+              )}
+
               {sex}
             </button>
           </li>

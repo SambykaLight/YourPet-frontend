@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { registerSchema } from '../Shcema/Schema';
@@ -23,7 +23,7 @@ import {
 import { ReactComponent as IconClose } from '../../images/icon/error_red.svg';
 import { ReactComponent as IconCheck } from '../../images/icon/check.svg';
 import authOperations from 'redux/auth/operations';
-
+import { useTranslation } from 'react-i18next';
 
 const initialValues = {
   name: '',
@@ -35,13 +35,14 @@ const initialValues = {
 function RegistrationForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [validName, setValidName] = useState("");
-  const [validEmail, setValidEmail] = useState("");
-  const [validPassword, setValidPassword] = useState("");
+  const [validName, setValidName] = useState('');
+  const [validEmail, setValidEmail] = useState('');
+  const [validPassword, setValidPassword] = useState('');
   const [validConfirmPass, setValidConfirmPass] = useState(false);
   const [pass, setPass] = useState('');
+  const { t } = useTranslation();
 
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const handleTogglePasswordVisibility = field => {
     if (field === 'password') {
@@ -57,12 +58,14 @@ function RegistrationForm() {
         const validNames = /^(?=.{2,16}$)[A-Za-z ]+$/i.test(value);
         return setValidName(validNames);
       case 'email':
-        const validEmaile = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value);
+        const validEmaile = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(
+          value
+        );
         return setValidEmail(validEmaile);
       case 'password':
         const validPasswords =
-            /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,16}$/i.test(value);
-            setPass(value);
+          /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,16}$/i.test(value);
+        setPass(value);
         return setValidPassword(validPasswords);
       default:
         return;
@@ -83,35 +86,34 @@ function RegistrationForm() {
         password: values.password,
       };
       console.log(newUser);
-      dispatch(
-        authOperations.register(newUser)
-      );
+      dispatch(authOperations.register(newUser));
 
       resetForm();
-      setValidName("");
-      setValidEmail("");
-      setValidPassword("");
+      setValidName('');
+      setValidEmail('');
+      setValidPassword('');
       setValidConfirmPass(false);
     } catch (validationErrors) {
-      console.log(validationErrors.message)
+      console.log(validationErrors.message);
       // const errors = {};
       // validationErrors.inner.forEach(error => {
       //   errors[error.path] = error.message;
       // });
       // setErrors(errors);
+      // console.log(errors);
     }
   };
 
   return (
     <>
       <Card sx={cardStyles}>
-        <Typography sx={titleStyles}>Registration</Typography>
+        <Typography sx={titleStyles}>{t('Registration')}</Typography>
         <Formik initialValues={initialValues} onSubmit={handleSubmitForm}>
           {({ values, errors, touched, handleSubmit, handleChange }) => (
             <Form>
               <Field
                 as={Textfield}
-                placeholder="Name"
+                placeholder={t('Name')}
                 type="text"
                 name="name"
                 fullWidth
@@ -149,7 +151,7 @@ function RegistrationForm() {
                                 value: '',
                               },
                             });
-                            setValidName("");
+                            setValidName('');
                           }}
                         />
                       ) : validName ? (
@@ -162,7 +164,7 @@ function RegistrationForm() {
 
               <Field
                 as={Textfield}
-                placeholder="Email"
+                placeholder={t('Email')}
                 type="email"
                 name="email"
                 fullWidth
@@ -200,7 +202,7 @@ function RegistrationForm() {
                                 value: '',
                               },
                             });
-                            setValidEmail("");
+                            setValidEmail('');
                           }}
                         />
                       ) : validEmail ? (
@@ -212,7 +214,7 @@ function RegistrationForm() {
               />
               <Field
                 as={Textfield}
-                placeholder="Password"
+                placeholder={t('Password')}
                 type={showPassword ? 'text' : 'password'}
                 name="password"
                 fullWidth
@@ -253,7 +255,7 @@ function RegistrationForm() {
               />
               <Field
                 as={Textfield}
-                placeholder="Confirm Password"
+                placeholder={t('Confirm Password')}
                 type={showConfirmPassword ? 'text' : 'password'}
                 name="confirmPassword"
                 fullWidth
@@ -303,17 +305,17 @@ function RegistrationForm() {
                 onClick={handleSubmit}
                 sx={buttonStyles}
               >
-                Registration
+                {t('Registration')}
               </Button>
             </Form>
           )}
         </Formik>
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
           <Typography sx={textStyles}>
-            Already have an account?{' '}
+            {t('Already have an account?')}{' '}
             <Link to="/login">
               <Typography component="span" sx={linkStyles}>
-                Login
+                {t('Login')}
               </Typography>
             </Link>
           </Typography>

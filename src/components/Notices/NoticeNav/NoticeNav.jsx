@@ -3,8 +3,10 @@ import { NavLink } from 'react-router-dom';
 import { ReactComponent as PlusSmallIcon } from '../../SvgIcons/SmallIconPlus.svg';
 import { ReactComponent as Filter } from '../../SvgIcons/Filter.svg';
 import css from './NoticeNav.module.css';
+import { useTranslation } from 'react-i18next';
 
 const NoticesNav = () => {
+  const { t } = useTranslation();
   return (
     <div className={css.navigationContainer}>
       <ul className={css.linksContainer}>
@@ -13,7 +15,7 @@ const NoticesNav = () => {
             className={({ isActive }) => (isActive ? css.active : '')}
             to="/notices/sell"
           >
-            sell
+            {t('sell')}
           </NavLink>
         </li>
         <li className={css.link}>
@@ -21,7 +23,7 @@ const NoticesNav = () => {
             className={({ isActive }) => (isActive ? css.active : '')}
             to="/notices/lost-found"
           >
-            lost/found
+            {t('lost/found')}
           </NavLink>
         </li>
         <li className={css.link}>
@@ -29,7 +31,7 @@ const NoticesNav = () => {
             className={({ isActive }) => (isActive ? css.active : '')}
             to="/notices/for-free"
           >
-            in good hands
+            {t('in good hands')}
           </NavLink>
         </li>
         {
@@ -38,7 +40,7 @@ const NoticesNav = () => {
               className={({ isActive }) => (isActive ? css.active : '')}
               to="/notices/favorite"
             >
-              favorite ads
+              {t('favorite ads')}
             </NavLink>
           </li>
         }
@@ -48,7 +50,7 @@ const NoticesNav = () => {
               className={({ isActive }) => (isActive ? css.active : '')}
               to="/notices/own"
             >
-              my ads
+              {t('my ads')}
             </NavLink>
           </li>
         }
@@ -64,14 +66,14 @@ const NoticesNav = () => {
               type="button"
               className={({ isActive }) => (isActive ? css.active : '')}
             >
-              <p className={css.filterText}>Filter</p>
+              <p className={css.filterText}>{t('Filter')}</p>
               <Filter />
             </button>
           </NavLink>
         </li>
         <li className={css.addButtonLink}>
           <button type="button">
-            <p className={css.addPetText}>Add pet</p>
+            <p className={css.addPetText}>{t('Add pet')}</p>
             <PlusSmallIcon />
           </button>
         </li>

@@ -1,7 +1,9 @@
 import css from './NoticeTitle.module.css';
+import { useTranslation } from 'react-i18next';
 
 const Title = () => {
-  return <h1 className={css.title}>Find your favorite pet</h1>;
+  const { t } = useTranslation();
+  return <h1 className={css.title}>{t('Find your favorite pet')}</h1>;
 };
 
 export default Title;

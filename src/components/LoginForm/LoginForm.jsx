@@ -23,7 +23,7 @@ import {
 import { ReactComponent as IconClose } from '../../images/icon/error_red.svg';
 import { ReactComponent as IconCheck } from '../../images/icon/check.svg';
 import authOperations from 'redux/auth/operations';
-
+import { useTranslation } from 'react-i18next';
 
 const initialValues = {
   email: '',
@@ -32,10 +32,11 @@ const initialValues = {
 
 function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
-  const [validEmail, setValidEmail] = useState("");
-  const [validPassword, setValidPassword] = useState("");
+  const [validEmail, setValidEmail] = useState('');
+  const [validPassword, setValidPassword] = useState('');
+  const { t } = useTranslation();
 
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
@@ -44,12 +45,14 @@ function LoginForm() {
   const onHandleChange = ({ target: { name, value } }) => {
     switch (name) {
       case 'email':
-        const validEmaile = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value);
-         return setValidEmail(validEmaile);
+        const validEmaile = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(
+          value
+        );
+        return setValidEmail(validEmaile);
       case 'password':
         const validPasswords =
-        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,16}$/i.test(value);
-         return setValidPassword(validPasswords);
+          /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,16}$/i.test(value);
+        return setValidPassword(validPasswords);
       default:
         return;
     }
@@ -68,10 +71,10 @@ function LoginForm() {
 
       resetForm();
 
-      setValidEmail("");
-      setValidPassword("");
+      setValidEmail('');
+      setValidPassword('');
     } catch (validationErrors) {
-      console.log(validationErrors.message)
+      console.log(validationErrors.message);
       // const errors = {};
       // validationErrors.inner.forEach(error => {
       //   errors[error.path] = error.message;
@@ -83,13 +86,13 @@ function LoginForm() {
   return (
     <>
       <Card sx={cardStyles}>
-        <Typography sx={titleStyles}>Login</Typography>
+        <Typography sx={titleStyles}>{t('Login')}</Typography>
         <Formik initialValues={initialValues} onSubmit={handleSubmitForm}>
           {({ values, errors, touched, handleSubmit, handleChange }) => (
             <Form>
               <Field
                 as={Textfield}
-                placeholder="Email"
+                placeholder={t('Email')}
                 type="email"
                 name="email"
                 fullWidth
@@ -139,7 +142,7 @@ function LoginForm() {
               />
               <Field
                 as={Textfield}
-                placeholder="Password"
+                placeholder={t('Password')}
                 type={showPassword ? 'text' : 'password'}
                 name="password"
                 fullWidth
@@ -185,17 +188,17 @@ function LoginForm() {
                 onClick={handleSubmit}
                 sx={buttonStyles}
               >
-                Login
+                {t('Login')}
               </Button>
             </Form>
           )}
         </Formik>
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
           <Typography sx={textStyles}>
-            Already have an account?{' '}
+            {t('Already have an account?')}{' '}
             <Link to="/register">
               <Typography component="span" sx={linkStyles}>
-                Register
+                {t('Register')}
               </Typography>
             </Link>
           </Typography>
