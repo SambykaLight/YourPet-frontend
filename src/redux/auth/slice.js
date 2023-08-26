@@ -1,15 +1,29 @@
 import { createSlice } from '@reduxjs/toolkit';
-import authOperations from './operations';
+import {register, logIn, logout, updateUser, getCurrentUser, hideModalSuccessRegister } from './operations';
 
 const initialState = {
-  user: { name: null, email: null },
+  user: {
+    // name: null,
+    email: null,
+    password: null,
+    // birthday: '',
+    // phone: '',
+    // city: '',
+    // imageURL: '',
+    // favorite: [],
+    // itemsFavorite: [],
+  },
+  pets: [],
   token: null,
-  isLoggedIn: false,
   isLoading: false,
-  error: null,
+  isLoggedIn: false,
   isRefreshing: false,
+  error: null,
+  modalSuccessRegister: false,
+  // registrationSuccessful: false,
 };
 const handlePending = state => {
+  state.error = null;
   state.isLoading = true;
 };
 const handleRejected = (state, action) => {
@@ -22,52 +36,81 @@ const authSlice = createSlice({
   initialState,
   extraReducers: builder => {
     builder
-      .addCase(authOperations.register.pending, handlePending)
-      .addCase(authOperations.register.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
+      .addCase(register.pending, handlePending)
+      .addCase(register.fulfilled, (state,  { payload }) => {
+        state.user =payload;
+        state.token =payload.token;
+        state.isLoading = false;
         state.isLoggedIn = true;
+        state.error = null;
+        state.isRefreshing = true;
+        state.modalSuccessRegister = true;
+        // state.registrationSuccessful = true;
       })
-      .addCase(authOperations.register.rejected, handleRejected)
-      .addCase(authOperations.logIn.pending, handlePending)
-      .addCase(authOperations.logIn.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
+      .addCase(register.rejected, handleRejected)
+      .addCase(logIn.pending, handlePending)
+      .addCase(logIn.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.user = payload.user;
+        state.token = payload.user.token;
         state.isLoggedIn = true;
+        state.isRefreshing = true;
       })
-      .addCase(authOperations.logIn.rejected, handleRejected)
-      .addCase(authOperations.logout.pending, handlePending)
-      .addCase(authOperations.logout.fulfilled, state => {
+      .addCase(logIn.rejected, handleRejected)
+      .addCase(logout.pending, handlePending)
+      .addCase(logout.fulfilled, state => {
         state.user = { name: null, email: null };
         state.token = null;
         state.isLoggedIn = false;
-      })
-      .addCase(authOperations.logout.rejected, handleRejected)
-      .addCase(authOperations.refreshUser.pending, state => {
-        state.isRefreshing = true;
-        handlePending(state);
-      })
-      .addCase(authOperations.refreshUser.fulfilled, (state, action) => {
+        state.isLoading = false;
         state.isRefreshing = false;
-        state.user = action.payload;
-        state.isLoggedIn = true;
+        // state.registrationSuccessful = false;
+        // state.user.favorite = [];
       })
-      .addCase(authOperations.refreshUser.rejected, (state, action) => {
-        state.isRefreshing = false;
-        handleRejected(state, action);
-      })
-      .addCase(authOperations.getCurrentUser.pending, state => {
+      .addCase(logout.rejected, handleRejected)
+      // .addCase(refreshUser.pending, state => {
+      //   state.isRefreshing = true;
+      //   handlePending(state);
+      // })
+      // .addCase(refreshUser.fulfilled, (state, { payload }) => {
+      //   state.isRefreshing = false;
+      //   state.isLoading = false;
+      //   state.error = null;
+      //   state.pets = payload.pets;
+      //   state.user = payload.user;
+      //   state.isLoggedIn = true;
+      // })
+      // .addCase(refreshUser.rejected, (state, action) => {
+      //   state.isRefreshing = false;
+      //   handleRejected(state, action);
+      // })
+      .addCase(getCurrentUser.pending, state => {
         state.isRefreshing = true;
       })
-      .addCase(authOperations.getCurrentUser.fulfilled, (state, { payload }) => {
+      .addCase(getCurrentUser.fulfilled, (state, { payload }) => {
         state.user = payload.userInfo;
+        state.pets = payload.petsInfo;
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })
-      .addCase(authOperations.getCurrentUser.rejected, state => {
+      .addCase(getCurrentUser.rejected, state => {
         state.isRefreshing = false;
         state.isLoggedIn = false;
-      });
+      })
+      .addCase(updateUser.pending, handlePending)
+      .addCase(updateUser.fulfilled, (state, { payload }) => {
+        state.user = {
+          ...state.user,
+          ...payload.updatedFields,
+        };
+      })
+      .addCase(updateUser.rejected, handleRejected)
+      .addCase(hideModalSuccessRegister.pending, handlePending)
+      .addCase(hideModalSuccessRegister.fulfilled, (state, { payload }) => {
+        state.modalSuccessRegister = payload;
+      })
+      .addCase(hideModalSuccessRegister.rejected, )
+
   },
 });
 
