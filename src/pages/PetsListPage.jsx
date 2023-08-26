@@ -1,21 +1,20 @@
-import React from 'react'
+import Context from 'components/Modals/Context/Context';
 import Modal from '../components/Modals/index';
+import CardMore from 'components/Modals/CardMore/CardMore';
 
 function PetsListPage() {
   return (
     <div>
       PetsListPage
-
-
+      <Context>
         {/* назва кнопки універсальна */}
-      <Modal openButtonLabel="Відкрити модалку">
-        {/* Контент для модального вікна */}
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Error ut id, autem, temporibus sed eos nostrum praesentium beatae est, fugiat inventore voluptatum iure ipsum minus consequatur dolorum. Architecto, praesentium natus.</p>
-      </Modal>
-
-
+        <Modal openButtonLabel="Відкрити модалку">
+          {/* Контент для модального вікна */}
+          <CardMore />
+        </Modal>
+      </Context>
     </div>
-  )
+  );
 }
 
-export default PetsListPage
+export default PetsListPage;
