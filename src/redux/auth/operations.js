@@ -6,6 +6,8 @@ import toast from 'react-hot-toast';
 // api який треба вставити для запитів за користувачами !!!!!!!!!!!!!!!!!!!!!!!!!!
 axios.defaults.baseURL = 'https://your-pet-api-a9zk.onrender.com';
 
+const errMessage = "Something went wrong. Please try again";
+
 //  --- ADD JWT ---
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -18,16 +20,17 @@ const clearAuthHeader = () => {
 
 // //  --- REGISTER / POST ----
 // //  credentials: { name, email, password }
-const register = createAsyncThunk(
-  '/auth/signup',
+export const register = createAsyncThunk(
+  'auth/register',
   async (credentials, thunkAPI) => {
     try {
-      const response = await axios.post('/api/users/register', credentials);
-      setAuthHeader(response.data.token);
+      const {data} = await axios.post('/api/users/register', credentials);
+      setAuthHeader(data.token);
       //response.data is {message: 'New account created'} but must be ...
-      return response.data;
+    console.log("Answer",data)
+      return data;
     } catch (e) {
-      toast.error("Something's wrong. Please update page and try again");
+      toast.error(errMessage);
       return thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -35,50 +38,30 @@ const register = createAsyncThunk(
 
 //  ---- LOGIN / POST ----
 //  credentials: {email, password}
-const logIn = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
+export const logIn = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
   try {
-    const response = await axios.post('/api/users/login', credentials);
+    console.log("Credentials",credentials)
+    const {data} = await axios.post('/api/users/login', credentials);
     // After successful login, add the token to the HTTP header
-    setAuthHeader(response.data.token);
+    setAuthHeader(data.user.token);
     //data must include {name, token, ...}
-    console.log(response.data)
-    return response.data;
+    console.log("Answer",data)
+    return data;
   } catch (error) {
-    toast.error("Something's wrong. Please update page and try again");
+    toast.error(errMessage);
     return thunkAPI.rejectWithValue(error.message);
   }
 });
 
 // ---- LOGOUT / POST ---
 // headers: Authorization: Bearer token
-const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
+export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     await axios.post('/api/users/logout');
     // After a successful logout, remove the token from the HTTP header
     clearAuthHeader();
   } catch (error) {
-    toast.error("Something's wrong. Please update page and try again");
-    return thunkAPI.rejectWithValue(error.message);
-  }
-});
-
-//  GET @ /users/current
-//  headers: Authorization: Bearer token
-const refreshUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
-  // Reading the token from the state via getState()
-  const state = thunkAPI.getState();
-  const persistedToken = state.auth.token;
-  if (persistedToken === null) {
-    // If there is no token, exit without performing any request
-    return thunkAPI.rejectWithValue('Unable to fetch user');
-  }
-  try {
-    // If there is a token, add it to the HTTP header and perform the request
-    setAuthHeader(persistedToken);
-    const response = await axios.get('/api/users/current');
-    return response.data;
-  } catch (error) {
-    toast.error("Something's wrong. Please update page and try again");
+    toast.error(errMessage);
     return thunkAPI.rejectWithValue(error.message);
   }
 });
@@ -91,19 +74,40 @@ export const getCurrentUser = createAsyncThunk(
     const state = getState();
     const token = state.auth.token;
     if (!token) {
-      return rejectWithValue();
+      return rejectWithValue('Unable to fetch user');
     }
     setAuthHeader(token);
-
     try {
       const { data } = await axios.get('/api/users/current');
       return data;
     } catch (error) {
-      toast.error("Something's wrong. Please update page and try again");
-      return rejectWithValue('');
+      toast.error(errMessage);
+      return rejectWithValue(error.message);
     }
   }
 );
 
-const authOperations = { refreshUser, register, logIn, logout, getCurrentUser };
-export default authOperations;
+//  PUT
+export const updateUser = createAsyncThunk(
+  'pets/updateUser',
+  async (userData, {rejectWithValue}) => {
+    try {
+      const {data} = await axios.put(`/api/users/update`, userData);
+      return data;
+    } catch (error) {
+      toast.error(errMessage);
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const hideModalSuccessRegister = createAsyncThunk(
+  'auth/hideModalSuccessRegister',
+  async (_, __) => {
+    return false;
+  }
+);
+
+
+// const authOperations = {hideModalSuccessRegister, register, logIn, logout, updateUser, getCurrentUser};
+// export default authOperations;
