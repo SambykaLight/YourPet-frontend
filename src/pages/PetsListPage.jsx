@@ -1,17 +1,36 @@
 import React from 'react'
-import Modal from '../components/Modals/index';
+import Modal from 'components/Modals/Modal'
+import Context from 'components/Modals/Context/Context';
+
+
+
+const { toggle } = Context
+console.log(toggle);
 
 function PetsListPage() {
   return (
     <div>
       PetsListPage
 
+<Context>
 
-        {/* назва кнопки універсальна */}
-      <Modal openButtonLabel="Відкрити модалку">
-        {/* Контент для модального вікна */}
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Error ut id, autem, temporibus sed eos nostrum praesentium beatae est, fugiat inventore voluptatum iure ipsum minus consequatur dolorum. Architecto, praesentium natus.</p>
-      </Modal>
+
+<Modal openButtonLabel={"asdsd"}>
+
+
+<p>
+  
+  
+  
+  <button onClick={() => console.log(toggle)}>"asdasd"</button>
+  
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex excepturi quos laboriosam asperiores necessitatibus consequuntur voluptatem dicta perferendis illo quas explicabo, aperiam repudiandae odit accusamus culpa adipisci voluptate unde officia.</p>
+
+</Modal>
+
+</Context>
+
+
 
 
     </div>
