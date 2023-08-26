@@ -1,5 +1,3 @@
-
-
 export const containerStyles = {
   height: '100vh',
   backgroundImage: {
@@ -19,6 +17,10 @@ export const containerStyles = {
     tablet: '130%',
     desktop: '60%',
   },
+};
+
+export const boxStyles = {
+  width: '7rem',
 };
 
 export const titleStyles = {

@@ -1,8 +1,10 @@
+import Loader from 'components/Loader/Loader';
 import React from 'react'
 
 function NewsPage() {
+  const isLoading = true;
   return (
-    <div>NewsPage</div>
+    isLoading ? <Loader/> : <div>NewsPage</div>
   )
 }
 
