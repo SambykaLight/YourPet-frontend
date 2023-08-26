@@ -26,6 +26,20 @@ export const App = () => {
 
   return (
   <Routes>
+      <Route path="/" element={<SharedLayout />}>
+        <Route index element={<HomePage />} />
+        <Route
+          path="register"
+          element={
+            <PublicRoute redirectTo="/login" component={<RegisterPage />} />
+          }
+        />
+        <Route
+          path="login"
+          element={
+            <PublicRoute redirectTo="/login" component={<LoginPage />} />
+          }
+        />
         <Route
           path="user"
           element={
@@ -40,13 +54,12 @@ export const App = () => {
         />
         <Route path="notices/" element={<PetsListPage />} />
 
-        <Route path="notices/:category" element={<PetsListPage />} />
-
       <Route path="notices/:category" element={<PetsListPage />} />
 
       <Route path="friends" element={<OurFriendsPage />} />
       <Route path="news" element={<NewsPage />} />
       <Route path="*" element={<ErrorPage />} />
+</Route>
   </Routes>)
 };
 
