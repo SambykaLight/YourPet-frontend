@@ -1,5 +1,3 @@
-// Modal.js
-
 import React, { useEffect } from 'react';
 import { ModalOverlay, ModalContent, CloseButton } from './Modal.styled';
 import { useModalContext } from './Context/Context';
