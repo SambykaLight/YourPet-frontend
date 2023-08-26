@@ -1,5 +1,6 @@
 @import-normalize; /* bring in normalize.css styles */
 
+
 :root {
   --primary-font: 'Manrope', sans-serif;
   --second-font: 'Inter', sans-serif;
@@ -17,6 +18,37 @@
 
 body {
   margin: 0;
+  
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-image: url(./images/Mobile/mb-bg-1x.png);
+
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: url(./images/Mobile/mb-bg-2x.png);
+  }
+
+  @media (min-width: 768px) {
+    background-image: url(./images/Tablet/tb-bg-1x.png);
+
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url(./images/Tablet/tb-bg-2x.png);
+    }
+  }
+
+  @media (min-width: 1280px) {
+    background-image: url(./images/Desktop/lg-bg-1x.png);
+
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url(./images/Desktop/lg-bg-2x.png);
+    }
+  }
   /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif; */
@@ -58,7 +90,7 @@ p {
 }
 
 img {
-  max-width: 100%;
+  height: 100vh;
   display: block;
 }
 
