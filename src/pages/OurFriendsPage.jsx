@@ -1,8 +1,10 @@
-import React from 'react'
+import React from 'react';
+import {OurFriendsList} from 'components/OurFriendsList/FriendsList';
+import {FriendsData} from 'components/OurFriendsList/FriendsData';
 
 function OurFriendsPage() {
   return (
-    <div>OurFriendsPage</div>
+    <OurFriendsList FriendsData={FriendsData}/>
   )
 }
 

@@ -1,30 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-// import logo from './logo.png';
-// import loginSvg from './login.svg';
+
+import { HeaderContainer } from './Header.styled';
+import Navigation from 'components/Navigation/Navigation';
+import AuthNav from 'components/AuthNav/AuthNav';
+import { useSelector } from 'react-redux';
+import { selectIsLoggedIn } from 'redux/auth/selectors';
+import UserMenu from 'components/UserMenu/UserMenu';
 
 function Header() {
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   return (
-    <div className="header">
-      <div className="logo">
-        <Link to="/">
-          <img alt="Logo" />
-        </Link>
-      </div>
-      <div className="links">
-        <Link to="/news">News</Link>
-        <Link to="/notices/sell">Find Pet</Link>
-        <Link to="/friends">Our friends</Link>
-      </div>
-      <div className="auth-buttons">
-        <button className="login-button">
-          {/* <img alt="Login" /> */}
-          Log In
-        </button>
-        <button className="register-button">Register</button>
-      </div>
-    </div>
+    <HeaderContainer>
+      <Navigation />
+      {isLoggedIn ? <UserMenu /> : <AuthNav />}
+    </HeaderContainer>
   );
 }
-
 export default Header;

@@ -22,7 +22,7 @@ import {
 } from './LoginForm.styled';
 import { ReactComponent as IconClose } from '../../images/icon/error_red.svg';
 import { ReactComponent as IconCheck } from '../../images/icon/check.svg';
-import authOperations from 'redux/auth/operations';
+import  { login } from 'redux/auth/operations';
 
 
 const initialValues = {
@@ -60,7 +60,7 @@ function LoginForm() {
       await loginSchema.validate(values, { abortEarly: false });
 
       dispatch(
-        authOperations.logIn({
+        login({
           email: values.email,
           password: values.password,
         })
@@ -71,12 +71,11 @@ function LoginForm() {
       setValidEmail("");
       setValidPassword("");
     } catch (validationErrors) {
-      console.log(validationErrors.message)
-      // const errors = {};
-      // validationErrors.inner.forEach(error => {
-      //   errors[error.path] = error.message;
-      // });
-      // setErrors(errors);
+      const errors = {};
+      validationErrors.inner.forEach(error => {
+        errors[error.path] = error.message;
+      });
+      setErrors(errors);
     }
   };
 

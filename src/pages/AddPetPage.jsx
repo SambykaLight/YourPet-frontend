@@ -1,8 +1,9 @@
 import React from 'react'
+import AddPetForm from 'components/AddPet/AddPetForm'
 
 function AddPetPage() {
   return (
-    <div>AddPetPage</div>
+    <AddPetForm/>
   )
 }
 
