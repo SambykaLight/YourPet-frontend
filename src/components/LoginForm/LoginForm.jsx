@@ -22,8 +22,8 @@ import {
 } from './LoginForm.styled';
 import { ReactComponent as IconClose } from '../../images/icon/error_red.svg';
 import { ReactComponent as IconCheck } from '../../images/icon/check.svg';
-import  { login } from 'redux/auth/operations';
-
+import { login } from 'redux/auth/operations';
+import { useTranslation } from 'react-i18next';
 
 const initialValues = {
   email: '',
@@ -32,10 +32,11 @@ const initialValues = {
 
 function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
-  const [validEmail, setValidEmail] = useState("");
-  const [validPassword, setValidPassword] = useState("");
+  const [validEmail, setValidEmail] = useState('');
+  const [validPassword, setValidPassword] = useState('');
+  const { t } = useTranslation();
 
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
@@ -44,12 +45,14 @@ function LoginForm() {
   const onHandleChange = ({ target: { name, value } }) => {
     switch (name) {
       case 'email':
-        const validEmaile = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value);
-         return setValidEmail(validEmaile);
+        const validEmaile = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(
+          value
+        );
+        return setValidEmail(validEmaile);
       case 'password':
         const validPasswords =
-        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,16}$/i.test(value);
-         return setValidPassword(validPasswords);
+          /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,16}$/i.test(value);
+        return setValidPassword(validPasswords);
       default:
         return;
     }
@@ -58,7 +61,7 @@ function LoginForm() {
   const handleSubmitForm = async (values, { setErrors, resetForm }) => {
     try {
       await loginSchema.validate(values, { abortEarly: false });
-console.log(values.email);
+      console.log(values.email);
       dispatch(
         login({
           email: values.email,
@@ -68,8 +71,8 @@ console.log(values.email);
 
       resetForm();
 
-      setValidEmail("");
-      setValidPassword("");
+      setValidEmail('');
+      setValidPassword('');
     } catch (validationErrors) {
       const errors = {};
       validationErrors.inner.forEach(error => {
@@ -82,13 +85,13 @@ console.log(values.email);
   return (
     <>
       <Card sx={cardStyles}>
-        <Typography sx={titleStyles}>Login</Typography>
+        <Typography sx={titleStyles}>{t('Login')}</Typography>
         <Formik initialValues={initialValues} onSubmit={handleSubmitForm}>
           {({ values, errors, touched, handleSubmit, handleChange }) => (
             <Form>
               <Field
                 as={Textfield}
-                placeholder="Email"
+                placeholder={t('Email')}
                 type="email"
                 name="email"
                 fullWidth
@@ -138,7 +141,7 @@ console.log(values.email);
               />
               <Field
                 as={Textfield}
-                placeholder="Password"
+                placeholder={t('Password')}
                 type={showPassword ? 'text' : 'password'}
                 name="password"
                 fullWidth
@@ -184,17 +187,17 @@ console.log(values.email);
                 onClick={handleSubmit}
                 sx={buttonStyles}
               >
-                Login
+                {t('Login')}
               </Button>
             </Form>
           )}
         </Formik>
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
           <Typography sx={textStyles}>
-            Already have an account?{' '}
+            {t('Already have an account?')}{' '}
             <Link to="/register">
               <Typography component="span" sx={linkStyles}>
-                Register
+                {t('Register')}
               </Typography>
             </Link>
           </Typography>
