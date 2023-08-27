@@ -1,14 +1,17 @@
-import css from './PetsList.module.css';
-import CategoryItem from '../PetsItem/PetsItem';
-import cat from '../PetsData/cat.json';
+import { List, ListItem } from './PetsList.styled';
+import PetsItem from 'components/PetsItem';
 
-const CategoryList = () => {
+export const PetsList = ({ pets }) => {
   return (
-    <ul className={css.card_list}>
-      {cat.map(card => (
-        <CategoryItem {...card} key={card._id} />
-      ))}
-    </ul>
+    <List>
+      {pets &&
+        pets.map(pet => (
+          <ListItem key={pet._id}>
+            <PetsItem pet={pet} />
+          </ListItem>
+        ))}
+    </List>
   );
 };
-export default CategoryList;
+
+export default PetsList;

@@ -1,11 +1,32 @@
-import React from 'react'
+import { useSelector } from 'react-redux';
+import { selectPetsInfo, selectIsLoading } from 'redux/pets/selectors';
 
-const PetsData =()=> {
+import AddIcon from '@mui/icons-material/Add';
+import { Container, Title, Button, TitleContainer } from './PetsData.styled';
+
+import PetsList from '../PetsList';
+import NotFound from './NotFound';
+
+const PetsData = () => {
+  const petsInfo = useSelector(selectPetsInfo);
+  const isLoading = useSelector(selectIsLoading);
+
   return (
-    <div>
-      
-    </div>
-  )
-}
+    <Container>
+      <TitleContainer>
+        <Title>My pets:</Title>
+        <Button to="/add-pet">
+          Add pet <AddIcon />
+        </Button>
+      </TitleContainer>
 
-export default PetsData
+      {!isLoading && !petsInfo.length > 0 ? (
+        <NotFound />
+      ) : (
+        <PetsList pets={petsInfo} />
+      )}
+    </Container>
+  );
+};
+
+export default PetsData;
