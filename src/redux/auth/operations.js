@@ -78,7 +78,7 @@ export const getCurrentUser = createAsyncThunk(
     }
     setAuthHeader(token);
     try {
-      const { data } = await axios.get('/api/users/current');
+      const { data } = await axios.get('/api/user');
       return data;
     } catch (error) {
       toast.error(errMessage);

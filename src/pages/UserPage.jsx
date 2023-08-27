@@ -5,7 +5,7 @@ import { hideModalSuccessRegister } from 'redux/auth/operations';
 import { useSelector } from 'react-redux';
 
 import UserData from 'components/UserData';
-import PetsData from 'components/PetsData/PetsData';
+import UserPetsData from 'components/UserPetsData/UserPetsData';
 import useModal from 'hooks/useModal';
 import { selectModalSuccessRegister } from 'redux/auth/selectors';
 // import CongratsModal from 'components/Modal/CongratsModal';
@@ -34,7 +34,7 @@ const UserPage = () => {
         <CongratsModal isOpen={isOpen} toggleModal={onModalToggle} />
       )} */}
       <UserData />
-      <PetsData />
+      <UserPetsData />
     </>
   );
 };
