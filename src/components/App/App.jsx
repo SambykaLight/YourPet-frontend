@@ -1,5 +1,5 @@
-import  PrivateRoute  from 'components/PrivateRoute';
-import PublicRoute  from 'components/PublicRoute';
+import PrivateRoute from 'components/PrivateRoute';
+import PublicRoute from 'components/PublicRoute';
 import SharedLayout from 'components/SharedLayout/SharedLayout';
 import { useAuth } from 'hooks/useAuth';
 import { lazy, useEffect } from 'react';
@@ -27,24 +27,41 @@ export const App = () => {
   return isRefreshing ? (
     <b>Refreshing user...</b>
   ) : (
-  <Routes>
+    <Routes>
+      <Route path="/" element={<SharedLayout />}>
+        <Route index element={<HomePage />} />
+        <Route
+          path="register"
+          element={
+            <PublicRoute redirectTo="/login" component={<RegisterPage />} />
+          }
+        />
+        <Route
+          path="login"
+          element={
+            <PublicRoute redirectTo="/login" component={<LoginPage />} />
+          }
+        />
 
-    <Route path="/" element={<SharedLayout />}>
-      <Route index element={<HomePage />} />
-      <Route path="register" element={ <PublicRoute redirectTo="/login" component={<RegisterPage />} />} />
-      <Route path="login" element={ <PublicRoute redirectTo="/login" component={<LoginPage />} />} />
+        <Route
+          path="user"
+          element={<PublicRoute redirectTo="/login" component={<UserPage />} />}
+        />
+        <Route
+          path="add-pet"
+          element={
+            <PrivateRoute redirectTo="/login" component={<AddPetPage />} />
+          }
+        />
+        <Route path="notices/" element={<PetsListPage />} />
 
-      <Route path="user" element={ <PrivateRoute redirectTo="/login" component={<UserPage />} />} />
-      <Route path="add-pet" element={ <PrivateRoute redirectTo="/login" component={<AddPetPage />} />} />
-      <Route path="notices/" element={<PetsListPage />} />
+        <Route path="notices/:category" element={<PetsListPage />} />
 
-      <Route path="notices/:category" element={<PetsListPage />} />
-      
-      <Route path="friends" element={<OurFriendsPage />} />
-      <Route path="news" element={<NewsPage />} />
-      <Route path="*" element={<ErrorPage />} />
-    </Route>
-  </Routes>
+        <Route path="friends" element={<OurFriendsPage />} />
+        <Route path="news" element={<NewsPage />} />
+        <Route path="*" element={<ErrorPage />} />
+      </Route>
+    </Routes>
   );
 };
 
