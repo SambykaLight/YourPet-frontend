@@ -2,81 +2,81 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { ReactComponent as PlusSmallIcon } from '../../SvgIcons/SmallIconPlus.svg';
 import { ReactComponent as Filter } from '../../SvgIcons/Filter.svg';
-import css from './NoticeNav.module.css';
+import {NavContainer, List, Li,  AddBtnContainer, FilterLink, Button, AddButtonLink, AddButton, FilterText, AddPetText} from './NoticeNav.styled';
 
 const NoticesNav = () => {
   return (
-    <div className={css.navigationContainer}>
-      <ul className={css.linksContainer}>
-        <li className={css.link}>
+    <NavContainer>
+      <List >
+        <Li>
           <NavLink
-            className={({ isActive }) => (isActive ? css.active : '')}
+            // className={({ isActive }) => (isActive ? css.active : '')}
             to="/notices/sell"
           >
             sell
           </NavLink>
-        </li>
-        <li className={css.link}>
+        </Li>
+        <Li>
           <NavLink
-            className={({ isActive }) => (isActive ? css.active : '')}
+            // className={({ isActive }) => (isActive ? css.active : '')}
             to="/notices/lost-found"
           >
             lost/found
           </NavLink>
-        </li>
-        <li className={css.link}>
+        </Li>
+        <Li >
           <NavLink
-            className={({ isActive }) => (isActive ? css.active : '')}
+            // className={({ isActive }) => (isActive ? css.active : '')}
             to="/notices/for-free"
           >
             in good hands
           </NavLink>
-        </li>
+        </Li>
         {
-          <li className={css.link}>
+          <Li >
             <NavLink
-              className={({ isActive }) => (isActive ? css.active : '')}
+              // className={({ isActive }) => (isActive ? css.active : '')}
               to="/notices/favorite"
             >
               favorite ads
             </NavLink>
-          </li>
+          </Li>
         }
         {
-          <li className={css.link}>
+          <Li>
             <NavLink
-              className={({ isActive }) => (isActive ? css.active : '')}
+              // className={({ isActive }) => (isActive ? css.active : '')}
               to="/notices/own"
             >
               my ads
             </NavLink>
-          </li>
+          </Li>
         }
-      </ul>
+      </List>
 
-      <ul className={css.addButtonContainer}>
-        <li className={css.filterLink}>
+      <AddBtnContainer>
+        <FilterLink>
           <NavLink
-            className={({ isActive }) => (isActive ? css.active : '')}
+            // className={({ isActive }) => (isActive ? css.active : '')}
             to="/notices/filter"
           >
-            <button
+            <Button
               type="button"
-              className={({ isActive }) => (isActive ? css.active : '')}
+              // className={({ isActive }) => (isActive ? css.active : '')}
             >
-              <p className={css.filterText}>Filter</p>
+              <FilterText>Filter</FilterText>
               <Filter />
-            </button>
+            </Button>
           </NavLink>
-        </li>
-        <li className={css.addButtonLink}>
-          <button type="button">
-            <p className={css.addPetText}>Add pet</p>
+        </FilterLink>
+        <AddButtonLink >
+          <AddButton type="button">
+            <AddPetText>Add pet</AddPetText>
             <PlusSmallIcon />
-          </button>
-        </li>
-      </ul>
-    </div>
+          </AddButton>
+        </AddButtonLink>
+      </AddBtnContainer>
+    </NavContainer>
   );
 };
 

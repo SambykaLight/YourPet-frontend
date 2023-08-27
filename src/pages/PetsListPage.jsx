@@ -1,12 +1,21 @@
-import React from 'react'
-
-import NoticePage from 'components/Notices/NoticePage'
-
+import React from 'react';
+import { Container } from '@mui/material';
+import PetsList from 'components/PetsList/PetsList';
+import Title from 'components/Title/Title';
+import NoticesSearch from 'components/Notices/NoticeSearch/NoticeSearch';
+import NoticesNav from 'components/Notices/NoticeNav/NoticeNav';
+import AddPagination from 'components/Pagination/Pagination';
 
 const PetsListPage = () => {
-  return <NoticePage/>
-   
+  return (
+    <Container>
+      <Title />
+      <NoticesSearch />
+      <NoticesNav />
+      <PetsList />
+      <AddPagination />
+    </Container>
+  );
+};
 
-}
-
-export default PetsListPage
+export default PetsListPage;
