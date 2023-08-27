@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {register, logIn, logout, updateUser, getCurrentUser, hideModalSuccessRegister } from './operations';
+import {register, login, logout, updateUser, getCurrentUser, hideModalSuccessRegister } from './operations';
 
 const initialState = {
   user: {
@@ -23,10 +23,12 @@ const initialState = {
   // registrationSuccessful: false,
 };
 const handlePending = state => {
+  console.log("pending")
   state.error = null;
   state.isLoading = true;
 };
 const handleRejected = (state, action) => {
+  console.log("rejected")
   state.isLoading = false;
   state.error = action.payload;
 };
@@ -48,15 +50,16 @@ const authSlice = createSlice({
         // state.registrationSuccessful = true;
       })
       .addCase(register.rejected, handleRejected)
-      .addCase(logIn.pending, handlePending)
-      .addCase(logIn.fulfilled, (state, { payload }) => {
+      .addCase(login.pending, handlePending)
+      .addCase(login.fulfilled, (state, { payload }) => {
+        console.log(payload)
         state.isLoading = false;
         state.user = payload.user;
         state.token = payload.user.token;
         state.isLoggedIn = true;
         state.isRefreshing = true;
       })
-      .addCase(logIn.rejected, handleRejected)
+      .addCase(login.rejected, handleRejected)
       .addCase(logout.pending, handlePending)
       .addCase(logout.fulfilled, state => {
         state.user = { name: null, email: null };

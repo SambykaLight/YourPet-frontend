@@ -38,15 +38,15 @@ export const register = createAsyncThunk(
 
 //  ---- LOGIN / POST ----
 //  credentials: {email, password}
-export const logIn = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
+export const login = createAsyncThunk('auth/login', async (credential, thunkAPI) => {
   try {
-    console.log("Credentials",credentials)
-    const {data} = await axios.post('/api/users/login', credentials);
+    console.log("Credentials",credential)
+    const response = await axios.post('/api/users/login', credential);
+    console.log("Answer",response)
     // After successful login, add the token to the HTTP header
-    setAuthHeader(data.user.token);
+    setAuthHeader(response.token);
     //data must include {name, token, ...}
-    console.log("Answer",data)
-    return data;
+    return response.data;
   } catch (error) {
     toast.error(errMessage);
     return thunkAPI.rejectWithValue(error.message);
@@ -108,6 +108,3 @@ export const hideModalSuccessRegister = createAsyncThunk(
   }
 );
 
-
-// const authOperations = {hideModalSuccessRegister, register, logIn, logout, updateUser, getCurrentUser};
-// export default authOperations;

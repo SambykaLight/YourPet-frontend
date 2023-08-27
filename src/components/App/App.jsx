@@ -5,8 +5,7 @@ import { useAuth } from 'hooks/useAuth';
 import { lazy, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
-import {getCurrentUser} from 'redux/auth/operations';
-
+import { getCurrentUser } from 'redux/auth/operations';
 
 const LoginPage = lazy(() => import('pages/LoginPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage'));
@@ -25,20 +24,18 @@ export const App = () => {
   }, [dispatch]);
 
   return (
-  <Routes>
+    <Routes>
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<HomePage />} />
         <Route
           path="register"
           element={
-            <PublicRoute redirectTo="/login" component={<RegisterPage />} />
+            <PublicRoute redirectTo="/user" component={<RegisterPage />} />
           }
         />
         <Route
           path="login"
-          element={
-            <PublicRoute redirectTo="/login" component={<LoginPage />} />
-          }
+          element={<PublicRoute redirectTo="/user" component={<LoginPage />} />}
         />
         <Route
           path="user"
@@ -52,15 +49,19 @@ export const App = () => {
             <PrivateRoute redirectTo="/login" component={<AddPetPage />} />
           }
         />
-        <Route path="notices/" element={<PetsListPage />} />
+        <Route
+          path="notices/"
+          element={<PublicRoute redirectTo="sell" element={<PetsListPage />} />}
+        />
 
-      <Route path="notices/:category" element={<PetsListPage />} />
+        <Route path="notices/:category" element={<PetsListPage />} />
 
-      <Route path="friends" element={<OurFriendsPage />} />
-      <Route path="news" element={<NewsPage />} />
-      <Route path="*" element={<ErrorPage />} />
-</Route>
-  </Routes>)
+        <Route path="friends" element={<OurFriendsPage />} />
+        <Route path="news" element={<NewsPage />} />
+        <Route path="*" element={<ErrorPage />} />
+      </Route>
+    </Routes>
+  );
 };
 
 export default App;

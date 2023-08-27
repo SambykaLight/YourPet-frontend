@@ -1,12 +1,13 @@
-import PetsData from 'components/PetsData/PetsData'
-import UserData from 'components/UserData/UserData'
+// import PetsData from 'components/PetsData/PetsData'
+// import UserData from 'components/UserData/UserData'
 import React from 'react'
 
 function UserPage() {
   return (
     <>
-      <UserData/>
-      <PetsData/>
+    <p>Hy here, you are in userPage</p>
+      {/* <UserData/>
+      <PetsData/> */}
     </>
   )
 }
