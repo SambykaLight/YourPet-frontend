@@ -134,7 +134,6 @@ export const AddButton = styled.button`
       top: 70%;
       z-index: 10;
       display: flex;
-      align-items: center;
       justify-content: center;
       flex-direction: column-reverse;
       /* flex-direction: row; */

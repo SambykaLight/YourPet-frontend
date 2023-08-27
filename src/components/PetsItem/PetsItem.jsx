@@ -2,13 +2,13 @@ import { useDispatch } from 'react-redux';
 import { deletePet } from 'redux/pets/operations';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 
-import { Image, Description, Highlight, Button } from './PetsItem.styled';
 import Box from '@mui/material/Box';
 
 import { ReactComponent as Delete } from '../SvgIcons/delete.svg';
 import { ReactComponent as PawIcon } from '../SvgIcons/paw.svg';
 
 import {
+  Image, Description, Highlight, Button ,
   Btn,
   BtnList,
   CardItem,
@@ -20,8 +20,14 @@ import {
   Text,
   Title,
 } from './PetsItem.styled';
+import { AddToFavoriteIcon } from 'components/SvgIcons/AddToFavoriteIcon';
+import { LocationIcon } from 'components/SvgIcons/LocationIcon';
+import { IconTime } from 'components/SvgIcons/IconTime';
+import { FemaleIcon } from 'components/SvgIcons/FemaleIcon';
+import { MaleIcon } from 'components/SvgIcons/MaleIcon';
+import { useState } from 'react';
 
-const CategoryItem = ({
+ export const CategoryItem = ({
   _id,
   title,
   photoURL,
@@ -42,7 +48,7 @@ const CategoryItem = ({
   //   setShowModal(true);
   // };
 
-  const [favorite, setFavorite] = useState(false);
+  const [favorite] = useState(false)
 
   function calcAge(birthDatein) {
     const birthDate = new Date(birthDatein);
@@ -122,7 +128,7 @@ const CategoryItem = ({
   );
 };
 
-export default CategoryItem;
+
 export const PetsItem = ({ pet }) => {
   const dispatch = useDispatch();
 
@@ -159,4 +165,3 @@ export const PetsItem = ({ pet }) => {
   );
 };
 
-export default PetsItem;

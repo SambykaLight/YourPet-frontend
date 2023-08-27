@@ -184,7 +184,7 @@ export const Btn = styled.button`
     background-color: transparent;
   }
 `
-import styled from '@emotion/styled';
+
 
 export const Image = styled.img`
   display: block;

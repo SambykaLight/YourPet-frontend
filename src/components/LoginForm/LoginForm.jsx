@@ -58,7 +58,7 @@ function LoginForm() {
   const handleSubmitForm = async (values, { setErrors, resetForm }) => {
     try {
       await loginSchema.validate(values, { abortEarly: false });
-
+console.log(values.email);
       dispatch(
         login({
           email: values.email,
