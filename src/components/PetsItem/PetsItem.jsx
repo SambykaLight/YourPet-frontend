@@ -1,10 +1,9 @@
-import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { deletePet } from 'redux/pets/operations';
+import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 
-import { LocationIcon } from '../SvgIcons/LocationIcon';
-import { IconTime } from '../SvgIcons/IconTime';
-import { FemaleIcon } from '../SvgIcons/FemaleIcon';
-import { MaleIcon } from '../SvgIcons/MaleIcon';
-import { AddToFavoriteIcon } from '../SvgIcons/AddToFavoriteIcon';
+import { Image, Description, Highlight, Button } from './PetsItem.styled';
+import Box from '@mui/material/Box';
 
 import { ReactComponent as Delete } from '../SvgIcons/delete.svg';
 import { ReactComponent as PawIcon } from '../SvgIcons/paw.svg';
@@ -124,3 +123,40 @@ const CategoryItem = ({
 };
 
 export default CategoryItem;
+export const PetsItem = ({ pet }) => {
+  const dispatch = useDispatch();
+
+  return (
+    <>
+      <div>
+        <Image src={pet.imgURL} alt="pet description" />
+      </div>
+      <Box
+        sx={{
+          position: 'relative',
+          width: '100%',
+        }}
+      >
+        <Description>
+          <Highlight>Name:</Highlight> {pet.name}
+        </Description>
+
+        <Button type="button" onClick={() => dispatch(deletePet(pet._id))}>
+          <DeleteOutlinedIcon size="42" />
+        </Button>
+
+        <Description>
+          <Highlight>Date of birth:</Highlight> {pet.dateOfBirth}
+        </Description>
+        <Description>
+          <Highlight>Breed:</Highlight> {pet.breed}
+        </Description>
+        <Description>
+          <Highlight>Comments:</Highlight> {pet.comments}
+        </Description>
+      </Box>
+    </>
+  );
+};
+
+export default PetsItem;
