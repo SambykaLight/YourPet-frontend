@@ -2,6 +2,7 @@ import { ReactComponent as Delete } from "../../SvgIcons/delete.svg"
 import { ReactComponent as PawIcon } from '../../SvgIcons/paw.svg';
 
 import {
+  Image, Description, Highlight, Button ,
   Btn,
   BtnList,
   CardItem,
@@ -41,7 +42,7 @@ export const CategoryItem = ({
   //   setShowModal(true);
   // };
 
-  const [favorite, setFavorite] = useState(false);
+  const [favorite] = useState(false)
 
   function calcAge(birthDatein) {
     const birthDate = new Date(birthDatein);
