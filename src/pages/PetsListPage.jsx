@@ -4,7 +4,7 @@ import Context from 'components/Modals/Context';
 
 import CardMore from 'components/Modals/CardMore/CardMore';
 
-import AddPetForm from 'components/AddPet/AddPetForm';
+
 
 function PetsListPage() {
 
