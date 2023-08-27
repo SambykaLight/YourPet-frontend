@@ -36,15 +36,27 @@ const ModalOverlay = styled.div`
 }
 `;
 
+
+
+
+
 const ModalContent = styled.div`
-  position: relative;
-  background-color: #e5d1d1;
+
+
+
+  position: fixed;
+  background-color:   rgba(255, 255, 255, 1);
+  
   /* padding: 44px 20px 16px 20px; */
   border-radius: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   text-align: center;
   max-width: 280px;
-  width: 80%;
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto  ;
+
+
 
   @media (min-width: 768px) {
     max-width: 608px;
@@ -67,7 +79,7 @@ const CloseButton = styled.button`
   padding: 0;
 
   svg {
-    color: #8c99ec;
+    color: rgba(217, 217, 217, 1);
     width: 24px;
     height: 24px;
     transition: color 300ms ease-in-out; /* Змінюємо тут transition на color */
@@ -75,7 +87,7 @@ const CloseButton = styled.button`
 
   &:hover {
     svg {
-      color: #0f0fa5;
+      color: #54ADFF;
     }
   }
 
@@ -90,6 +102,7 @@ const CloseButton = styled.button`
 `;
 
 export {
+ 
   ModalOverlay,
   ModalContent,
   CloseButton,

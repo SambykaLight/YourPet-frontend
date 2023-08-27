@@ -1,40 +1,25 @@
-import React from 'react'
-import Modal from 'components/Modals/Modal'
-import Context from 'components/Modals/Context/Context';
+import React from 'react';
+import Modal from 'components/Modals/Modal';
+import Context from 'components/Modals/Context';
 
+import CardMore from 'components/Modals/CardMore/CardMore';
 
-
-const { toggle } = Context
-console.log(toggle);
+import AddPetForm from 'components/AddPet/AddPetForm';
 
 function PetsListPage() {
+
   return (
     <div>
       PetsListPage
+      <Context>
+        <Modal openButtonLabel={'Learn more'}>
 
-<Context>
+          <CardMore/>
 
-
-<Modal openButtonLabel={"asdsd"}>
-
-
-<p>
-  
-  
-  
-  <button onClick={() => console.log(toggle)}>"asdasd"</button>
-  
-  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex excepturi quos laboriosam asperiores necessitatibus consequuntur voluptatem dicta perferendis illo quas explicabo, aperiam repudiandae odit accusamus culpa adipisci voluptate unde officia.</p>
-
-</Modal>
-
-</Context>
-
-
-
-
+        </Modal>
+      </Context>
     </div>
-  )
+  );
 }
 
-export default PetsListPage
+export default PetsListPage;

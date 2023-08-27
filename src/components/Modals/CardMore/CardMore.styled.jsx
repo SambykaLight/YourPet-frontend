@@ -4,32 +4,47 @@ const StyledCardWrapper = styled.div`
 padding: 44px 20px 16px 20px;
 `;
 
+
+
+const StyledWrapperImage = styled.div`
+position: relative;
+margin-bottom: 12px;
+
+`;
+
 const StyledImage = styled.img`
 width: 240px;
 height: 240px;
-/* border-bottom-left-radius: 40px;
-border-bottom-right-radius: 40px; */
 border-radius: 0 0 40px 40px;
-margin-bottom: 12px;
+
 `;
 
 const StyledParDescription = styled.p`
-border-bottom-right-radius: 50%;
-border-top-right-radius: 50%;
+  position: absolute;
+  top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+border-bottom-right-radius: 16px;
+border-top-right-radius: 16px;
 width: 126px;
 height: 32px;
-background-color: #835b27;
+background-color: rgba(204, 228, 251, 1);
 `;
 
 const StyledTitle = styled.h2`
 margin-bottom: 20px;
+text-align: left;
 `;
 
 const StyledTable = styled.table`
-
+text-align: left;
 `;
 
 const StyledTableItemStatic = styled.td`
+margin-bottom: 8px;
 
 `;
 
@@ -51,6 +66,7 @@ const StyledButton = styled.button`
 `;
 
 export {
+  StyledWrapperImage,
   StyledTitle,
   StyledParDescription,
   StyledCardWrapper,
