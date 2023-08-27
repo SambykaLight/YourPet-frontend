@@ -22,7 +22,7 @@ import {
 } from './LoginForm.styled';
 import { ReactComponent as IconClose } from '../../images/icon/error_red.svg';
 import { ReactComponent as IconCheck } from '../../images/icon/check.svg';
-import  { logIn } from 'redux/auth/operations';
+import  { login } from 'redux/auth/operations';
 
 
 const initialValues = {
@@ -60,7 +60,7 @@ function LoginForm() {
       await loginSchema.validate(values, { abortEarly: false });
 
       dispatch(
-        logIn({
+        login({
           email: values.email,
           password: values.password,
         })
