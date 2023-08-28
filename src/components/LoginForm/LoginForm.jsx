@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { loginSchema } from '../Shcema/Schema';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   Button,
   IconButton,
@@ -24,6 +24,7 @@ import { ReactComponent as IconClose } from '../../images/icon/error_red.svg';
 import { ReactComponent as IconCheck } from '../../images/icon/check.svg';
 import { login } from 'redux/auth/operations';
 import { useTranslation } from 'react-i18next';
+import { darkTheme } from 'redux/themeSlice/selectors';
 
 const initialValues = {
   email: '',
@@ -35,6 +36,9 @@ function LoginForm() {
   const [validEmail, setValidEmail] = useState('');
   const [validPassword, setValidPassword] = useState('');
   const { t } = useTranslation();
+  const isDarkTheme = useSelector(darkTheme);
+
+  const themeClass = isDarkTheme === 'dark' ? 'dark-theme' : '';
 
   const dispatch = useDispatch();
 
@@ -84,7 +88,12 @@ function LoginForm() {
 
   return (
     <>
-      <Card sx={cardStyles}>
+      <Card
+        sx={{
+          ...cardStyles,
+          backgroundColor: isDarkTheme === 'dark' && '#6b818f',
+        }}
+      >
         <Typography sx={titleStyles}>{t('Login')}</Typography>
         <Formik initialValues={initialValues} onSubmit={handleSubmitForm}>
           {({ values, errors, touched, handleSubmit, handleChange }) => (
@@ -97,6 +106,7 @@ function LoginForm() {
                 fullWidth
                 focused
                 margin="dense"
+                className={themeClass}
                 onChange={event => {
                   handleChange(event);
                   onHandleChange(event);
@@ -147,6 +157,7 @@ function LoginForm() {
                 fullWidth
                 focused
                 margin="dense"
+                className={themeClass}
                 InputProps={{
                   color:
                     touched.password && errors.password
@@ -193,7 +204,12 @@ function LoginForm() {
           )}
         </Formik>
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-          <Typography sx={textStyles}>
+          <Typography
+            sx={{
+              ...textStyles,
+              color: isDarkTheme === 'dark' && '#111111',
+            }}
+          >
             {t('Already have an account?')}{' '}
             <Link to="/register">
               <Typography component="span" sx={linkStyles}>

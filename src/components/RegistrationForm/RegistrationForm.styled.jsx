@@ -7,6 +7,11 @@ export const Textfield = styled(TextField)`
     color: #888888;
   }
 
+  &.dark-theme {
+    .MuiInputBase-root.MuiOutlinedInput-root {
+      color: #111111; 
+    }
+
   & .MuiFormHelperText-root {
     color: #00c3ad;
   }
