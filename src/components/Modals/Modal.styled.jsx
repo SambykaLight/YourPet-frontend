@@ -50,7 +50,11 @@ const ModalOverlay = styled.div`
   transform: scale(0.3);
   border-radius: 200px;
   transition: opacity 0.3s, visibility 0.3s, transform 0.3s, border-radius 0.3s;
-  z-index: 99;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  backdrop-filter: blur(10px);
+  z-index: 100;
+
+  
 
   &.active {
     opacity: 1;
@@ -79,6 +83,7 @@ const ModalContent = styled.div`
   margin-top: 100px;
   margin-left: auto;
   margin-right: auto;
+ z-index: 100;
 
   @media (min-width: 768px) {
     max-width: 608px;
