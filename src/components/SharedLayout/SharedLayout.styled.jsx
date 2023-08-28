@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+
 import mb_bg_1x from '../../images/Mobile/mb-bg-1x.png';
 import mb_bg_2x from '../../images/Mobile/mb-bg-2x.png';
 
