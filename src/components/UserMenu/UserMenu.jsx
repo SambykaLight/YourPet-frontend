@@ -13,8 +13,11 @@ import BurgerMenuIcon from '../AuthNav/burgerMenuIcon';
 import { Link } from 'react-router-dom';
 import UserIcon from '../AuthNav/userIcon';
 import LogoutIcon from './logoutIcon';
+import { useAuth } from 'hooks';
 
 function UserMenu() {
+  const {user}= useAuth()
+
   return (
     <>
       <LogoutButtonContainer>
