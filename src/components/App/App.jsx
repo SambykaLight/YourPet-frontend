@@ -14,6 +14,7 @@ const AddPetPage = lazy(() => import('pages/AddPetPage'));
 const OurFriendsPage = lazy(() => import('pages/OurFriendsPage'));
 const ErrorPage = lazy(() => import('pages/ErrorPage'));
 const NewsPage = lazy(() => import('pages/NewsPage'));
+
 export const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
