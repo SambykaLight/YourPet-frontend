@@ -1,5 +1,19 @@
 import styled from '@emotion/styled';
 
+const StyledButtonOpen = styled.button`
+  margin-bottom: 8px;
+  background: #fff;
+  color: #54adff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  border-radius: 40px;
+  min-height: 35px;
+  border: 2px solid #54adff;
+  text-decoration: none;
+`;
+
 const ModalOverlay = styled.div`
   position: fixed;
   top: 0;
@@ -25,47 +39,32 @@ const ModalOverlay = styled.div`
       border-radius 0.3s;
   }
 
+  @media (min-width: 768px) {
+  }
 
-   @media (min-width: 768px) {
-    /* background-color: rgba(0, 0, 0, 0.7); */
-}
-
- 
   @media (min-width: 1024px) {
-    /* background-color: rgba(0, 0, 0, 0.8);  */
-}
+  }
 `;
 
-
-
-
-
 const ModalContent = styled.div`
-
-
-
   position: fixed;
-  background-color:   rgba(255, 255, 255, 1);
-  
-  /* padding: 44px 20px 16px 20px; */
+  background-color: rgba(255, 255, 255, 1);
+
   border-radius: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   text-align: center;
   max-width: 280px;
   margin-top: 100px;
   margin-left: auto;
-  margin-right: auto  ;
-
-
+  margin-right: auto;
 
   @media (min-width: 768px) {
     max-width: 608px;
-} 
+  }
 
- 
   @media (min-width: 1024px) {
     max-width: 680px;
-}
+  }
 `;
 
 const CloseButton = styled.button`
@@ -82,28 +81,20 @@ const CloseButton = styled.button`
     color: rgba(217, 217, 217, 1);
     width: 24px;
     height: 24px;
-    transition: color 300ms ease-in-out; /* Змінюємо тут transition на color */
+    transition: color 300ms ease-in-out;
   }
 
   &:hover {
     svg {
-      color: #54ADFF;
+      color: #54adff;
     }
   }
 
   @media (min-width: 768px) {
-    /* background-color: rgba(0, 0, 0, 0.7); */
-}
+  }
 
- 
   @media (min-width: 1024px) {
-    /* background-color: rgba(0, 0, 0, 0.8);  */
-}
+  }
 `;
 
-export {
- 
-  ModalOverlay,
-  ModalContent,
-  CloseButton,
-};
+export { StyledButtonOpen, ModalOverlay, ModalContent, CloseButton };

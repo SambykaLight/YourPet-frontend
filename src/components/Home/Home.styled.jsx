@@ -24,7 +24,7 @@ export const boxStyles = {
 };
 
 export const titleStyles = {
-  pt: { mobile: '25px', tablet: '52px', desktop: '188px' },
+  pt: { mobile: '25px', tablet: '52px', desktop: '100px' },
   textAlign: { tablet: 'left' },
   display: { desktop: 'flex' },
   alignItems: { desktop: 'center' },

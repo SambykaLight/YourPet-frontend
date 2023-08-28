@@ -22,7 +22,7 @@ import {
 } from './RegistrationForm.styled';
 import { ReactComponent as IconClose } from '../../images/icon/error_red.svg';
 import { ReactComponent as IconCheck } from '../../images/icon/check.svg';
-import authOperations from 'redux/auth/operations';
+import { register } from 'redux/auth/operations';
 
 
 const initialValues = {
@@ -84,7 +84,7 @@ function RegistrationForm() {
       };
       console.log(newUser);
       dispatch(
-        authOperations.register(newUser)
+        register(newUser)
       );
 
       resetForm();
@@ -93,12 +93,11 @@ function RegistrationForm() {
       setValidPassword("");
       setValidConfirmPass(false);
     } catch (validationErrors) {
-      console.log(validationErrors.message)
-      // const errors = {};
-      // validationErrors.inner.forEach(error => {
-      //   errors[error.path] = error.message;
-      // });
-      // setErrors(errors);
+      const errors = {};
+      validationErrors.inner.forEach(error => {
+        errors[error.path] = error.message;
+      });
+      setErrors(errors);
     }
   };
 

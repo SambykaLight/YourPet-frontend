@@ -1,17 +1,33 @@
-import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { deletePet } from 'redux/pets/operations';
+import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 
-import { LocationIcon } from '../SvgIcons/LocationIcon';
-import { IconTime } from '../SvgIcons/IconTime';
-import { FemaleIcon } from '../SvgIcons/FemaleIcon';
-import { MaleIcon } from '../SvgIcons/MaleIcon';
-import { AddToFavoriteIcon } from '../SvgIcons/AddToFavoriteIcon';
+import Box from '@mui/material/Box';
 
 import { ReactComponent as Delete } from '../SvgIcons/delete.svg';
 import { ReactComponent as PawIcon } from '../SvgIcons/paw.svg';
 
-import css from './PetsItem.module.css';
+import {
+  Image, Description, Highlight, Button ,
+  Btn,
+  BtnList,
+  CardItem,
+  CardWrapper,
+  DelBtn,
+  FavoriteBtn,
+  Img,
+  ImgBtn,
+  Text,
+  Title,
+} from './PetsItem.styled';
+import { AddToFavoriteIcon } from 'components/SvgIcons/AddToFavoriteIcon';
+import { LocationIcon } from 'components/SvgIcons/LocationIcon';
+import { IconTime } from 'components/SvgIcons/IconTime';
+import { FemaleIcon } from 'components/SvgIcons/FemaleIcon';
+import { MaleIcon } from 'components/SvgIcons/MaleIcon';
+import { useState } from 'react';
 
-const CategoryItem = ({
+ export const CategoryItem = ({
   _id,
   title,
   photoURL,
@@ -26,20 +42,19 @@ const CategoryItem = ({
   comments,
   ...restProps
 }) => {
- 
   // const [showModal, setShowModal] = useState(false);
 
   // const handleLearnClick = () => {
   //   setShowModal(true);
   // };
 
-  const [favorite, setFavorite] = useState(false)
+  const [favorite] = useState(false)
 
   function calcAge(birthDatein) {
     const birthDate = new Date(birthDatein);
     const currentDate = new Date();
     const diffInMilliseconds = Math.abs(currentDate - birthDate);
-    const millisecondsPerYear = 1000 * 60 * 60 * 24 * 365.25; 
+    const millisecondsPerYear = 1000 * 60 * 60 * 24 * 365.25;
 
     if (diffInMilliseconds < millisecondsPerYear) {
       const millisecondsPerMonth = millisecondsPerYear / 12;
@@ -52,59 +67,101 @@ const CategoryItem = ({
   }
 
   return (
-    <li key={_id} className={css.card_item}>
-      <div className={css.card_wrap}>
-        <img src={photoURL} alt={title} className={css.image} />
-        <button
+    <CardItem key={_id}>
+      <CardWrapper>
+        <Img src={photoURL} alt={title} />
+        {/* <button
           className={
             favorite
               ? `${css.favorite_btn} ${css.favoriteActive}`
               : css.favorite_btn
           }
           type="button"
-        >
+        > */}
+        <FavoriteBtn>
           <AddToFavoriteIcon id="svg" fill={favorite ? '#54adff' : 'none'} />
-        </button>
-        <button
-            className={css.delete_btn}
-            type="button"
+        </FavoriteBtn>
+        <DelBtn type="button">
+          <Delete id="svg" />
+        </DelBtn>
+        <BtnList>
+          <Text>{category}</Text>
+          <li
+          // className={css.list_item}
           >
-            <Delete id="svg" />
-          </button>
-        <ul className={css.btn_list}>
-          <p className={css.sell_btn}>{category}</p>
-          <li className={css.list_item}>
-            <button className={css.img_btn}>
+            <ImgBtn>
               <span>
-                <LocationIcon id="svg" className={css.locationIcon} />
+                <LocationIcon id="svg"
+                //  className={css.locationIcon}
+
+                 />
               </span>
               {place}
-            </button>
+            </ImgBtn>
           </li>
           <li>
-            <button className={css.img_btn}>
+            <ImgBtn>
               <IconTime id="svg" />
               {calcAge(birthday)}
-            </button>
+            </ImgBtn>
           </li>
           <li>
-            
-            <button className={css.img_btn}>
-              {sex === 'female' ? <FemaleIcon id="svg" /> : <MaleIcon id="svg" />}
-              
-              {sex}
-            </button>
-          </li>
-        </ul>
+            <ImgBtn>
+              {sex === 'female' ? (
+                <FemaleIcon id="svg" />
+              ) : (
+                <MaleIcon id="svg" />
+              )}
 
-        <h2 className={css.title}>{title}</h2>
-        <button className={css.btn}>
+              {sex}
+            </ImgBtn>
+          </li>
+        </BtnList>
+
+        <Title>{title}</Title>
+        <Btn>
           Learn more
           <PawIcon />
-        </button>
-      </div>
-    </li>
+        </Btn>
+      </CardWrapper>
+    </CardItem>
   );
 };
 
-export default CategoryItem;
+
+export const PetsItem = ({ pet }) => {
+  const dispatch = useDispatch();
+
+  return (
+    <>
+      <div>
+        <Image src={pet.imgURL} alt="pet description" />
+      </div>
+      <Box
+        sx={{
+          position: 'relative',
+          width: '100%',
+        }}
+      >
+        <Description>
+          <Highlight>Name:</Highlight> {pet.name}
+        </Description>
+
+        <Button type="button" onClick={() => dispatch(deletePet(pet._id))}>
+          <DeleteOutlinedIcon size="42" />
+        </Button>
+
+        <Description>
+          <Highlight>Date of birth:</Highlight> {pet.dateOfBirth}
+        </Description>
+        <Description>
+          <Highlight>Breed:</Highlight> {pet.breed}
+        </Description>
+        <Description>
+          <Highlight>Comments:</Highlight> {pet.comments}
+        </Description>
+      </Box>
+    </>
+  );
+};
+
