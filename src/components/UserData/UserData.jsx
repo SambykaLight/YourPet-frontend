@@ -37,6 +37,7 @@ const validationSchema = yup.object().shape({
 const UserData = () => {
   const dispatch = useDispatch();
   const { name, email, phone, birthday, city } = useSelector(selectUser);
+console.log("User data name", name)
 
   const initialValues = {
     Name: name || 'Name',

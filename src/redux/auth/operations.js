@@ -3,7 +3,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import toast from 'react-hot-toast';
 
 
-// api який треба вставити для запитів за користувачами !!!!!!!!!!!!!!!!!!!!!!!!!!
 axios.defaults.baseURL = 'https://your-pet-api-a9zk.onrender.com';
 
 const errMessage = "Something went wrong. Please try again";
@@ -27,7 +26,7 @@ export const register = createAsyncThunk(
       const {data} = await axios.post('/api/users/register', credentials);
       setAuthHeader(data.token);
       //response.data is {message: 'New account created'} but must be ...
-    console.log("Answer",data)
+    console.log("Register",data)
       return data;
     } catch (e) {
       toast.error(errMessage);
@@ -40,13 +39,12 @@ export const register = createAsyncThunk(
 //  credentials: {email, password}
 export const login = createAsyncThunk('auth/login', async (credential, thunkAPI) => {
   try {
-    console.log("Credentials",credential)
-    const response = await axios.post('/api/users/login', credential);
-    console.log("Answer",response)
+    const {data} = await axios.post('/api/users/login', credential);
+    console.log("Login",data)
     // After successful login, add the token to the HTTP header
-    setAuthHeader(response.token);
+    setAuthHeader(data.token);
     //data must include {name, token, ...}
-    return response.data;
+    return data;
   } catch (error) {
     toast.error(errMessage);
     return thunkAPI.rejectWithValue(error.message);
@@ -68,17 +66,15 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
 
 //  GET @ /users/current
 //  headers: Authorization: Bearer token
-export const getCurrentUser = createAsyncThunk(
+export const  getCurrentUser = createAsyncThunk(
   'auth/current',
   async (__, { getState, rejectWithValue }) => {
-    const state = getState();
-    const token = state.auth.token;
-    if (!token) {
-      return rejectWithValue('Unable to fetch user');
-    }
+    const {token} = getState().auth;
+    if (!token)return rejectWithValue("No valid token");
     setAuthHeader(token);
     try {
-      const { data } = await axios.get('/api/user');
+      const { data } = await axios.get('/api/users/current');
+      console.log("Get Current user:", data)
       return data;
     } catch (error) {
       toast.error(errMessage);

@@ -9,11 +9,18 @@ import UserPetsData from 'components/UserPetsData/UserPetsData';
 import useModal from 'hooks/useModal';
 import { selectModalSuccessRegister } from 'redux/auth/selectors';
 // import CongratsModal from 'components/Modal/CongratsModal';
+import { useAuth } from 'hooks';
 
 const UserPage = () => {
   const dispatch = useDispatch();
   const successRegister = useSelector(selectModalSuccessRegister);
   const [isOpen, toggleModal, setIsOpen] = useModal();
+
+//   const {user, isLoggedIn, isRefreshing, token} = useAuth()
+// console.log("user", user)
+// console.log("isLoggedIn", isLoggedIn)
+// console.log("isRefreshing", isRefreshing)
+// console.log("token", token)
 
   useEffect(() => {
     document.title = 'YourPet | User';

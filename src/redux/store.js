@@ -26,7 +26,7 @@ export const store = configureStore({
     auth: persistReducer(authPersistConfig, authReducer),
     pets: contactsReducer,
     notices: noticesReducer
-  },
+  }, 
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {

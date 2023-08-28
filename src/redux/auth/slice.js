@@ -3,9 +3,8 @@ import {register, login, logout, updateUser, getCurrentUser, hideModalSuccessReg
 
 const initialState = {
   user: {
-    // name: null,
+    name: null,
     email: null,
-    password: null,
     // birthday: '',
     // phone: '',
     // city: '',
@@ -40,7 +39,8 @@ const authSlice = createSlice({
     builder
       .addCase(register.pending, handlePending)
       .addCase(register.fulfilled, (state,  { payload }) => {
-        state.user =payload;
+        console.log("Register Payload:",payload)
+        state.user =payload.user;
         state.token =payload.token;
         state.isLoading = false;
         state.isLoggedIn = true;
@@ -52,12 +52,12 @@ const authSlice = createSlice({
       .addCase(register.rejected, handleRejected)
       .addCase(login.pending, handlePending)
       .addCase(login.fulfilled, (state, { payload }) => {
-        console.log(payload)
+        console.log("Login payload", payload)
         state.isLoading = false;
-        state.user = payload.user;
-        state.token = payload.user.token;
+        // state.user = payload.user;
+        state.token = payload.token;
         state.isLoggedIn = true;
-        state.isRefreshing = true;
+        state.isRefreshing = false;
       })
       .addCase(login.rejected, handleRejected)
       .addCase(logout.pending, handlePending)
@@ -71,22 +71,6 @@ const authSlice = createSlice({
         // state.user.favorite = [];
       })
       .addCase(logout.rejected, handleRejected)
-      // .addCase(refreshUser.pending, state => {
-      //   state.isRefreshing = true;
-      //   handlePending(state);
-      // })
-      // .addCase(refreshUser.fulfilled, (state, { payload }) => {
-      //   state.isRefreshing = false;
-      //   state.isLoading = false;
-      //   state.error = null;
-      //   state.pets = payload.pets;
-      //   state.user = payload.user;
-      //   state.isLoggedIn = true;
-      // })
-      // .addCase(refreshUser.rejected, (state, action) => {
-      //   state.isRefreshing = false;
-      //   handleRejected(state, action);
-      // })
       .addCase(getCurrentUser.pending, state => {
         state.isRefreshing = true;
       })

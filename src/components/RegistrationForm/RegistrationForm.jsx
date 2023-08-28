@@ -23,7 +23,7 @@ import {
 import { ReactComponent as IconClose } from '../../images/icon/error_red.svg';
 import { ReactComponent as IconCheck } from '../../images/icon/check.svg';
 import { register } from 'redux/auth/operations';
-
+import { useAuth } from 'hooks';
 
 const initialValues = {
   name: '',
@@ -41,7 +41,11 @@ function RegistrationForm() {
   const [validConfirmPass, setValidConfirmPass] = useState(false);
   const [pass, setPass] = useState('');
 
+  //its for test
+const {user, isLoggedIn, token} = useAuth()
+console.log("user", user, "isLoggedin", isLoggedIn, "token", token)
     const dispatch = useDispatch();
+  //its for test
 
   const handleTogglePasswordVisibility = field => {
     if (field === 'password') {
@@ -82,7 +86,7 @@ function RegistrationForm() {
         email: values.email,
         password: values.password,
       };
-      console.log(newUser);
+      // console.log(newUser);
       dispatch(
         register(newUser)
       );

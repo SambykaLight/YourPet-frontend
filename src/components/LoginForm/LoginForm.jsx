@@ -23,6 +23,7 @@ import {
 import { ReactComponent as IconClose } from '../../images/icon/error_red.svg';
 import { ReactComponent as IconCheck } from '../../images/icon/check.svg';
 import  { login } from 'redux/auth/operations';
+import { useAuth } from 'hooks';
 
 
 const initialValues = {
@@ -36,6 +37,11 @@ function LoginForm() {
   const [validPassword, setValidPassword] = useState("");
 
     const dispatch = useDispatch();
+
+      //its for test
+// const {user, isLoggedIn, token} = useAuth()
+// console.log("user", user, "isLoggedin", isLoggedIn, "token", token)
+  //its for test
 
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
