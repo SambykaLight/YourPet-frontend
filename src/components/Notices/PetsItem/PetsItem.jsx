@@ -2,7 +2,7 @@ import { ReactComponent as Delete } from "../../SvgIcons/delete.svg"
 import { ReactComponent as PawIcon } from '../../SvgIcons/paw.svg';
 
 import {
-  Image, Description, Highlight, Button ,
+  // Image, Description, Highlight, Button ,
   Btn,
   BtnList,
   CardItem,

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import {
   FooterMain,
@@ -8,6 +9,9 @@ import {
 } from './Footer.styled';
 import { useSelector } from 'react-redux';
 import { darkTheme } from 'redux/themeSlice/selectors';
+
+
+
 
 const Footer = () => {
   const isDarkTheme = useSelector(darkTheme);
