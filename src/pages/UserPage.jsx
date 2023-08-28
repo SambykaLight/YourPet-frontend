@@ -14,7 +14,7 @@ import { useAuth } from 'hooks';
 const UserPage = () => {
   const dispatch = useDispatch();
   // const successRegister = useSelector(selectModalSuccessRegister);
-  const [  setIsOpen] = useModal();
+  const [setIsOpen] = useModal();
   // toggleModal,
   // isOpen,
 
@@ -29,7 +29,7 @@ const UserPage = () => {
   });
 
   useEffect(() => {
-    setIsOpen(true);
+    // setIsOpen(true);
     dispatch(fetchPets());
   }, [dispatch, setIsOpen]);
 
