@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
 import * as yup from 'yup';
 
-import { logout } from 'redux/auth/operations';
-import { updateUser } from 'redux/auth/operations';
+// import { logout } from 'redux/auth/operations';
+import { updateUser } from '../../redux/auth/operations ';
 import { selectUser } from 'redux/auth/selectors';
 
 // import LogoutModal from '../Modal/LogoutModal';
@@ -49,7 +49,8 @@ console.log("User data name", name)
 
   const [activeInput, setActiveInput] = useState(null);
   const [formValues, setFormValues] = useState(initialValues);
-  const [isOpen, toggleModal] = useModal();
+  const [ toggleModal] = useModal();
+  // isOpen,
 
   const handleFieldChange = (fieldName, fieldValue) => {
     setActiveInput(fieldName);
@@ -81,10 +82,10 @@ console.log("User data name", name)
     dispatch(updateUser(updatedData));
   };
 
-  const handleLogout = () => {
-    toggleModal();
-    dispatch(logout());
-  };
+  // const handleLogout = () => {
+  //   toggleModal();
+  //   dispatch(logout());
+  // };
 
   const renderField = name => {
     const isActive = activeInput === name;

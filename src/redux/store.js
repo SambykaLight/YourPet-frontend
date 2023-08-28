@@ -13,7 +13,7 @@ import storage from 'redux-persist/lib/storage';
 import authReducer from './auth/slice';
 import { contactsReducer } from './pets/slice';
 import noticesReducer from './notices/slice';
-
+import { themeReducer } from './themeSlice/themeSlice';
 
 const authPersistConfig = {
   key: 'auth',
@@ -25,8 +25,9 @@ export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
     pets: contactsReducer,
-    notices: noticesReducer
-  }, 
+    notices: noticesReducer,
+    theme: themeReducer,
+  },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {

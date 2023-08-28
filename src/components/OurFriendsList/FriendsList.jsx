@@ -7,8 +7,12 @@ import {
   ContactsLink,
 } from './FriendsList.styled';
 import Box from '@mui/material/Box';
+import { useSelector } from 'react-redux';
+import { darkTheme } from 'redux/themeSlice/selectors';
 
 export const OurFriendsList = ({ FriendsData }) => {
+  const isDarkTheme = useSelector(darkTheme);
+
   function formatPhone(number) {
     if (number === 'email only') {
       return 0;
@@ -20,7 +24,10 @@ export const OurFriendsList = ({ FriendsData }) => {
     <FriendsList>
       {FriendsData.length > 0 &&
         FriendsData.map(friend => (
-          <FriendsItem key={friend.id}>
+          <FriendsItem
+            key={friend.id}
+            style={{ backgroundColor: isDarkTheme === 'dark' && '#6b818f' }}
+          >
             <FriendsName href={friend.link} target="_blank">
               {friend.name}
             </FriendsName>

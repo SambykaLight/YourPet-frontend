@@ -11,6 +11,11 @@ export const Textfield = styled(TextField)`
     color: #00c3ad;
   }
 
+   &.dark-theme {
+    .MuiInputBase-root.MuiOutlinedInput-root {
+      color: #111111; 
+    }
+
   &.green-border .MuiOutlinedInput-notchedOutline {
     border-color: #00c3ad;
     border-width: 2px;

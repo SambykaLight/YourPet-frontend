@@ -5,7 +5,7 @@ import { useAuth } from 'hooks';
 import { lazy, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
-import { getCurrentUser } from 'redux/auth/operations';
+import { getCurrentUser } from '../../redux/auth/operations ';
 const LoginPage = lazy(() => import('pages/LoginPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage'));
 const HomePage = lazy(() => import('pages/HomePage'));

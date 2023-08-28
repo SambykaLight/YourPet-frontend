@@ -1,18 +1,17 @@
 import React from 'react';
-import { Box, Container, Typography } from '@mui/material';
-import { containerStyles, titleStyles, boxStyles } from './Home.styled';
+import { Container, Typography } from '@mui/material';
+import { containerStyles, titleStyles } from './Home.styled';
 import Footer from 'components/Footer/Footer';
-
+import { useTranslation } from 'react-i18next';
 
 function Home() {
+  const { t } = useTranslation();
   return (
     <>
       <Container sx={containerStyles}>
-        <Box sx={boxStyles}>
         <Typography variant="h3" sx={titleStyles}>
-          Take good care of your small pets
+          {t('Take good care of your small pets')}
         </Typography>
-        </Box>
       </Container>
       <Footer />
     </>

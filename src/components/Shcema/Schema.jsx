@@ -4,9 +4,7 @@ export const registerSchema = yup.object().shape({
   name: yup
     .string()
     .required('Name is required')
-    .matches(/^(?=.{2,16}$)[A-Za-z ]+$/, 'Please enter valid name')
-    .min(6, 'Enter more than 6 characters')
-    .max(16, 'Max 16'),
+    .matches(/^(?=.{2,16}$)[A-Za-z ]+$/, 'Please enter valid name'),
   email: yup
     .string()
     .email('Enter a valid Email')
