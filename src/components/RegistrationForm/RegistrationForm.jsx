@@ -22,7 +22,7 @@ import {
 } from './RegistrationForm.styled';
 import { ReactComponent as IconClose } from '../../images/icon/error_red.svg';
 import { ReactComponent as IconCheck } from '../../images/icon/check.svg';
-import { register } from 'redux/auth/operations';
+import { register } from '../../redux/auth/operations ';
 import { useTranslation } from 'react-i18next';
 import { darkTheme } from 'redux/themeSlice/selectors';
 

@@ -3,7 +3,6 @@ import React from 'react';
 import {
   FooterMain,
   FooterContainer,
-  FooterSecondText,
   FooterText,
   BounceHeart,
 } from './Footer.styled';
