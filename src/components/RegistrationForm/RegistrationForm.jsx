@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { registerSchema } from '../Shcema/Schema';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   Button,
   IconButton,
@@ -22,8 +22,9 @@ import {
 } from './RegistrationForm.styled';
 import { ReactComponent as IconClose } from '../../images/icon/error_red.svg';
 import { ReactComponent as IconCheck } from '../../images/icon/check.svg';
-import { register } from 'redux/auth/operations';
+import { register } from '../../redux/auth/operations ';
 import { useTranslation } from 'react-i18next';
+import { darkTheme } from 'redux/themeSlice/selectors';
 
 const initialValues = {
   name: '',
@@ -41,6 +42,9 @@ function RegistrationForm() {
   const [validConfirmPass, setValidConfirmPass] = useState(false);
   const [pass, setPass] = useState('');
   const { t } = useTranslation();
+  const isDarkTheme = useSelector(darkTheme);
+
+  const themeClass = isDarkTheme === 'dark' ? 'dark-theme' : '';
 
   const dispatch = useDispatch();
 
@@ -104,7 +108,12 @@ function RegistrationForm() {
 
   return (
     <>
-      <Card sx={cardStyles}>
+      <Card
+        sx={{
+          ...cardStyles,
+          backgroundColor: isDarkTheme === 'dark' && '#6b818f',
+        }}
+      >
         <Typography sx={titleStyles}>{t('Registration')}</Typography>
         <Formik initialValues={initialValues} onSubmit={handleSubmitForm}>
           {({ values, errors, touched, handleSubmit, handleChange }) => (
@@ -117,6 +126,7 @@ function RegistrationForm() {
                 fullWidth
                 focused
                 margin="dense"
+                className={themeClass}
                 onChange={event => {
                   handleChange(event);
                   onHandleChange(event);
@@ -168,6 +178,7 @@ function RegistrationForm() {
                 fullWidth
                 focused
                 margin="dense"
+                className={themeClass}
                 onChange={event => {
                   handleChange(event);
                   onHandleChange(event);
@@ -218,6 +229,7 @@ function RegistrationForm() {
                 fullWidth
                 focused
                 margin="dense"
+                className={themeClass}
                 InputProps={{
                   color:
                     touched.password && errors.password
@@ -259,6 +271,7 @@ function RegistrationForm() {
                 fullWidth
                 focused
                 margin="dense"
+                className={themeClass}
                 InputProps={{
                   color:
                     touched.confirmPassword && errors.confirmPassword
@@ -309,7 +322,12 @@ function RegistrationForm() {
           )}
         </Formik>
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-          <Typography sx={textStyles}>
+          <Typography
+            sx={{
+              ...textStyles,
+              color: isDarkTheme === 'dark' && '#111111',
+            }}
+          >
             {t('Already have an account?')}{' '}
             <Link to="/login">
               <Typography component="span" sx={linkStyles}>

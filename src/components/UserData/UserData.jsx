@@ -4,7 +4,7 @@ import { Formik, Form, Field } from 'formik';
 import * as yup from 'yup';
 
 // import { logout } from 'redux/auth/operations';
-import { updateUser } from 'redux/auth/operations';
+import { updateUser } from '../../redux/auth/operations ';
 import { selectUser } from 'redux/auth/selectors';
 
 // import LogoutModal from '../Modal/LogoutModal';
