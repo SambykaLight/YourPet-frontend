@@ -10,6 +10,8 @@ export const AuthButtonsContainer = styled.div`
 `;
 
 export const AuthButton = styled.button`
+  height: 40px;
+  min-width: 134px;
   display: flex;
   align-items: center;
   gap: 8px;
