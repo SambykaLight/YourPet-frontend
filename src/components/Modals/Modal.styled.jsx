@@ -1,17 +1,38 @@
 import styled from '@emotion/styled';
 
 const StyledButtonOpen = styled.button`
-  margin-bottom: 8px;
-  background: #fff;
-  color: #54adff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  border-radius: 40px;
-  min-height: 35px;
-  border: 2px solid #54adff;
-  text-decoration: none;
+ font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.04em;
+
+    background-color: #ffffff;
+    color: #54adff;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 28px;
+    gap: 10px;
+    width: 248px;
+    height: 38px;
+    border: 2px solid #54adff;
+    border-radius: 40px;
+
+    cursor: pointer;
+
+    &:hover {
+    background: linear-gradient(290.46deg, #419ef1 0%, #9bd0ff 107.89%);
+    color: rgb(253, 247, 242);
+    border: none;
+    background-color: transparent;
+    }
 `;
 
 const ModalOverlay = styled.div`
@@ -29,6 +50,7 @@ const ModalOverlay = styled.div`
   transform: scale(0.3);
   border-radius: 200px;
   transition: opacity 0.3s, visibility 0.3s, transform 0.3s, border-radius 0.3s;
+  z-index: 99;
 
   &.active {
     opacity: 1;

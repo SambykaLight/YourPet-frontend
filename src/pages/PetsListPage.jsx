@@ -18,13 +18,6 @@ const PetsListPage = () => {
       <NoticesNav />
       <PetsList />
       <AddPagination />
-
-      {/* universal modal */}
-      <Context>
-        <Modal openButtonLabel={'Learn more'}>
-          <CardMore />
-        </Modal>
-      </Context>
     </Container>
   );
 };
