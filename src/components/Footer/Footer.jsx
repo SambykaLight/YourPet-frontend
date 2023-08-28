@@ -1,5 +1,5 @@
 import React from "react";
-import { FooterMain,FooterContainer, FooterSecondText, FooterText,BounceHeart } from "./Footer.styled";
+import { FooterMain,FooterContainer, FooterText,BounceHeart } from "./Footer.styled";
 
 const Footer = () => {
   return (

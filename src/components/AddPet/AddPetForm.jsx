@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+// import {  useDispatch } from 'react-redux';
+// useSelector,
 // import { selectIsLoading } from 'redux/pets/selectors';
 // import { selectIsNoticeLoading } from 'redux/notices/selectors';
 // import { addNotice } from 'redux/notices/operations';
@@ -37,7 +38,7 @@ const initialValues = {
 const AddPetForm = () => {
   const [step, setStep] = useState(0);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const steps = ['Choose option', 'Personal details', 'More info'];
   // const isLoading = useSelector(selectIsLoading);
   const isLoading = false;

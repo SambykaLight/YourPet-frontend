@@ -1,7 +1,8 @@
 import styled from '@emotion/styled';
 
-export const Conteiner = styled.div`
+export const Container = styled.div`
   width: 280px;
+  
 
   @media screen and (min-width: 768px) {
     width: 703px;
@@ -13,7 +14,12 @@ export const Conteiner = styled.div`
 
 export const List = styled.ul`
   padding: 0;
-  margin: 0;
+  margin:0px;
+  margin-top:20px;
+  display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
 `;
 
 export const ListItem = styled.li`
@@ -21,6 +27,7 @@ export const ListItem = styled.li`
   background-color: #ffffff;
   border-radius: 20px;
   padding: 16px 20px 40px;
+  
   @media screen and (min-width: 748px) {
     border-radius: 40px;
     display: flex;

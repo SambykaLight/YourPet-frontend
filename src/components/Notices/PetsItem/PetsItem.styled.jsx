@@ -184,8 +184,6 @@ export const Btn = styled.button`
     background-color: transparent;
   }
 `
-
-
 export const Image = styled.img`
   display: block;
   width: 240px;
