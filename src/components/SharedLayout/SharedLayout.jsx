@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import { darkTheme } from 'redux/themeSlice/selectors';
 import { FAB } from 'components/FAB/FAB';
 import { action } from 'components/FAB/FABComponent';
+import Footer from 'components/Footer/Footer';
 
 const SharedLayout = () => {
   const isDarkTheme = useSelector(darkTheme);
@@ -22,6 +23,7 @@ const SharedLayout = () => {
           </ContainerWalls>
         </Suspense>
       </Section>
+      <Footer />
     </>
   );
 };

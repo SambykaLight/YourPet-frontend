@@ -5,10 +5,10 @@ export const FooterMain = styled.footer`
   padding-top: 29px;
   padding-bottom: 29px;
   background-color: #f7f7f7;
-
-  @media screen and (min-width: 1280px) {
-    min-width: 1280px;
-  }
+width:100%
+  // @media screen and (max-width: 1280px) {
+  //   max-width: 1280px;
+  // }
 `;
 
 export const FooterContainer = styled.div`

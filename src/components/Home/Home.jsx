@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Typography } from '@mui/material';
 import { containerStyles, titleStyles } from './Home.styled';
-import Footer from 'components/Footer/Footer';
+// import Footer from 'components/Footer/Footer';
 import { useTranslation } from 'react-i18next';
 
 function Home() {
@@ -13,7 +13,7 @@ function Home() {
           {t('Take good care of your small pets')}
         </Typography>
       </Container>
-      <Footer />
+     
     </>
   );
 }

@@ -35,7 +35,7 @@ function Modal({ children, openButtonLabel }) {
     return () => {
       window.removeEventListener('keydown', closeOnEscape);
     };
-  }, [toggleValue]);
+  }, [ toggleValue]);
 
   return (
     <div>
