@@ -4,10 +4,9 @@ import {
   AuthButton,
   AuthButtonsContainer,
   UserIconButton,
-  BurgerMenuButton,
 } from './AuthNav.styled';
 
-import BurgerMenuIcon from './burgerMenuIcon';
+import BurgerMenu from 'components/BurgerMenu';
 
 import { Link } from 'react-router-dom';
 import UserIcon from './userIcon';
@@ -30,9 +29,7 @@ function AuthNav() {
           <UserIcon />
         </UserIconButton>
 
-        <BurgerMenuButton>
-          <BurgerMenuIcon />
-        </BurgerMenuButton>
+        <BurgerMenu />
       </AuthButtonsContainer>
     </>
   );
