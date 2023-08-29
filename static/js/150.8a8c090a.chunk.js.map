@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/150.8a8c090a.chunk.js","mappings":"mKAQA,UANA,WACE,OACEA,EAAAA,EAAAA,KAAA,OAAAC,SAAK,YAET,C","sources":["pages/NewsPage.jsx"],"sourcesContent":["import React from 'react'\n\nfunction NewsPage() {\n  return (\n    <div>NewsPage</div>\n  )\n}\n\nexport default NewsPage\n"],"names":["_jsx","children"],"sourceRoot":""}
