@@ -12,7 +12,7 @@ import './utils/langs/i18next';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter basename="SambykaLight/YourPet-frontend">
+    <BrowserRouter basename="/YourPet-frontend">
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <ThemeProvider theme={theme}>
