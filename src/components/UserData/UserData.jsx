@@ -4,7 +4,7 @@ import { Formik, Form, Field } from 'formik';
 import * as yup from 'yup';
 
 // import { logout } from 'redux/auth/operations';
-import { updateUser } from '../../redux/auth/operations ';
+import {updateUser } from '../../redux/auth/operations ';
 import { selectUser } from 'redux/auth/selectors';
 
 // import LogoutModal from '../Modal/LogoutModal';
@@ -27,7 +27,7 @@ import {
 } from './UserData.styled';
 
 const validationSchema = yup.object().shape({
-  Name: yup.string().min(3).max(12),
+  Name: yup.string().min(3).max(16),
   Email: yup.string().email('Invalid email'),
   Phone: yup.string(),
   Birthday: yup.string(),
@@ -37,6 +37,8 @@ const validationSchema = yup.object().shape({
 const UserData = () => {
   const dispatch = useDispatch();
   const { name, email, phone, birthday, city } = useSelector(selectUser);
+
+
 
   const initialValues = {
     Name: name || 'Name',
@@ -52,6 +54,9 @@ const UserData = () => {
   // isOpen,
 
   const handleFieldChange = (fieldName, fieldValue) => {
+    // console.log("fieldName", fieldName,"fieldValue", fieldValue)
+    // console.log("FormValues", formValues)
+    // console.log("NAME", name)
     setActiveInput(fieldName);
     setFormValues(prevValues => ({
       ...prevValues,
@@ -79,6 +84,7 @@ const UserData = () => {
     updatedData.append('birthday', updatedValues.Birthday);
     updatedData.append('city', updatedValues.City);
     dispatch(updateUser(updatedData));
+    // const namery = updatedData.get("name")
   };
 
   // const handleLogout = () => {
@@ -118,7 +124,6 @@ const UserData = () => {
           </BoxIconVerify>
         ) : (
           <IconEdit onClick={() => handleFieldChange(name)} />
-          // <IconEdit />
         )}
       </Label>
     );

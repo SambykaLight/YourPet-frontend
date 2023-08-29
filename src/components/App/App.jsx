@@ -5,6 +5,8 @@ import { lazy, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import { getCurrentUser } from '../../redux/auth/operations ';
+import { useAuth } from 'hooks';
+
 const LoginPage = lazy(() => import('pages/LoginPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage'));
 const HomePage = lazy(() => import('pages/HomePage'));
@@ -17,10 +19,17 @@ const NewsPage = lazy(() => import('pages/NewsPage'));
 
 export const App = () => {
   const dispatch = useDispatch();
+  const { isRefreshing } = useAuth;
+  const {token}= useAuth()
+
   useEffect(() => {
+    if(!token) return;
     dispatch(getCurrentUser());
-  }, [dispatch]);
-  return (
+  }, [token, dispatch]);
+
+  return isRefreshing ? (
+    <p>Fetching user data...</p>
+  ) : (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<HomePage />} />

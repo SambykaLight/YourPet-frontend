@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { updateUser } from '../../redux/auth/operations ';
+import { updateAvatars } from '../../redux/auth/operations ';
 import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/auth/selectors';
 
@@ -46,7 +46,7 @@ const EditPhoto = () => {
 
     const updatedData = new FormData();
     updatedData.append('image', selectedFile, selectedFile.name);
-    dispatch(updateUser(updatedData));
+    dispatch(updateAvatars(updatedData));
   };
 
   const handleCancelPhoto = () => {

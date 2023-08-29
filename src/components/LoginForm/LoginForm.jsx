@@ -42,6 +42,11 @@ function LoginForm() {
 
   const dispatch = useDispatch();
 
+      //its for test
+// const {user, isLoggedIn, token} = useAuth()
+// console.log("user", user, "isLoggedin", isLoggedIn, "token", token)
+  //its for test
+
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
   };

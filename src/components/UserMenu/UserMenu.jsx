@@ -1,6 +1,6 @@
 import React from 'react';
 import { LinksContainer, StyledLink } from './UserMenu.styled';
-
+import { logout } from 'redux/auth/operations ';
 import {
   LogoutButton,
   LogoutButtonContainer,
@@ -13,12 +13,19 @@ import BurgerMenuIcon from '../AuthNav/burgerMenuIcon';
 import { Link } from 'react-router-dom';
 import UserIcon from '../AuthNav/userIcon';
 import LogoutIcon from './logoutIcon';
+import { useDispatch } from 'react-redux';
 
 function UserMenu() {
+const dispatch = useDispatch()
+
+const handleLogout = ()=>{
+dispatch(logout())
+}
+
   return (
     <>
       <LogoutButtonContainer>
-        <Link to="/login">
+        <Link to="/login" onClick={handleLogout}>
           <LogoutButton>
             Log Out
             <LogoutIcon />
