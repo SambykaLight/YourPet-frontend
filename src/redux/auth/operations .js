@@ -78,7 +78,7 @@ export const getCurrentUser = createAsyncThunk(
     }
     setAuthHeader(token);
     try {
-      const { data } = await axios.get('/api/user');
+      const { data } = await axios.get('/api/users/current');
       return data;
     } catch (error) {
       toast.error(errMessage);
@@ -91,8 +91,25 @@ export const getCurrentUser = createAsyncThunk(
 export const updateUser = createAsyncThunk(
   'pets/updateUser',
   async (userData, {rejectWithValue}) => {
+    console.log("Entry Data User",userData)
     try {
       const {data} = await axios.put(`/api/users/update`, userData);
+      console.log("Data User",data)
+      return data;
+    } catch (error) {
+      toast.error(errMessage);
+      return rejectWithValue(error.message);
+    }
+  }
+);
+//  PUT
+export const updateAvatars = createAsyncThunk(
+  'pets/updateAvatars',
+  async (userData, {rejectWithValue}) => {
+    console.log("Entry Data Avatars",userData)
+    try {
+      const {data} = await axios.put(`/api/users/avatars`, userData);
+      console.log("Data Avatar",data)
       return data;
     } catch (error) {
       toast.error(errMessage);

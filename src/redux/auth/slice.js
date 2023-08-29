@@ -1,16 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {register, login, logout, updateUser, getCurrentUser, hideModalSuccessRegister } from './operations ';
+import {register, login, logout, updateUser, getCurrentUser, hideModalSuccessRegister, updateAvatars } from './operations ';
 
 const initialState = {
   user: {
     name: null,
     email: null,
-    // birthday: '',
-    // phone: '',
-    // city: '',
-    // imageURL: '',
-    // favorite: [],
-    // itemsFavorite: [],
+    birthday: '',
+    phone: '',
+    city: '',
+    imageURL: '',
+    favorite: [],
+    itemsFavorite: [],
   },
   pets: [],
   token: null,
@@ -22,12 +22,10 @@ const initialState = {
   // registrationSuccessful: false,
 };
 const handlePending = state => {
-  console.log("pending")
   state.error = null;
   state.isLoading = true;
 };
 const handleRejected = (state, action) => {
-  console.log("rejected")
   state.isLoading = false;
   state.error = action.payload;
 };
@@ -39,7 +37,6 @@ const authSlice = createSlice({
     builder
       .addCase(register.pending, handlePending)
       .addCase(register.fulfilled, (state,  { payload }) => {
-        console.log("Register Payload:",payload)
         state.user =payload.user;
         state.token =payload.token;
         state.isLoading = false;
@@ -52,7 +49,6 @@ const authSlice = createSlice({
       .addCase(register.rejected, handleRejected)
       .addCase(login.pending, handlePending)
       .addCase(login.fulfilled, (state, { payload }) => {
-        console.log("Login payload", payload)
         state.isLoading = false;
         state.user = payload.user;
         state.token = payload.token;
@@ -92,6 +88,14 @@ const authSlice = createSlice({
         };
       })
       .addCase(updateUser.rejected, handleRejected)
+      .addCase(updateAvatars.pending, handlePending)
+      .addCase(updateAvatars.fulfilled, (state, { payload }) => {
+        state.user = {
+          ...state.user,
+          ...payload,
+        };
+      })
+      .addCase(updateAvatars.rejected, handleRejected)
       .addCase(hideModalSuccessRegister.pending, handlePending)
       .addCase(hideModalSuccessRegister.fulfilled, (state, { payload }) => {
         state.modalSuccessRegister = payload;

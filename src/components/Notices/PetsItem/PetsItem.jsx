@@ -20,6 +20,9 @@ import { LocationIcon } from 'components/SvgIcons/LocationIcon';
 import { IconTime } from 'components/SvgIcons/IconTime';
 import { FemaleIcon } from 'components/SvgIcons/FemaleIcon';
 import { MaleIcon } from 'components/SvgIcons/MaleIcon';
+import Context from "components/Modals/Context/Context";
+import Modal from "components/Modals/Modal";
+import CardMore from "components/CardMore/CardMore";
 
 export const CategoryItem = ({
   _id,
@@ -113,10 +116,20 @@ export const CategoryItem = ({
         </BtnList>
 
         <Title>{title}</Title>
-        <Btn>
+
+
+ {/* universal modal */}
+ <Context>
+        <Modal openButtonLabel={'Learn more'}>
+          <CardMore />
+        </Modal>
+      </Context>
+
+
+        {/* <Btn>
           Learn more
           <PawIcon />
-        </Btn>
+        </Btn> */}
       </CardWrapper>
     </CardItem>
   );
