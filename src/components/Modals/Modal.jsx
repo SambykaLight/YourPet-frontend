@@ -1,14 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { ModalOverlay, ModalContent, CloseButton } from './Modal.styled';
+import React, { useEffect } from 'react';
+import {
+  ModalOverlay,
+  ModalContent,
+  CloseButton,
+  StyledButtonOpen,
+} from './Modal.styled';
+import { useModalContext } from './Context/Context';
 
 function Modal({ children, openButtonLabel }) {
-  const [showModal, setShowModal] = useState(false);
+  const context = useModalContext();
+
+  const { toggleValue, toggle } = context;
+
   const toggleModal = () => {
-    setShowModal(!showModal);
+    toggle(!context.toggleValue);
   };
 
   const close = () => {
-    setShowModal(false);
+    toggle(false);
   };
 
   useEffect(() => {
@@ -18,7 +27,7 @@ function Modal({ children, openButtonLabel }) {
       }
     };
 
-    if (showModal) {
+    if (toggleValue) {
       window.addEventListener('keydown', closeOnEscape);
     } else {
       window.removeEventListener('keydown', closeOnEscape);
@@ -26,17 +35,17 @@ function Modal({ children, openButtonLabel }) {
     return () => {
       window.removeEventListener('keydown', closeOnEscape);
     };
-  }, [showModal]);
+  }, [toggleValue]);
 
   return (
     <div>
-      <button className="open-button" onClick={toggleModal}>
+      <StyledButtonOpen className="open-button" onClick={toggleModal}>
         {openButtonLabel}
-      </button>
+      </StyledButtonOpen>
 
-      <ModalOverlay className={showModal ? 'active' : ''} onClick={close}>
+      <ModalOverlay className={toggleValue ? 'active' : ''} onClick={close}>
         <ModalContent
-          className={showModal ? 'active' : ''}
+          className={toggleValue ? 'active' : ''}
           onClick={e => e.stopPropagation()}
         >
           {children}
