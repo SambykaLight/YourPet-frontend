@@ -18,7 +18,7 @@ const SharedLayout = () => {
         <Suspense fallback={<Loader />}>
           <ContainerWalls>
             <Outlet />
-            <FAB actions={action}/>
+            <FAB actions={action} />
           </ContainerWalls>
         </Suspense>
       </Section>

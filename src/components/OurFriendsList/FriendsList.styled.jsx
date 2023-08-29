@@ -1,12 +1,6 @@
 import styled from '@emotion/styled';
 
-export const Title = styled.h2`
-  text-align: center;
-  font-size: 24px;
-`;
-
 export const FriendsList = styled.ul`
-  margin-top: 24px;
   margin-bottom: 24px;
 
   @media screen and (min-width: 748px) {

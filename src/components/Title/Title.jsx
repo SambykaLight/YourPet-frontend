@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { Titl} from './Title.styled';
+import { Title } from './Title.styled';
 
-function Title() {
-  return <Titl>Find your favorite pet</Titl>;
-};
+function TitlePet() {
+  return <Title>Find your favorite pet</Title>;
+}
 
-export default Title;
+export default TitlePet;

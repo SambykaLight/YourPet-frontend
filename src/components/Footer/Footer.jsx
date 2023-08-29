@@ -16,9 +16,10 @@ const Footer = () => {
   const isDarkTheme = useSelector(darkTheme);
   return (
     <FooterMain
-      style={{ backgroundColor: isDarkTheme === 'dark' && '#809cb5' }}
+    style={{ backgroundColor: isDarkTheme === 'dark' && '#809cb5' }}
     >
-      <FooterContainer className="footer__container">
+      <FooterContainer className="footer__container"
+      >
         <FooterText className="footer__text footer__text--vertical-line">
           &#xA9; 2023
         </FooterText>

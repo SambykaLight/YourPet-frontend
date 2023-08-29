@@ -1,9 +1,13 @@
 import styled from 'styled-components';
 
 export const CardItem = styled.li`
- background: #ffffff;
-    width: 280px;
-    height: 456px;
+position: relative;
+min-width: 280px;
+max-width: 286px;
+height: 456px;
+border-radius: 0 0 30px 30px;
+box-sizing: border-box;
+box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
 
     box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
     border-radius: 0px 0px 40px 40px;
@@ -20,11 +24,22 @@ export const CardItem = styled.li`
 `
 
 export const CardWrapper = styled.div`
-  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
+  min-width: 280px;
+  width: 286px;
+  border-radius: 14px 14px;
+  box-sizing: border-box;
+  img {
+    min-width: 280px;
+    width: 286px;
+    height: 288px;
+    object-fit: cover;
+  }
+  
 `
 export const Img = styled.img`
   width: 100%;
@@ -33,39 +48,65 @@ export const Img = styled.img`
 `
 
 export const BtnList= styled.ul`
+    // position: absolute;
+    // bottom: 162px;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // gap: 1px;
+    // display: flex;
     position: absolute;
-    bottom: 162px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1px;
-    display: flex;`
+  top: 248px;
+  display: flex;
+  gap: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+    `
 
 export const ImgBtn= styled.button`
+  // display: flex;
+  //   flex-direction: row;
+  //   justify-content: left;
+  //   overflow: hidden;
+  //   align-items: center;
+  //   margin: 0 5px;
+
+  //   width: 80px;
+  //   height: 28px;
+
+  //   background: #cce4fb;
+  //   border-radius: 16px;
+  //   border: transparent;
+
+  //   cursor: pointer;
+
+  //   font-family: 'Manrope';
+  //   font-style: normal;
+  //   font-weight: 600;
+  //   font-size: 12px;
+  //   line-height: 16px;
+  //   letter-spacing: 0.04em;
+
+  //   color: #111111;
+  width: 80px;
+  height: 28px;
   display: flex;
-    flex-direction: row;
-    justify-content: left;
-    overflow: hidden;
-    align-items: center;
-    margin: 0 5px;
-
-    width: 80px;
-    height: 28px;
-
-    background: #cce4fb;
-    border-radius: 16px;
-    border: transparent;
-
-    cursor: pointer;
-
-    font-family: 'Manrope';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 16px;
-    letter-spacing: 0.04em;
-
-    color: #111111;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  background-color: #cce4fb;
+  color: #111111;
+  font-family: 'Manrope', sans-serif;
+  font-style: 'SemiBold';
+  font-size: 12px;
+  line-height: 16px;
+  line-height: 100%;
+  text-align: Left;
+  vertical-align: Center;
+  letter-spacing: 4%;
+  border: none;
+  border-radius: 15px;
     svg {
     margin-right: 2px;
   }
@@ -128,11 +169,11 @@ export const Text= styled.p`
     color: #000;
     background-color: #cce4fb;
 @media screen and (min-width: 768px) {
-    right: 178px;
+    right: 150px;
 @media screen and (min-width: 1280px) {
-    right: 154px;
+    right: 150px;
 }
-}
+
 `
 
 export const Title = styled.h2`

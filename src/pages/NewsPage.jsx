@@ -1,9 +1,8 @@
-import React from 'react'
+import { Title } from 'components/Title/Title.styled';
+import React from 'react';
 
 function NewsPage() {
-  return (
-    <div>NewsPage</div>
-  )
+  return <Title>News</Title>;
 }
 
-export default NewsPage
+export default NewsPage;
