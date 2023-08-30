@@ -1,12 +1,28 @@
 import React from 'react';
 import { ReactComponent as PlusSmallIcon } from '../../SvgIcons/SmallIconPlus.svg';
 import { ReactComponent as Filter } from '../../SvgIcons/Filter.svg';
-import {NavContainer, List, Li,  AddBtnContainer, FilterLink, Button, AddButtonLink, AddButton, FilterText, AddPetText,NoticesNavLink, NoticesNavLinkBtn} from './NoticeNav.styled';
+import {
+  NavContainer,
+  List,
+  Li,
+  AddBtnContainer,
+  FilterLink,
+  Button,
+  AddButtonLink,
+  AddButton,
+  FilterText,
+  AddPetText,
+  NoticesNavLink,
+  NoticesNavLinkBtn,
+} from './NoticeNav.styled';
+import { useSelector } from 'react-redux';
+import { selectIsLoggedIn } from 'redux/auth/selectors';
 
 const NoticesNav = () => {
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   return (
     <NavContainer>
-      <List >
+      <List>
         <Li>
           <NoticesNavLink
             // className={({ isActive }) => (isActive ? css.active : '')}
@@ -23,7 +39,7 @@ const NoticesNav = () => {
             lost/found
           </NoticesNavLink>
         </Li>
-        <Li >
+        <Li>
           <NoticesNavLink
             // className={({ isActive }) => (isActive ? css.active : '')}
             to="/notices/in-good-hands"
@@ -31,8 +47,8 @@ const NoticesNav = () => {
             in good hands
           </NoticesNavLink>
         </Li>
-        {
-          <Li >
+        {isLoggedIn && (
+          <Li>
             <NoticesNavLink
               // className={({ isActive }) => (isActive ? css.active : '')}
               to="/notices/favorite"
@@ -40,8 +56,8 @@ const NoticesNav = () => {
               favorite ads
             </NoticesNavLink>
           </Li>
-        }
-        {
+        )}
+        {isLoggedIn && (
           <Li>
             <NoticesNavLink
               // className={({ isActive }) => (isActive ? css.active : '')}
@@ -50,7 +66,7 @@ const NoticesNav = () => {
               my ads
             </NoticesNavLink>
           </Li>
-        }
+        )}
       </List>
 
       <AddBtnContainer>
@@ -68,7 +84,7 @@ const NoticesNav = () => {
             </Button>
           </NoticesNavLinkBtn>
         </FilterLink>
-        <AddButtonLink >
+        <AddButtonLink>
           <AddButton type="button">
             <AddPetText>Add pet</AddPetText>
             <PlusSmallIcon />
