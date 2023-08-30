@@ -13,7 +13,7 @@ export const Section = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  height: 100vh;
+  min - height: 100vh;
   background-image: url(${mb_bg_1x});
 
   @media (min-device-pixel-ratio: 2),
