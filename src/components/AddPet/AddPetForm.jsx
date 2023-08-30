@@ -151,7 +151,7 @@ const AddPetForm = () => {
               : values.category === 'my-pet'
               ? 'Add pet'
               : values.category === 'sell'
-              ? 'Add pet for sale'
+              ? 'Add  pet for sell'
               : values.category === 'lost-found'
               ? 'Add lost pet'
               : 'Add for free'}

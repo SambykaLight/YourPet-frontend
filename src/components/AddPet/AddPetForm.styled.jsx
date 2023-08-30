@@ -30,7 +30,7 @@ export const FormTitle = styled.h1`
   margin-left: 20px;
 
   font-weight: 500;
-  font-size: 20px;
+  font-size: 28px;
   line-height: calc(27 / 20);
   color: #111111;
 
@@ -56,7 +56,7 @@ export const StepsList = styled.ul`
 
 export const Step = styled.li`
   position: relative;
-  width: 80px;
+  width: 81px;
   font-size: 10px;
   line-height: calc(14 / 10);
   font-weight: 500;
@@ -75,9 +75,9 @@ export const Step = styled.li`
   }};
 
   @media (min-width: 768px) {
-    width: 120px;
+    width: 114px;
     font-size: 16px;
-    line-height: calc(26 / 26);
+    line-height: 26.5px;
   }
 
   &::after {
