@@ -46,7 +46,7 @@ const MoreInfo = ({
                   sx={{
                     width: 24,
                     height: 24,
-                    color: values.sex === 'male' ? '#888888' : '#F43F5E',
+                    color: values.sex === 'male' ? '#F43F5E' : '#FFFFFF',
                   }}
                 />
                 Female
@@ -62,7 +62,7 @@ const MoreInfo = ({
                   sx={{
                     width: 24,
                     height: 24,
-                    color: values.sex === 'female' ? '#888888' : '#54ADFF',
+                    color: values.sex === 'female' ? '#54ADFF' : '#FFFFFF',
                     transform: 'rotate(-45deg)',
                   }}
                 />
@@ -110,7 +110,7 @@ const MoreInfo = ({
             <Input
               type="text"
               name="place"
-              placeholder="Type location"
+              placeholder="Type of location"
               errors={touched.place && errors.place}
             />
             <Message name="place" component="div" />
@@ -123,7 +123,7 @@ const MoreInfo = ({
             <Input
               type="text"
               name="price"
-              placeholder="Type price"
+              placeholder="Type of price"
               errors={touched.price && errors.price}
             />
             <Message name="price" component="div" />
@@ -135,7 +135,7 @@ const MoreInfo = ({
           <TextArea
             as="textarea"
             name="comments"
-            placeholder="Type comment"
+            placeholder="Type of pet"
             category={category}
             step={step}
             errors={touched.comments && errors.comments}
