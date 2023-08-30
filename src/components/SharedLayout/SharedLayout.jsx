@@ -7,22 +7,29 @@ import { useSelector } from 'react-redux';
 import { darkTheme } from 'redux/themeSlice/selectors';
 import { FAB } from 'components/FAB/FAB';
 import { action } from 'components/FAB/FABComponent';
+import Footer from 'components/Footer/Footer';
 
 const SharedLayout = () => {
   const isDarkTheme = useSelector(darkTheme);
 
   return (
-    <>
+    <div style={{ backgroundColor: isDarkTheme === 'dark' && '#809cb5' }}>
       <Header />
-      <Section style={{ backgroundColor: isDarkTheme === 'dark' && '#809cb5' }}>
+      <Section 
+      // style={{ backgroundColor: isDarkTheme === 'dark' && '#809cb5' }}
+      >
         <Suspense fallback={<Loader />}>
-          <ContainerWalls>
+          <ContainerWalls
+        // style={{ backgroundColor: isDarkTheme === 'dark' && '#809cb5' }}
+        >
             <Outlet />
-            <FAB actions={action}/>
+            <FAB actions={action} />
           </ContainerWalls>
         </Suspense>
+        <Footer />
       </Section>
-    </>
+    
+    </div>
   );
 };
 export default SharedLayout;

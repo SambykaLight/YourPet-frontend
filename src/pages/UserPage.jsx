@@ -9,7 +9,7 @@ import UserPetsData from 'components/UserPetsData/UserPetsData';
 // import useModal from 'hooks/useModal';
 // import { selectModalSuccessRegister } from 'redux/auth/selectors';
 // import CongratsModal from 'components/Modal/CongratsModal';
-import { useAuth } from 'hooks';
+// import { useAuth } from 'hooks';
 
 const UserPage = () => {
   // const dispatch = useDispatch();

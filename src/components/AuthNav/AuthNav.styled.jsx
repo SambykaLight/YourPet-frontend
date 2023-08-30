@@ -2,11 +2,12 @@ import styled from 'styled-components';
 
 export const AuthButtonsContainer = styled.div`
   display: flex;
-  gap: 20px;
+  gap: 15px;
 
-  @media (max-width: 420px) {
+  @media (max-width: 767px) {
     gap: 8px;
   }
+  
 `;
 
 export const AuthButton = styled.button`

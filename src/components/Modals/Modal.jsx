@@ -21,6 +21,9 @@ function Modal({ children, openButtonLabel }) {
   };
 
   useEffect(() => {
+    const close = () => {
+      toggle(false);
+    };
     const closeOnEscape = event => {
       if (event.key === 'Escape') {
         close();
@@ -35,7 +38,7 @@ function Modal({ children, openButtonLabel }) {
     return () => {
       window.removeEventListener('keydown', closeOnEscape);
     };
-  }, [toggleValue]);
+  }, [ toggleValue, toggle]);
 
   return (
     <div>

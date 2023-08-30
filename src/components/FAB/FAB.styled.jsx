@@ -35,26 +35,18 @@ export const Button = styled.li`
   }
 `;
 export const Action = styled.li`
-    transform: translateY(50px) scale(0);
-      opacity: 0;
-      transition: transform 500ms, opacity 500ms;
-      background-color: #00a8ff;
-      &.open {
-        transform: translateY(0) scale(1);
-        opacity: 1;
-        &:hover {
-          tooltip {
-            transform: translateX(-100%) scale(1);
-            opacity: 1;
-          }
-        }
-        svg{
-          
-          fill:#FFC107
-          ;
-        }
-      
-    `;
+  transform: translateY(50px) scale(0);
+  opacity: 0;
+  transition: transform 500ms, opacity 500ms;
+  background-color: #00a8ff;
+  &.open {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  svg {
+    fill: #ffc107;
+  }
+`;
 export const Toolip = styled.span`
   padding: 4px 6px;
   font-size: 12px;
