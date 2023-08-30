@@ -6,7 +6,7 @@ import { Title } from '../components/Title/Title.styled';
 function OurFriendsPage() {
   return (
     <>
-      <Title>Oure Friends</Title>
+      <Title>Our Friends</Title>
       <OurFriendsList FriendsData={FriendsData} />
     </>
   );

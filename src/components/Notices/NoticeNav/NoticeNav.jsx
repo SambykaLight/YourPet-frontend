@@ -26,7 +26,7 @@ const NoticesNav = () => {
         <Li >
           <NoticesNavLink
             // className={({ isActive }) => (isActive ? css.active : '')}
-            to="/notices/for-free"
+            to="/notices/in-good-hands"
           >
             in good hands
           </NoticesNavLink>
