@@ -6,7 +6,7 @@ const validationSchema = step => {
   if (step === 0) {
     schema = Yup.object().shape({
       category: Yup.string()
-        .oneOf(['my-pet', 'sell', 'lost-found', 'for-free'])
+        .oneOf(['my-pet', 'sell', 'lost-found', 'in-good-hands'])
         .required(),
     });
   }
@@ -44,7 +44,8 @@ const validationSchema = step => {
         .max(16, 'Too Long!')
         .trim(),
       title: Yup.string().when('category', {
-        is: category => ['sell', 'lost-found', 'for-free'].includes(category),
+        is: category =>
+          ['sell', 'lost-found', 'in-good-hands'].includes(category),
         then: () => Yup.string().trim().required('Title is required'),
       }),
     });
@@ -53,14 +54,16 @@ const validationSchema = step => {
   if (step === 2) {
     schema = Yup.object().shape({
       sex: Yup.string().when('category', {
-        is: category => ['sell', 'lost-found', 'for-free'].includes(category),
+        is: category =>
+          ['sell', 'lost-found', 'in-good-hands'].includes(category),
         then: () =>
           Yup.string()
             .oneOf(['male', 'female'])
             .required('The sex is required'),
       }),
       location: Yup.string().when('category', {
-        is: category => ['sell', 'lost-found', 'for-free'].includes(category),
+        is: category =>
+          ['sell', 'lost-found', 'in-good-hands'].includes(category),
         then: () => Yup.string().trim().required('Location is required'),
       }),
       price: Yup.number().when('category', {

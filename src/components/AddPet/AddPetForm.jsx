@@ -122,7 +122,7 @@ const AddPetForm = () => {
               ? 'Add pet for sale'
               : values.category === 'lost-found'
               ? 'Add lost pet'
-              : 'Add for free'}
+              : 'Add in good hands'}
           </FormTitle>
           <Form>
             <StepsList step={step}>
