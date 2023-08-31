@@ -51,7 +51,7 @@ const NoticesNav = () => {
           </NoticesNavLink>
         </Li>
 
-        {
+        
 
         {isLoggedIn && (
 
