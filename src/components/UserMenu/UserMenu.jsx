@@ -15,11 +15,14 @@ import BurgerMenuIcon from '../AuthNav/burgerMenuIcon';
 import { Link } from 'react-router-dom';
 import UserIcon from '../AuthNav/userIcon';
 // import LogoutIcon from './logoutIcon';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 // import ModalApprove from 'components/Modals/ApproveActions/ModalApprove';
+
+import { selectUser } from 'redux/auth/selectors'
 
 function UserMenu() {
 const dispatch = useDispatch()
+const userInfo = useSelector(selectUser)
 
 const handleLogout = ()=>{
 dispatch(logout())
@@ -41,7 +44,7 @@ dispatch(logout())
         <LinksContainer>
           <StyledLink to="/login">
             <UserIcon />
-            Anna
+            { userInfo?.name }
           </StyledLink>
         </LinksContainer>
 

@@ -95,9 +95,11 @@ export const updateUser = createAsyncThunk(
   async (userData, { rejectWithValue }) => {
     console.log('Entry Data User', userData);
     try {
-      const { data } = await axios.put(`/api/users/update`, userData);
-      console.log('Data User', data);
-      return data;
+
+      const response = await axios.put(`/api/users/update`, userData);
+      console.log('Data User', response);
+      return response;
+
     } catch (error) {
       toast.error(errMessage);
       return rejectWithValue(error.message);

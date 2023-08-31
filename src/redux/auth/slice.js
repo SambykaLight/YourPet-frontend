@@ -1,5 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {register, login, logout, updateUser, getCurrentUser, hideModalSuccessRegister, updateAvatars } from './operations ';
+import {
+  register,
+  login,
+  logout,
+  updateUser,
+  getCurrentUser,
+  hideModalSuccessRegister,
+  updateAvatars,
+} from './operations ';
 
 const initialState = {
   user: {
@@ -36,9 +44,9 @@ const authSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(register.pending, handlePending)
-      .addCase(register.fulfilled, (state,  { payload }) => {
-        state.user =payload.user;
-        state.token =payload.token;
+      .addCase(register.fulfilled, (state, { payload }) => {
+        state.user = payload.user;
+        state.token = payload.token;
         state.isLoading = false;
         state.isLoggedIn = true;
         state.error = null;
@@ -82,6 +90,7 @@ const authSlice = createSlice({
       })
       .addCase(updateUser.pending, handlePending)
       .addCase(updateUser.fulfilled, (state, { payload }) => {
+        console.log(payload);
         state.user = {
           ...state.user,
           ...payload.updatedFields,
@@ -100,8 +109,7 @@ const authSlice = createSlice({
       .addCase(hideModalSuccessRegister.fulfilled, (state, { payload }) => {
         state.modalSuccessRegister = payload;
       })
-      .addCase(hideModalSuccessRegister.rejected, )
-
+      .addCase(hideModalSuccessRegister.rejected);
   },
 });
 
