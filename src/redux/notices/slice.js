@@ -40,8 +40,8 @@ const noticesSlice = createSlice({
       .addCase(fetchNoticesByCategory.fulfilled, (state, {payload}) => {
         return {
           ...state,
-          items: [...payload.data.notices],
-          totalPages: payload.data.totalPages,
+          items: [...payload],
+          totalPages: payload,
           isLoading: false,
         };
       })

@@ -26,18 +26,18 @@ import { useSelector } from "react-redux";
 import { selectIsLoggedIn } from "redux/auth/selectors";
 
 export const CategoryItem = ({
+  imageURL,
   _id,
-  title,
-  photoURL,
-  price,
-  place,
-  sex,
-  birthday,
-  owner,
   category,
   name,
-  breed,
+  date,
+  type,
+  sex,
+  title,
+  location,
+  price,
   comments,
+  owner,
   ...restProps
 }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -68,7 +68,7 @@ export const CategoryItem = ({
   return (
     <CardItem key={_id}>
       <CardWrapper>
-        <Img src={photoURL} alt={title} />
+        <Img src={imageURL} alt={title} />
         {/* <button
           className={
             favorite
@@ -96,13 +96,13 @@ export const CategoryItem = ({
 
                  />
               </span>
-              {place}
+              {location}
             </ImgBtn>
           </li>
           <li>
             <ImgBtn>
               <IconTime id="svg" />
-              {calcAge(birthday)}
+              {calcAge(date)}
             </ImgBtn>
           </li>
           <li>

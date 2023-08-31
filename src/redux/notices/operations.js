@@ -34,16 +34,10 @@ export const fetchNoticeById = createAsyncThunk(
 
 export const fetchNoticesByCategory = createAsyncThunk(
   'notices/fetchNoticesByCategory',
-  async (params, thunkAPI) => {
-    const searchParams = new URLSearchParams(params);
-    searchParams.forEach((value, key) => {
-      if (value === '') {
-        searchParams.delete(key)
-      }
-    })
+  async ({category}, thunkAPI) => {
     try {
       const { data } = await axios.get(
-        `/api/notices/?${searchParams.toString()}`
+        `/api/notices/?${category}}`
       );
       return data;
     } catch (error) {
@@ -71,7 +65,7 @@ export const addNotice = createAsyncThunk(
   async ([category, data], thunkAPI) => {
     try {
       const response= await axios.post(
-        `/api/notices/category?category=${category}`,
+        `/api/notices/add/category?category=${category}`,
         data
       );
       return response.data;
