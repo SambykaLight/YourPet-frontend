@@ -5,6 +5,47 @@ import { RxCross1 } from 'react-icons/rx';
 import { AiOutlineCheck } from 'react-icons/ai';
 import { Field } from 'formik';
 // import { Typography } from '@mui/material';
+import { Button } from '@mui/material';
+
+export const ButtonSave = styled(Button)`
+  && {
+    background-color: #54adff;
+    color: white;
+    border-radius: 40px;
+    width: 255px;
+    cursor: pointer;
+    padding: 6px 108px;
+    position: absolute;
+    bottom: -29px;
+    right: -15px;
+
+    
+      @media screen and (min-width: 768px) {
+        background-color: green;
+        right: 262px;
+      }
+
+      @media screen and (min-width: 1280px) {
+        background-color: green;
+        right: -15px;
+      }
+    
+`;
+
+export const ButtonEdit = styled(Button)`
+  position: absolute;
+  right: 1px;
+  top: 10px;
+
+  @media screen and (min-width: 768px) {
+    right: 1px;
+    top: 10px;
+  }
+  @media screen and (min-width: 1280px) {
+    right: 15px;
+    top: 10px;
+  }
+`;
 
 export const Container = styled.div`
   display: flex;
@@ -24,9 +65,16 @@ export const Container = styled.div`
 
 export const Title = styled.p`
   color: black;
+  color: black;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.36;
+  letter-spacing: 0.04em;
+  font-size: 28px;
 `;
 
 export const Box = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 280px;
@@ -41,7 +89,7 @@ export const Box = styled.div`
     flex-wrap: wrap-reverse;
 
     width: 704px;
-    height: 268px;
+    height: 278px;
     padding: 20px;
   }
 
@@ -161,6 +209,7 @@ export const Input = styled(Field)`
 export const LogOut = styled.div`
   margin-top: 25px;
   display: flex;
+  gap: 10px;
   @media screen and (min-width: 768px) {
     margin-top: 15px;
   }
