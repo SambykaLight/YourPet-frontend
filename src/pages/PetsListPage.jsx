@@ -7,13 +7,16 @@ import NoticesNav from 'components/Notices/NoticeNav/NoticeNav';
 import AddPagination from 'components/Pagination/Pagination';
 import { useDispatch } from 'react-redux';
 import { fetchNoticesByCategory } from 'redux/notices/operations';
+import { useParams } from 'react-router-dom';
 
 const PetsListPage = () => {
   const dispatch = useDispatch();
+  const {category} = useParams()
+
 
   useEffect(() => {
-    dispatch(fetchNoticesByCategory());
-  }, [dispatch]);
+    dispatch(fetchNoticesByCategory({category: category}));
+  }, [dispatch, category]);
 
   return (
     <Container>

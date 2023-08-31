@@ -37,23 +37,18 @@ export const register = createAsyncThunk(
 
 //  ---- LOGIN / POST ----
 //  credentials: {email, password}
-export const login = createAsyncThunk(
-  'auth/login',
-  async (credential, thunkAPI) => {
-    try {
-      console.log('Credentials', credential);
-      const response = await axios.post('/api/users/login', credential);
-      console.log('Answer', response);
-      // After successful login, add the token to the HTTP header
-      setAuthHeader(response.token);
-      //data must include {name, token, ...}
-      return response.data;
-    } catch (error) {
-      toast.error(errMessage);
-      return thunkAPI.rejectWithValue(error.message);
-    }
+export const login = createAsyncThunk('auth/login', async (credential, thunkAPI) => {
+  try {
+    const response = await axios.post('/api/users/login', credential);
+    // After successful login, add the token to the HTTP header
+    setAuthHeader(response.token);
+    //data must include {name, token, ...}
+    return response.data;
+  } catch (error) {
+    toast.error(errMessage);
+    return thunkAPI.rejectWithValue(error.message);
   }
-);
+})
 
 // ---- LOGOUT / POST ---
 // headers: Authorization: Bearer token
@@ -112,7 +107,7 @@ export const updateAvatars = createAsyncThunk(
   async (userData, { rejectWithValue }) => {
     console.log('Entry Data Avatars', userData);
     try {
-      const { data } = await axios.put(`/api/users/avatars`, userData);
+      const { data } = await axios.post(`/api/users/avatars`, userData);
       console.log('Data Avatar', data);
       return data;
     } catch (error) {

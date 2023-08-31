@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import LogoutIcon from 'components/UserMenu/logoutIcon';
-import { logout } from 'redux/auth/operations ';  
+import { logout } from 'redux/auth/operations ';
 import { useNavigate } from 'react-router-dom';
 import {
     SectionApprove,
@@ -12,30 +12,28 @@ import {
 } from './ModalApproveAction.styled';
 
 
-const ModalApproveAction = ({ closeModal }) => {
+const ModalApproveAction = () => {
     const pageNavigate = useNavigate();
     const dispatch = useDispatch();
 
     const handleClose = () => {
-        closeModal();
-        pageNavigate('/');
+        pageNavigate('/user');
     };
 
     const handleLogout = () => {
-        dispatch(logout()); 
-        closeModal();
-        pageNavigate('/user');
+        dispatch(logout());
+        pageNavigate('/');
 
     };
 
-    
+
     return (
 
     <SectionApprove closeModal={handleClose}>
-                <div> 
+                <div>
                 <HeaderApprove>Already leaving?</HeaderApprove>
                 <BtnsWrapper>
-                    <BtnCancel onClick={handleClose}>
+                    <BtnCancel onClick={handleLogout}>
                         Cancel
                     </BtnCancel>
                     <BtnYes onClick={handleLogout}>

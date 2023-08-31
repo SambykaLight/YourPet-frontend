@@ -27,7 +27,7 @@ const initialValues = {
   sex: '',
   location: '',
   price: '',
-  comments: '',
+  comment: '',
   title: '',
 };
 
@@ -64,7 +64,7 @@ const AddPetForm = () => {
     formData.append('name', values.name.trim());
     formData.append('date', values.date);
     formData.append('type', values.type.trim());
-    formData.append('comments', values.comments.trim());
+    formData.append('comment', values.comment.trim());
     formData.append('file', values.file, values.file.name);
     formData.append('category', values.category.trim());
 

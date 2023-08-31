@@ -74,14 +74,14 @@ const validationSchema = step => {
             .positive('Price should be positive')
             .typeError('please enter a valid number'),
       }),
-      comments: Yup.string()
+      comment: Yup.string()
         .min(4, 'Comments should be at least 4 characters')
         .max(120, 'Comments should not exceed 120 characters')
         .trim(),
       file: Yup.mixed()
         .required('Image is required')
         .test(
-          'image',
+          'avatar',
           'Image size must be less then 3mb',
           value => value && value.size <= 3 * 1024 * 1024
         ),
