@@ -2,11 +2,10 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import toast from 'react-hot-toast';
 
-
 // api який треба вставити для запитів за користувачами !!!!!!!!!!!!!!!!!!!!!!!!!!
 axios.defaults.baseURL = 'https://your-pet-api-a9zk.onrender.com';
 
-const errMessage = "Something went wrong. Please try again";
+const errMessage = 'Something went wrong. Please try again';
 
 //  --- ADD JWT ---
 const setAuthHeader = token => {
@@ -24,10 +23,10 @@ export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
     try {
-      const {data} = await axios.post('/api/users/register', credentials);
+      const { data } = await axios.post('/api/users/register', credentials);
       setAuthHeader(data.token);
       //response.data is {message: 'New account created'} but must be ...
-    console.log("Answer",data)
+      console.log('Answer', data);
       return data;
     } catch (e) {
       toast.error(errMessage);
@@ -38,20 +37,23 @@ export const register = createAsyncThunk(
 
 //  ---- LOGIN / POST ----
 //  credentials: {email, password}
-export const login = createAsyncThunk('auth/login', async (credential, thunkAPI) => {
-  try {
-    console.log("Credentials",credential)
-    const response = await axios.post('/api/users/login', credential);
-    console.log("Answer",response)
-    // After successful login, add the token to the HTTP header
-    setAuthHeader(response.token);
-    //data must include {name, token, ...}
-    return response.data;
-  } catch (error) {
-    toast.error(errMessage);
-    return thunkAPI.rejectWithValue(error.message);
+export const login = createAsyncThunk(
+  'auth/login',
+  async (credential, thunkAPI) => {
+    try {
+      console.log('Credentials', credential);
+      const response = await axios.post('/api/users/login', credential);
+      console.log('Answer', response);
+      // After successful login, add the token to the HTTP header
+      setAuthHeader(response.token);
+      //data must include {name, token, ...}
+      return response.data;
+    } catch (error) {
+      toast.error(errMessage);
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
-});
+);
 
 // ---- LOGOUT / POST ---
 // headers: Authorization: Bearer token
@@ -90,11 +92,11 @@ export const getCurrentUser = createAsyncThunk(
 //  PUT
 export const updateUser = createAsyncThunk(
   'pets/updateUser',
-  async (userData, {rejectWithValue}) => {
-    console.log("Entry Data User",userData)
+  async (userData, { rejectWithValue }) => {
+    console.log('Entry Data User', userData);
     try {
-      const {data} = await axios.put(`/api/users/update`, userData);
-      console.log("Data User",data)
+      const { data } = await axios.put(`/api/users/update`, userData);
+      console.log('Data User', data);
       return data;
     } catch (error) {
       toast.error(errMessage);
@@ -105,11 +107,11 @@ export const updateUser = createAsyncThunk(
 //  PUT
 export const updateAvatars = createAsyncThunk(
   'pets/updateAvatars',
-  async (userData, {rejectWithValue}) => {
-    console.log("Entry Data Avatars",userData)
+  async (userData, { rejectWithValue }) => {
+    console.log('Entry Data Avatars', userData);
     try {
-      const {data} = await axios.put(`/api/users/avatars`, userData);
-      console.log("Data Avatar",data)
+      const { data } = await axios.put(`/api/users/avatars`, userData);
+      console.log('Data Avatar', data);
       return data;
     } catch (error) {
       toast.error(errMessage);
@@ -124,4 +126,3 @@ export const hideModalSuccessRegister = createAsyncThunk(
     return false;
   }
 );
-
