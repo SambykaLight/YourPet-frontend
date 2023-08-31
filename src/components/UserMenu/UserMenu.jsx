@@ -7,16 +7,16 @@ import {
   UserIconButton,
   BurgerMenuButton,
 } from './UserMenu.styled';
-import Context from 'components/Modals/Context/Context';
-import Modal from 'components/Modals/Modal';
+// import Context from 'components/Modals/Context/Context';
+// import Modal from 'components/Modals/Modal';
 
 import BurgerMenuIcon from '../AuthNav/burgerMenuIcon';
 
 import { Link } from 'react-router-dom';
 import UserIcon from '../AuthNav/userIcon';
-import LogoutIcon from './logoutIcon';
+// import LogoutIcon from './logoutIcon';
 import { useDispatch } from 'react-redux';
-import ModalApprove from 'components/Modals/ApproveActions/ModalApprove';
+// import ModalApprove from 'components/Modals/ApproveActions/ModalApprove';
 
 function UserMenu() {
 const dispatch = useDispatch()
@@ -29,13 +29,13 @@ dispatch(logout())
     <>
       <LogoutButtonContainer>
         <Link to="/login" onClick={handleLogout}>
-          <Context>
+          {/* <Context>
             <Modal openButtonLabel={'Log Out'}>
             <ModalApprove/>
             <LogoutIcon />
             </Modal>
             
-          </Context>
+          </Context> */}
         </Link>
 
         <LinksContainer>

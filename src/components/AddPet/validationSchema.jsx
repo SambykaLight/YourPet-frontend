@@ -22,7 +22,7 @@ const validationSchema = step => {
         .required('Date is required')
         .matches(
           /^(0[1-9]|1[0-9]|2[0-9]|3[01])\.(0[1-9]|1[012])\.\d{4}$/,
-          'Invalid date format (dd.mm.yyyy)'
+          'Invalid date format (Type date of birth)'
         )
         .test(
           'not-in-future',

@@ -16,7 +16,13 @@ import {
   NoticesNavLinkBtn,
 } from './NoticeNav.styled';
 
+
+import { useSelector } from 'react-redux';
+import { selectIsLoggedIn } from 'redux/auth/selectors';
+
+
 const NoticesNav = () => {
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   return (
     <NavContainer>
       <List>
@@ -39,12 +45,16 @@ const NoticesNav = () => {
         <Li>
           <NoticesNavLink
             // className={({ isActive }) => (isActive ? css.active : '')}
-            to="/notices/for-free"
+            to="/notices/in-good-hands"
           >
             in good hands
           </NoticesNavLink>
         </Li>
+
         {
+
+        {isLoggedIn && (
+
           <Li>
             <NoticesNavLink
               // className={({ isActive }) => (isActive ? css.active : '')}
@@ -53,8 +63,8 @@ const NoticesNav = () => {
               favorite ads
             </NoticesNavLink>
           </Li>
-        }
-        {
+        )}
+        {isLoggedIn && (
           <Li>
             <NoticesNavLink
               // className={({ isActive }) => (isActive ? css.active : '')}
@@ -63,7 +73,7 @@ const NoticesNav = () => {
               my ads
             </NoticesNavLink>
           </Li>
-        }
+        )}
       </List>
 
       <AddBtnContainer>

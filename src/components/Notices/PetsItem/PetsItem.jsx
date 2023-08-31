@@ -22,6 +22,8 @@ import { MaleIcon } from 'components/SvgIcons/MaleIcon';
 import Context from "components/Modals/Context/Context";
 import Modal from "components/Modals/Modal";
 import CardMore from "components/CardMore/CardMore";
+import { useSelector } from "react-redux";
+import { selectIsLoggedIn } from "redux/auth/selectors";
 
 export const CategoryItem = ({
   _id,
@@ -38,6 +40,7 @@ export const CategoryItem = ({
   comments,
   ...restProps
 }) => {
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   // const [showModal, setShowModal] = useState(false);
 
   // const handleLearnClick = () => {
@@ -77,9 +80,10 @@ export const CategoryItem = ({
         <FavoriteBtn>
           <AddToFavoriteIcon id="svg" fill={favorite ? '#54adff' : 'none'} />
         </FavoriteBtn>
+{ isLoggedIn && (
         <DelBtn type="button">
           <Delete id="svg" />
-        </DelBtn>
+        </DelBtn>)}
         <BtnList>
           <Text>{category}</Text>
           <li

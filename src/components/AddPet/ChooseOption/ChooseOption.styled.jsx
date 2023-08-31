@@ -19,7 +19,6 @@ export const Label = styled.label`
   font-size: 14px;
   line-height: calc(19 / 14);
   border-radius: 40px;
-
   background-color: ${props => (props.checked ? '#54adff' : '#CCE4FB')};
   color: ${props => (props.checked ? '#FEF9F9' : '#54ADFF')};
   transition: all 0.2s ease-in-out;

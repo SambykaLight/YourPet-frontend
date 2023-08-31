@@ -9,14 +9,14 @@ const PersonalDetails = ({ category, touched, errors }) => {
           <Input
             type="text"
             name="title"
-            placeholder="Title of add"
+            placeholder="Type name pet"
             errors={touched.title && errors.title}
           />
           {touched.title && errors.title && <div>{errors.title}</div>}
         </Label>
       )}
       <Label>
-        Name pet
+        Pet’s name
         <Input
           type="text"
           name="name"
@@ -30,7 +30,7 @@ const PersonalDetails = ({ category, touched, errors }) => {
         <Input
           type="text"
           name="dateOfBirth"
-          placeholder="dd.mm.yyyy"
+          placeholder="Type date of birth"
           errors={touched.dateOfBirth && errors.dateOfBirth}
         />
         {touched.dateOfBirth && errors.dateOfBirth && (
@@ -38,11 +38,11 @@ const PersonalDetails = ({ category, touched, errors }) => {
         )}
       </Label>
       <Label>
-        Breed
+        Type
         <Input
           type="text"
           name="breed"
-          placeholder="Type breed"
+          placeholder="Type of pet"
           errors={touched.breed && errors.breed}
         />
         {touched.breed && errors.breed && <div>{errors.breed}</div>}

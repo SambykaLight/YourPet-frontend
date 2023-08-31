@@ -14,6 +14,10 @@ export const Label = styled.label`
   font-size: 14px;
   line-height: calc(19 / 14);
   color: #111111;
+  @media (min-width: 768px) {
+    font-size: 20px;
+    line-height: calc(27 / 20);
+  }
 
   > div {
     position: absolute;
