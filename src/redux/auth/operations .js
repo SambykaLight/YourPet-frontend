@@ -107,7 +107,7 @@ export const updateAvatars = createAsyncThunk(
   async (userData, { rejectWithValue }) => {
     console.log('Entry Data Avatars', userData);
     try {
-      const { data } = await axios.put(`/api/users/avatars`, userData);
+      const { data } = await axios.post(`/api/users/avatars`, userData);
       console.log('Data Avatar', data);
       return data;
     } catch (error) {

@@ -36,11 +36,12 @@ export const CategoryItem = ({
   title,
   location,
   price,
-  comments,
+  comment,
   owner,
   ...restProps
 }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  
   // const [showModal, setShowModal] = useState(false);
 
   // const handleLearnClick = () => {
@@ -127,6 +128,7 @@ export const CategoryItem = ({
           <CardMore />
         </Modal>
       </Context>
+
 
 
         {/* <Btn>

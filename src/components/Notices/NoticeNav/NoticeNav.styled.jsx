@@ -146,7 +146,7 @@ export const AddBtnContainer = styled.ul`
     gap: 12px;
   }
 `;
-export const AddButtonLink = styled.li`
+export const AddButtonLink = styled(NavLink)`
   svg {
     order: 2;
     width: 24px;

@@ -19,10 +19,16 @@ import { useDispatch, useSelector } from 'react-redux';
 // import ModalApprove from 'components/Modals/ApproveActions/ModalApprove';
 
 import { selectUser } from 'redux/auth/selectors'
+import Context from 'components/Modals/Context/Context';
+import Modal from 'components/Modals/Modal';
+import ModalApproveAction from 'components/Modals/ModalApproveAction/ModalApproveAction';
+
 
 function UserMenu() {
 const dispatch = useDispatch()
 const userInfo = useSelector(selectUser)
+
+
 
 const handleLogout = ()=>{
 dispatch(logout())
@@ -31,15 +37,14 @@ dispatch(logout())
   return (
     <>
       <LogoutButtonContainer>
-        <Link to="/login" onClick={handleLogout}>
-          {/* <Context>
-            <Modal openButtonLabel={'Log Out'}>
-            <ModalApprove/>
-            <LogoutIcon />
+        {/* <Link to="/login" onClick={handleLogout}> */}
+          <Context>
+            <Modal >
+            <ModalApproveAction logoutFunc = {handleLogout}/>
             </Modal>
-            
-          </Context> */}
-        </Link>
+
+          </Context>
+        {/* </Link> */}
 
         <LinksContainer>
           <StyledLink to="/login">

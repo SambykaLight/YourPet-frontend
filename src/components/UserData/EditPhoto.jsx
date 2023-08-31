@@ -47,7 +47,7 @@ const EditPhoto = ({ editMode }) => {
     setIsEditingPhoto(false);
 
     const updatedData = new FormData();
-    updatedData.append('image', selectedFile, selectedFile.name);
+    updatedData.append('avatar', selectedFile, selectedFile.name);
     dispatch(updateAvatars(updatedData));
   };
 

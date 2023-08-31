@@ -34,7 +34,7 @@ import { useDispatch } from 'react-redux';
            <Highlight>Breed:</Highlight> {pet.breed}
          </Description>
          <Description>
-           <Highlight>Comments:</Highlight> {pet.comments}
+           <Highlight>Comments:</Highlight> {pet.comment}
          </Description>
        </Box>
      </>
