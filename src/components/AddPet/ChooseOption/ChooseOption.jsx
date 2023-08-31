@@ -33,12 +33,12 @@ const ChooseOption = ({ values }) => {
         />
         lost/found
       </Label>
-      <Label checked={values.category === 'for-free'}>
+      <Label checked={values.category === 'in-good-hands'}>
         <Field
           type="radio"
-          value="for-free"
+          value="in-good-hands"
           name="category"
-          checked={values.category === 'for-free'}
+          checked={values.category === 'in-good-hands'}
         />
         in good hands
       </Label>
