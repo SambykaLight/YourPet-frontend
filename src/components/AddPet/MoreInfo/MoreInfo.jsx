@@ -28,10 +28,10 @@ const MoreInfo = ({
     const file = e.target.files[0];
 
     if (!file) {
-      setFieldValue('image', '');
+      setFieldValue('file', '');
       return;
     }
-    setFieldValue('image', file);
+    setFieldValue('file', file);
   };
 
   return (
@@ -46,7 +46,7 @@ const MoreInfo = ({
                   sx={{
                     width: 24,
                     height: 24,
-                    color: values.sex === 'male' ? '#888888' : '#F43F5E',
+                    color: values.sex === 'male' ? '#F43F5E' : '#FFFFFF',
                   }}
                 />
                 Female
@@ -62,7 +62,7 @@ const MoreInfo = ({
                   sx={{
                     width: 24,
                     height: 24,
-                    color: values.sex === 'female' ? '#888888' : '#54ADFF',
+                    color: values.sex === 'female' ? '#54ADFF' : '#FFFFFF',
                     transform: 'rotate(-45deg)',
                   }}
                 />
@@ -81,24 +81,24 @@ const MoreInfo = ({
 
         <PhotoWrap step={step} category={category}>
           <PhotoText step={step} category={category}>
-            {values.image ? 'Add photo' : 'Load the pet’s image: '}
+            {values.file ? 'Add photo' : 'Load the pet’s image: '}
           </PhotoText>
           <AddLabel>
-            {values.image ? (
-              <img src={URL.createObjectURL(values.image)} alt="pet" />
+            {values.file ? (
+              <img src={URL.createObjectURL(values.file)} alt="pet" />
             ) : (
               <Add sx={{ fontSize: 50, color: '#54ADFF' }} />
             )}
             <input
               type="file"
-              name="image"
+              name="file"
               accept=".png, .jpg"
               multiple={false}
               onChange={handleFileChange}
               hidden
             />
 
-            <Message name="image" component="div" />
+            <Message name="file" component="div" />
           </AddLabel>
         </PhotoWrap>
       </div>
@@ -109,11 +109,11 @@ const MoreInfo = ({
             Location
             <Input
               type="text"
-              name="place"
-              placeholder="Type location"
-              errors={touched.place && errors.place}
+              name="location"
+              placeholder="Type of location"
+              errors={touched.location && errors.location}
             />
-            <Message name="place" component="div" />
+            <Message name="location" component="div" />
           </Label>
         )}
 
@@ -123,7 +123,7 @@ const MoreInfo = ({
             <Input
               type="text"
               name="price"
-              placeholder="Type price"
+              placeholder="Type of price"
               errors={touched.price && errors.price}
             />
             <Message name="price" component="div" />
@@ -135,7 +135,7 @@ const MoreInfo = ({
           <TextArea
             as="textarea"
             name="comments"
-            placeholder="Type comment"
+            placeholder="Type of pet"
             category={category}
             step={step}
             errors={touched.comments && errors.comments}

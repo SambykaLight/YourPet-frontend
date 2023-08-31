@@ -6,7 +6,7 @@ const validationSchema = step => {
   if (step === 0) {
     schema = Yup.object().shape({
       category: Yup.string()
-        .oneOf(['my-pet', 'sell', 'lost-found', 'for-free'])
+        .oneOf(['my-pet', 'sell', 'lost-found', 'in-good-hands'])
         .required(),
     });
   }
@@ -18,7 +18,7 @@ const validationSchema = step => {
         .trim()
         .min(2, 'Too Short!')
         .max(16, 'Too Long!'),
-      dateOfBirth: Yup.string()
+      date: Yup.string()
         .required('Date is required')
         .matches(
           /^(0[1-9]|1[0-9]|2[0-9]|3[01])\.(0[1-9]|1[012])\.\d{4}$/,
@@ -38,13 +38,14 @@ const validationSchema = step => {
           }
         ),
 
-      breed: Yup.string()
+      type: Yup.string()
         .required()
         .min(2, 'Too Short!')
         .max(16, 'Too Long!')
         .trim(),
       title: Yup.string().when('category', {
-        is: category => ['sell', 'lost-found', 'for-free'].includes(category),
+        is: category =>
+          ['sell', 'lost-found', 'in-good-hands'].includes(category),
         then: () => Yup.string().trim().required('Title is required'),
       }),
     });
@@ -53,14 +54,16 @@ const validationSchema = step => {
   if (step === 2) {
     schema = Yup.object().shape({
       sex: Yup.string().when('category', {
-        is: category => ['sell', 'lost-found', 'for-free'].includes(category),
+        is: category =>
+          ['sell', 'lost-found', 'in-good-hands'].includes(category),
         then: () =>
           Yup.string()
             .oneOf(['male', 'female'])
             .required('The sex is required'),
       }),
-      place: Yup.string().when('category', {
-        is: category => ['sell', 'lost-found', 'for-free'].includes(category),
+      location: Yup.string().when('category', {
+        is: category =>
+          ['sell', 'lost-found', 'in-good-hands'].includes(category),
         then: () => Yup.string().trim().required('Location is required'),
       }),
       price: Yup.number().when('category', {
@@ -75,7 +78,7 @@ const validationSchema = step => {
         .min(4, 'Comments should be at least 4 characters')
         .max(120, 'Comments should not exceed 120 characters')
         .trim(),
-      image: Yup.mixed()
+      file: Yup.mixed()
         .required('Image is required')
         .test(
           'image',

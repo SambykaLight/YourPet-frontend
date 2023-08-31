@@ -2,13 +2,13 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import toast from 'react-hot-toast';
 
-const errMessage = "Something went wrong. Please  try again";
+const errMessage = 'Something went wrong. Please  try again';
 
 export const fetchUserNotices = createAsyncThunk(
   'notices/fetchNotices',
   async (page, thunkAPI) => {
     try {
-      const { data }= await axios.get(`/api/notices/user`, {
+      const { data } = await axios.get(`/api/notices/user`, {
         params: { page },
       });
       return data;
@@ -23,7 +23,7 @@ export const fetchNoticeById = createAsyncThunk(
   'notices/fetchNoticeById',
   async (id, thunkAPI) => {
     try {
-      const { data }= await axios.get(`/api/notices/notice/${id}`);
+      const { data } = await axios.get(`/api/notices/notice/${id}`);
       return data;
     } catch (error) {
       toast.error(errMessage);
@@ -38,9 +38,9 @@ export const fetchNoticesByCategory = createAsyncThunk(
     const searchParams = new URLSearchParams(params);
     searchParams.forEach((value, key) => {
       if (value === '') {
-        searchParams.delete(key)
+        searchParams.delete(key);
       }
-    })
+    });
     try {
       const { data } = await axios.get(
         `/api/notices/?${searchParams.toString()}`
@@ -57,7 +57,7 @@ export const fetchNoticesFavorite = createAsyncThunk(
   'notices/fetchNoticesFavourite',
   async (_, thunkAPI) => {
     try {
-      const { data }= await axios.get(`/api/notices/favorite`);
+      const { data } = await axios.get(`/api/notices/favorite`);
       return data;
     } catch (error) {
       toast.error(errMessage);
@@ -70,7 +70,7 @@ export const addNotice = createAsyncThunk(
   'notices/addNotice',
   async ([category, data], thunkAPI) => {
     try {
-      const response= await axios.post(
+      const response = await axios.post(
         `/api/notices/category?category=${category}`,
         data
       );
@@ -128,7 +128,7 @@ export const deleteNotice = createAsyncThunk(
   'notices/deleteNotice',
   async (id, thunkAPI) => {
     try {
-      const {data}= await axios.delete(`api/notices/${id}`);
+      const { data } = await axios.delete(`api/notices/${id}`);
       return data;
     } catch (error) {
       toast.error(errMessage);

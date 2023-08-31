@@ -25,7 +25,6 @@ export const SexWrapper = styled.div`
 
   > div {
     display: flex;
-    gap: 23px;
   }
 `;
 
@@ -34,18 +33,24 @@ export const SexTitle = styled.p`
   font-size: 14px;
   line-height: calc(19 / 14);
   color: #111111;
+  @media (min-width: 768px) {
+    font-size: 20px;
+    line-height: calc(27 / 20);
+  }
 `;
 
 export const SexLabel = styled.label`
   display: flex;
   align-items: center;
-  /* gap: 10px; */
-
   font-weight: 400;
   font-size: 16px;
   line-height: calc(24 / 16);
   letter-spacing: 0.04em;
-  color: ${props => (props.checked ? '#00C3AD' : '#888888')};
+  background-color: ${props => (props.checked ? '#54ADFF' : 'transparent')};
+  color: ${props => (props.checked ? '#ffffff' : '#888888')};
+
+  padding: 8px 16px;
+  border-radius: 40px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   will-change: transform;
@@ -82,7 +87,7 @@ export const PhotoText = styled.p`
 
   @media (min-width: 768px) {
     font-size: 20px;
-    line-height: calc(26 / 20);
+    line-height: calc(27 / 20);
     width: ${props =>
       props.category !== 'my-pet' && props.step === 2 ? '200px' : '114px'};
     margin-bottom: ${props =>
@@ -97,7 +102,7 @@ export const AddLabel = styled.label`
   align-items: center;
   width: 112px;
   height: 112px;
-  background-color: #cce4fb;
+  background-color: #8cc8fd70;
   border-radius: 20px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
@@ -147,6 +152,10 @@ export const Label = styled.label`
   font-size: 14px;
   line-height: calc(19 / 14);
   color: #111111;
+  @media (min-width: 768px) {
+    font-size: 20px;
+    line-height: calc(27 / 20);
+  }
 `;
 
 export const Input = styled(Field)`
@@ -170,6 +179,10 @@ export const CommentsLabel = styled.label`
   font-weight: 500;
   font-size: 14px;
   line-height: calc(19 / 14);
+  @media (min-width: 768px) {
+    font-size: 20px;
+    line-height: calc(27 / 20);
+  }
 `;
 
 export const TextArea = styled(Field)`
@@ -193,7 +206,7 @@ export const TextArea = styled(Field)`
   @media (min-width: 768px) {
     height: ${props =>
       props.category === 'lost-found' ||
-      (props.category === 'for-free' && props.step === 2)
+      (props.category === 'in-good-hands' && props.step === 2)
         ? '182px'
         : '79px'};
   }

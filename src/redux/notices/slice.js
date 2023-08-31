@@ -29,7 +29,7 @@ const noticesSlice = createSlice({
   initialState: initialState,
   extraReducers: builder => {
     builder
-      .addCase(fetchUserNotices.fulfilled, (state, {payload}) => {
+      .addCase(fetchUserNotices.fulfilled, (state, { payload }) => {
         return {
           ...state,
           items: [...payload.data.notices],
@@ -37,29 +37,27 @@ const noticesSlice = createSlice({
           isLoading: false,
         };
       })
-      .addCase(fetchNoticesByCategory.fulfilled, (state, {payload}) => {
+      .addCase(fetchNoticesByCategory.fulfilled, (state, { payload }) => {
         return {
           ...state,
-          items: [...payload.data.notices],
-          totalPages: payload.data.totalPages,
+          items: [...payload],
+          totalPages: payload,
           isLoading: false,
         };
       })
-      .addCase(addNotice.fulfilled, (state, {payload}) => {
+      .addCase(addNotice.fulfilled, (state, { payload }) => {
         state.items.push(payload);
         state.isLoading = false;
       })
-      .addCase(deleteNotice.fulfilled, (state, {payload}) => {
+      .addCase(deleteNotice.fulfilled, (state, { payload }) => {
         return {
           items: [
-            ...state.items.filter(
-              notice => notice._id !== payload.data._id
-            ),
+            ...state.items.filter(notice => notice._id !== payload.data._id),
           ],
           isLoading: false,
         };
       })
-      .addCase(fetchNoticesFavorite.fulfilled, (state, {payload}) => {
+      .addCase(fetchNoticesFavorite.fulfilled, (state, { payload }) => {
         return {
           ...state,
           items: [...payload.data.notices],
@@ -67,29 +65,25 @@ const noticesSlice = createSlice({
           isLoading: false,
         };
       })
-      .addCase(makeNoticeFavorite.fulfilled, (state, {payload}) => {
+      .addCase(makeNoticeFavorite.fulfilled, (state, { payload }) => {
         const index = state.items.findIndex(
           notice => notice._id === payload._id
         );
         state.items.splice(index, 1, payload);
       })
-      .addCase(unMakeNoticeFavorite.fulfilled, (state, {payload}) => {
+      .addCase(unMakeNoticeFavorite.fulfilled, (state, { payload }) => {
         const index = state.items.findIndex(
           notice => notice._id === payload._id
         );
         state.items.splice(index, 1, payload);
       })
-      .addCase(removeNoticeFavorite.fulfilled, (state, {payload}) => {
+      .addCase(removeNoticeFavorite.fulfilled, (state, { payload }) => {
         return {
-          items: [
-            ...state.items.filter(
-              notice => notice._id !== payload._id
-            ),
-          ],
+          items: [...state.items.filter(notice => notice._id !== payload._id)],
           isLoading: false,
         };
       })
-      .addCase(fetchNoticeById.fulfilled, (_, {payload}) => {
+      .addCase(fetchNoticeById.fulfilled, (_, { payload }) => {
         return {
           item: { ...payload.data.notice },
           isLoading: false,
@@ -111,8 +105,8 @@ const noticesSlice = createSlice({
       .addCase(makeNoticeFavorite.pending, handlePending)
       .addCase(removeNoticeFavorite.pending, handlePending)
       .addCase(unMakeNoticeFavorite.pending, handlePending)
-      .addCase(fetchNoticeById.pending,handlePending)
-      .addCase(fetchNoticeById.rejected, handleRejected)
+      .addCase(fetchNoticeById.pending, handlePending)
+      .addCase(fetchNoticeById.rejected, handleRejected);
   },
 });
 

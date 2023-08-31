@@ -14,6 +14,7 @@ import authReducer from './auth/slice';
 import { contactsReducer } from './pets/slice';
 import noticesReducer from './notices/slice';
 import { themeReducer } from './themeSlice/themeSlice';
+import { newsReducer } from './news/newsSlice';
 
 const authPersistConfig = {
   key: 'auth',
@@ -27,6 +28,7 @@ export const store = configureStore({
     pets: contactsReducer,
     notices: noticesReducer,
     theme: themeReducer,
+    news: newsReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

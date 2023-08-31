@@ -1,10 +1,6 @@
 import { useState } from 'react';
-// import {  useDispatch } from 'react-redux';
-// useSelector,
-// import { selectIsLoading } from 'redux/pets/selectors';
-// import { selectIsNoticeLoading } from 'redux/notices/selectors';
-// import { addNotice } from 'redux/notices/operations';
-// import { addPet } from 'redux/pets/operations';
+import { useDispatch } from 'react-redux';
+import { addPet } from 'redux/pets/operations';
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form } from 'formik';
 import ChooseOption from './ChooseOption/ChooseOption';
@@ -25,11 +21,11 @@ import validationSchema from './validationSchema';
 const initialValues = {
   category: 'my-pet',
   name: '',
-  dateOfBirth: '',
-  breed: '',
-  image: '',
+  date: '',
+  type: '',
+  file: '',
   sex: '',
-  place: '',
+  location: '',
   price: '',
   comments: '',
   title: '',
@@ -38,12 +34,10 @@ const initialValues = {
 const AddPetForm = () => {
   const [step, setStep] = useState(0);
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const steps = ['Choose option', 'Personal details', 'More info'];
-  // const isLoading = useSelector(selectIsLoading);
-  const isLoading = false;
-  // const isNoticeLoading = useSelector(selectIsNoticeLoading);
-  const isNoticeLoading = true;
+  // const isLoading = false;
+  // const isNoticeLoading = true;
 
   const handleClickNext = e => {
     e.preventDefault();
@@ -68,62 +62,36 @@ const AddPetForm = () => {
     const formData = new FormData();
 
     formData.append('name', values.name.trim());
-    formData.append('dateOfBirth', values.dateOfBirth);
-    formData.append('breed', values.breed.trim());
+    formData.append('date', values.date);
+    formData.append('type', values.type.trim());
     formData.append('comments', values.comments.trim());
-    formData.append('image', values.image, values.image.name);
+    formData.append('file', values.file, values.file.name);
+    formData.append('category', values.category.trim());
 
-    if (values.category === 'my-pet') {
-      // dispatch(addPet(formData))
-      //   .then(response => {
-      //     if (!response.error) {
-      //       navigate('/user');
-      //       resetForm();
-      //       return;
-      //     }
-      //     return;
-      //   })
-      //   .catch(error => console.log(error));
+    if (values.category !== 'my-pet') {
+      formData.append('location', values.location.trim());
+      formData.append('sex', values.sex.trim());
+      formData.append('title', values.title.trim());
     }
-
-    formData.append('title', values.title.trim());
-    formData.append('place', values.place.trim());
-    formData.append('sex', values.sex);
-
-    if (values.category === 'lost-found') {
-      // dispatch(addNotice([values.category, formData])).then(response => {
-      //   if (!response.error) {
-      //     navigate(`/notices/${values.category}`);
-      //     resetForm();
-      //     return;
-      //   }
-      //   return;
-      // });
-    }
-
-    if (values.category === 'for-free') {
-      // dispatch(addNotice([values.category, formData])).then(response => {
-      //   if (!response.error) {
-      //     navigate(`/notices/${values.category}`);
-      //     resetForm();
-      //     return;
-      //   }
-      //   return;
-      // });
-    }
-
-    formData.append('price', values.price.toString());
 
     if (values.category === 'sell') {
-      // dispatch(addNotice([values.category, formData])).then(response => {
-      //   if (!response.error) {
-      //     navigate(`/notices/${values.category}`);
-      //     resetForm();
-      //     return;
-      //   }
-      //   return;
-      // });
+      formData.append('price', values.price.trim());
     }
+
+    for (var pair of formData.entries()) {
+      console.log(pair[0] + ', ' + pair[1]);
+    }
+
+    dispatch(addPet(formData))
+      .then(response => {
+        if (!response.error) {
+          navigate('/user');
+          resetForm();
+          return;
+        }
+        return;
+      })
+      .catch(error => console.log(error));
   };
 
   return (
@@ -154,7 +122,7 @@ const AddPetForm = () => {
               ? 'Add pet for sale'
               : values.category === 'lost-found'
               ? 'Add lost pet'
-              : 'Add for free'}
+              : 'Add in good hands'}
           </FormTitle>
           <Form>
             <StepsList step={step}>
@@ -196,7 +164,7 @@ const AddPetForm = () => {
               {step === 2 ? (
                 <ButtonFilled
                   type="submit"
-                  disabled={isLoading || isNoticeLoading}
+                  // disabled={isLoading || isNoticeLoading}
                 >
                   <span>Done</span>
                   <Pets
@@ -218,13 +186,13 @@ const AddPetForm = () => {
                     }
                     if (step === 1) {
                       validateField('name');
-                      validateField('dateOfBirth');
-                      validateField('breed');
+                      validateField('date');
+                      validateField('type');
                       validateField('title');
                       setTouched({
                         name: true,
-                        dateOfBirth: true,
-                        breed: true,
+                        date: true,
+                        type: true,
                         title: true,
                       });
                     }
