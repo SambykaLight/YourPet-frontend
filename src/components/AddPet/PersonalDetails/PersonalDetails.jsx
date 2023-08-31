@@ -29,23 +29,21 @@ const PersonalDetails = ({ category, touched, errors }) => {
         Date of birth
         <Input
           type="text"
-          name="dateOfBirth"
+          name="date"
           placeholder="Type date of birth"
-          errors={touched.dateOfBirth && errors.dateOfBirth}
+          errors={touched.date && errors.date}
         />
-        {touched.dateOfBirth && errors.dateOfBirth && (
-          <div>{errors.dateOfBirth}</div>
-        )}
+        {touched.date && errors.date && <div>{errors.date}</div>}
       </Label>
       <Label>
         Type
         <Input
           type="text"
-          name="breed"
+          name="type"
           placeholder="Type of pet"
-          errors={touched.breed && errors.breed}
+          errors={touched.type && errors.type}
         />
-        {touched.breed && errors.breed && <div>{errors.breed}</div>}
+        {touched.type && errors.type && <div>{errors.type}</div>}
       </Label>
     </PersonalDetailsWrapper>
   );
