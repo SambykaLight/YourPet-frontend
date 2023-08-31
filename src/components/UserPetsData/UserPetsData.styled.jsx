@@ -21,6 +21,11 @@ export const Container = styled.div`
 
 export const Title = styled.p`
   color: black;
+  color: black;
+  font-weight: 500;
+  line-height: 1.36;
+  letter-spacing: 0.04em;
+  font-size: 28px;
 `;
 
 export const TitleContainer = styled.div`

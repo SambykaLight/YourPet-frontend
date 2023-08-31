@@ -28,10 +28,10 @@ const MoreInfo = ({
     const file = e.target.files[0];
 
     if (!file) {
-      setFieldValue('image', '');
+      setFieldValue('file', '');
       return;
     }
-    setFieldValue('image', file);
+    setFieldValue('file', file);
   };
 
   return (
@@ -81,24 +81,24 @@ const MoreInfo = ({
 
         <PhotoWrap step={step} category={category}>
           <PhotoText step={step} category={category}>
-            {values.image ? 'Add photo' : 'Load the pet’s image: '}
+            {values.file ? 'Add photo' : 'Load the pet’s image: '}
           </PhotoText>
           <AddLabel>
-            {values.image ? (
-              <img src={URL.createObjectURL(values.image)} alt="pet" />
+            {values.file ? (
+              <img src={URL.createObjectURL(values.file)} alt="pet" />
             ) : (
               <Add sx={{ fontSize: 50, color: '#54ADFF' }} />
             )}
             <input
               type="file"
-              name="image"
+              name="file"
               accept=".png, .jpg"
               multiple={false}
               onChange={handleFileChange}
               hidden
             />
 
-            <Message name="image" component="div" />
+            <Message name="file" component="div" />
           </AddLabel>
         </PhotoWrap>
       </div>
@@ -109,11 +109,11 @@ const MoreInfo = ({
             Location
             <Input
               type="text"
-              name="place"
+              name="location"
               placeholder="Type of location"
-              errors={touched.place && errors.place}
+              errors={touched.location && errors.location}
             />
-            <Message name="place" component="div" />
+            <Message name="location" component="div" />
           </Label>
         )}
 

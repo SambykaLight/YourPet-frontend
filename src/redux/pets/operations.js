@@ -2,13 +2,13 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import toast from 'react-hot-toast';
 
-const errMessage = "Something went wrong. Please  try again";
+const errMessage = 'Something went wrong. Please  try again';
 
 export const fetchPets = createAsyncThunk(
   'pets/fetchAll',
   async (_, thunkAPI) => {
     try {
-      const {data}= await axios.get('/api/users/current');
+      const { data } = await axios.get('/api/pets');
       return data;
     } catch (error) {
       toast.error(errMessage);
@@ -21,7 +21,7 @@ export const deletePet = createAsyncThunk(
   'pets/deletePet',
   async (petId, thunkAPI) => {
     try {
-      const{data} = await axios.delete(`/api/pets/${petId}`);
+      const { data } = await axios.delete(`/api/pets/${petId}`);
       return data;
     } catch (error) {
       toast.error(errMessage);

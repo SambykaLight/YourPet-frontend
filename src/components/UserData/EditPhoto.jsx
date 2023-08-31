@@ -6,6 +6,8 @@ import { selectUser } from 'redux/auth/selectors';
 
 import avatarDefault from 'images/Avatar/avatarDefault.png';
 
+import { EDIT_MODE } from './constants';
+
 import {
   PictureBox,
   PictureWrapper,
@@ -19,7 +21,7 @@ import {
   IconRefuse,
 } from './UserData.styled';
 
-const EditPhoto = () => {
+const EditPhoto = ({ editMode }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [isEditingPhoto, setIsEditingPhoto] = useState(false);
 
@@ -80,22 +82,28 @@ const EditPhoto = () => {
             style={{ display: 'none' }}
             onChange={handleFileChange}
           />
-          {isEditingPhoto ? (
-            <>
-              <IconWrapperVerify>
-                <IconVerify onClick={handleConfirmPhoto} />
-              </IconWrapperVerify>
-              <span>Confirm</span>
-              <IconWrapperRefuse>
-                <IconRefuse onClick={handleCancelPhoto} />
-              </IconWrapperRefuse>
-            </>
-          ) : (
-            <>
-              <Camera />
-              <span>Edit photo</span>
-            </>
-          )}
+          {
+            editMode === EDIT_MODE.editModeValue && (
+              <>
+                {isEditingPhoto ? (
+                  <>
+                    <IconWrapperVerify>
+                      <IconVerify onClick={handleConfirmPhoto} />
+                    </IconWrapperVerify>
+                    <span>Confirm</span>
+                    <IconWrapperRefuse>
+                      <IconRefuse onClick={handleCancelPhoto} />
+                    </IconWrapperRefuse>
+                  </>
+                ) : (
+                  <>
+                    <Camera />
+                    <span>Edit photo</span>
+                  </>
+                )}
+              </>
+            )
+          }
         </EditBtnPicture>
       </EditPicture>
     </PictureBox>
