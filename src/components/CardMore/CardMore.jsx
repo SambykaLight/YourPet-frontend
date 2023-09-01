@@ -48,7 +48,7 @@ function CardMore() {
               </tr>
               <tr>
                 <StyledTableItemStatic>Type:</StyledTableItemStatic>
-                <StyledTableItemDynamic> Pomeranian</StyledTableItemDynamic>
+                <StyledTableItemDynamic>Pomeranian</StyledTableItemDynamic>
               </tr>
               <tr>
                 <StyledTableItemStatic>The sex:</StyledTableItemStatic>

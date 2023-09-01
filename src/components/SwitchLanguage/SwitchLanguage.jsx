@@ -25,24 +25,22 @@ function SwitchLanguage() {
           type="button"
           onClick={handleLangChange}
           value="gb"
-          style={{ backgroundColor: isDarkTheme === 'dark' && '#809cb5' }}
+          style={{ backgroundColor: isDarkTheme === 'dark' && '#7791a8' }}
         >
-          <Span>
-            <span className="fi fi-ua" style={{ fontSize: '150px' }}></span>
+          <Span className="flag">
+            <span className="fi fi-ua"></span>
           </Span>
-          <Label>UA</Label>
         </FlagBtn>
       ) : (
         <FlagBtn
           type="button"
           onClick={handleLangChange}
           value="uk"
-          style={{ backgroundColor: isDarkTheme === 'dark' && '#809cb5' }}
+          style={{ backgroundColor: isDarkTheme === 'dark' && '#7791a8' }}
         >
-          <Span>
-            <span className="fi fi-gb" style={{ fontSize: '150px' }}></span>
+          <Span className="flag">
+            <span className="fi fi-gb"></span>
           </Span>
-          <Label>EN</Label>
         </FlagBtn>
       )}
     </>

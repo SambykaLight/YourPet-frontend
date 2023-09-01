@@ -9,6 +9,7 @@ import {
 import Box from '@mui/material/Box';
 import { useSelector } from 'react-redux';
 import { darkTheme } from 'redux/themeSlice/selectors';
+import React, { useState } from 'react';
 
 export const OurFriendsList = ({ FriendsData }) => {
   const isDarkTheme = useSelector(darkTheme);
@@ -20,11 +21,33 @@ export const OurFriendsList = ({ FriendsData }) => {
     return number.split(' ').join('');
   }
 
+  const [openMenus, setOpenMenus] = useState(
+    Array(FriendsData.length).fill(false)
+  );
+
+  const handleTimeClick = index => {
+    const newOpenMenus = [...openMenus];
+    if (FriendsData[index].time !== 'day and night') {
+      newOpenMenus[index] = !newOpenMenus[index];
+    }
+    setOpenMenus(newOpenMenus);
+  };
+
+  const workingHours = {
+    MO: '08:00 - 20:00',
+    TU: '08:00 - 20:00',
+    WE: '08:00 - 20:00',
+    TH: '08:00 - 20:00',
+    FR: '08:00 - 20:00',
+    SA: '08:00 - 20:00',
+    SU: '08:00 - 20:00',
+  };
+
   return (
     <>
-      <FriendsList >
+      <FriendsList>
         {FriendsData.length > 0 &&
-          FriendsData.map(friend => (
+          FriendsData.map((friend, index) => (
             <FriendsItem
               key={friend.id}
               style={{ backgroundColor: isDarkTheme === 'dark' && '#6b818f' }}
@@ -51,12 +74,50 @@ export const OurFriendsList = ({ FriendsData }) => {
                     textAlign: 'left',
                   }}
                 >
-                  <FriendsContacts>
-                    Time
-                    <br />
-                    {friend.time}
-                  </FriendsContacts>
-                  <FriendsContacts>
+                  <Box
+                    sx={{
+                      position: 'relative',
+                      display: 'flex',
+                      width: '100%',
+                      textAlign: 'left',
+                    }}
+                  >
+                    <div
+                      onClick={() => handleTimeClick(index)}
+                      style={{ cursor: 'pointer' }}
+                    >
+                      <FriendsContacts> Time: {friend.time}</FriendsContacts>
+                    </div>
+                    {openMenus[index] && friend.time !== 'day and night' && (
+                      <div
+                        style={{
+                          position: 'absolute',
+                          zIndex: 999,
+                          backgroundColor: 'white',
+                          top: '20px',
+                          background: '#ffffff',
+                          boxShadow: '3px 8px 14px rgba(136, 198, 253, 0.19)',
+                          border: '1px solid #54adff',
+                          borderRadius: '8px',
+                          padding: '10px',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          alignItems: 'flex-end',
+                        }}
+                      >
+                        {Object.keys(workingHours).map(day => (
+                          <p key={day}>
+                            {day} {workingHours[day]}
+                          </p>
+                        ))}
+                      </div>
+                    )}
+                  </Box>
+                  <FriendsContacts
+                    style={{
+                      marginTop: '12px',
+                    }}
+                  >
                     Address
                     <br />
                     {friend.address}
