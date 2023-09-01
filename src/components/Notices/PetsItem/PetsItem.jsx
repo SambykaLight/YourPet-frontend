@@ -1,7 +1,8 @@
 import { ReactComponent as Delete } from "../../SvgIcons/delete.svg"
-// import { ReactComponent as PawIcon } from '../../SvgIcons/paw.svg';
+import { ReactComponent as PawIcon } from '../../SvgIcons/paw.svg';
 
 import {
+  Btn,
   // Image, Description, Highlight, Button ,
   BtnList,
   CardItem,
@@ -19,13 +20,20 @@ import { LocationIcon } from 'components/SvgIcons/LocationIcon';
 import { IconTime } from 'components/SvgIcons/IconTime';
 import { FemaleIcon } from 'components/SvgIcons/FemaleIcon';
 import { MaleIcon } from 'components/SvgIcons/MaleIcon';
-import Context from "components/Modals/Context/Context";
+import Context, { useModalContext } from "components/Modals/Context/Context";
 import Modal from "components/Modals/Modal";
 import CardMore from "components/CardMore/CardMore";
 import { useSelector } from "react-redux";
 import { selectIsLoggedIn } from "redux/auth/selectors";
 
+
+
+
+
 export const CategoryItem = ({
+
+  
+  
   imageURL,
   _id,
   category,
@@ -42,12 +50,18 @@ export const CategoryItem = ({
 }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   
+  const context = useModalContext();
+  // console.log(context);
+
+  const { toggleValue, toggle } = context;
+  console.log(toggleValue);
+
   // const [showModal, setShowModal] = useState(false);
 
   // const handleLearnClick = () => {
-  //   setShowModal(true);
+  //   setShowModal(true);  
   // };
-
+  
   const [favorite] = useState(false)
 
   function calcAge(birthDatein) {
@@ -123,18 +137,23 @@ export const CategoryItem = ({
 
 
  {/* universal modal */}
- <Context>
-        <Modal openButtonLabel={'Learn more'}>
-          <CardMore />
-        </Modal>
-      </Context>
+
+ {/* <button onClick={() => toggle(!toggleValue)}>12312313</button> */}
+      
 
 
 
-        {/* <Btn>
+
+
+
+         <Btn onClick={() => toggle(!toggleValue)}>
           Learn more
           <PawIcon />
-        </Btn> */}
+        </Btn>
+
+        <Modal>
+          <CardMore />
+        </Modal>
       </CardWrapper>
     </CardItem>
   );
