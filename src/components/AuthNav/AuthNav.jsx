@@ -6,18 +6,21 @@ import BurgerMenu from 'components/BurgerMenu';
 
 import { Link } from 'react-router-dom';
 
+import { useTranslation } from 'react-i18next';
+
 function AuthNav() {
+  const { t } = useTranslation();
   return (
     <>
       <AuthButtonsContainer>
         <Link to="/login">
           <AuthButton>
-            Log In
+            {t('Log In')}
             <LoginIcon />
           </AuthButton>
         </Link>
         <Link to="register">
-          <AuthButton>Registration</AuthButton>
+          <AuthButton>{t('Registration')}</AuthButton>
         </Link>
 
         <BurgerMenu />

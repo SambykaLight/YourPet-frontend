@@ -5,7 +5,10 @@ import LogoIcon from './logo';
 import SwitchLanguage from 'components/SwitchLanguage';
 import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher.js';
 
+import { useTranslation } from 'react-i18next';
+
 function Navigation() {
+  const { t } = useTranslation();
   return (
     <>
       <LogoContainer>
@@ -16,9 +19,9 @@ function Navigation() {
       <SwitchLanguage />
       <ThemeSwitcher />
       <LinksContainer>
-        <StyledLink to="/news">News</StyledLink>
-        <StyledLink to="/notices/sell">Find Pet</StyledLink>
-        <StyledLink to="/friends">Our friends</StyledLink>
+        <StyledLink to="/news">{t('News')}</StyledLink>
+        <StyledLink to="/notices/sell">{t('Find Pet')}</StyledLink>
+        <StyledLink to="/friends">{t('Our friends')}</StyledLink>
       </LinksContainer>
     </>
   );

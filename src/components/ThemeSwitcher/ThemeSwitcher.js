@@ -5,6 +5,7 @@ import { IconButton } from '@mui/material';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { darkTheme } from 'redux/themeSlice/selectors';
+import { iconStyles } from './ThemeSwitcher.styled';
 
 function ThemeSwitcher() {
   const dispatch = useDispatch();
@@ -16,7 +17,11 @@ function ThemeSwitcher() {
 
   return (
     <IconButton edge="end" color="inherit" onClick={handleThemeToggle}>
-      {theme === 'light' ? <Brightness4Icon /> : <Brightness7Icon />}
+      {theme === 'light' ? (
+        <Brightness4Icon sx={iconStyles} />
+      ) : (
+        <Brightness7Icon sx={iconStyles} />
+      )}
     </IconButton>
   );
 }
