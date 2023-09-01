@@ -1,12 +1,13 @@
-import { useDispatch } from 'react-redux';
-import { deletePet } from 'redux/pets/operations';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 
 import { Image, Description, Highlight, Button } from './UserPetsList.styled';
 import Box from '@mui/material/Box';
+import { useState } from 'react';
+import UniversalModal from 'components/Modals/UniversalModal';
+import ModalDeleteAction from 'components/Modals/ModalDeleteAction/ModalDeleteAction';
 
 export const UserPetItem = ({ pet }) => {
-  const dispatch = useDispatch();
+  const [deleteModalActive, setDeleteModalActive] = useState(false);
 
   return (
     <>
@@ -23,7 +24,7 @@ export const UserPetItem = ({ pet }) => {
           <Highlight>Name:</Highlight> {pet.name}
         </Description>
 
-        <Button type="button" onClick={() => dispatch(deletePet(pet._id))}>
+        <Button type="button" onClick={() => setDeleteModalActive(true)}>
           <DeleteOutlinedIcon size="42" />
         </Button>
 
@@ -31,11 +32,21 @@ export const UserPetItem = ({ pet }) => {
           <Highlight>Date of birth:</Highlight> {pet.date}
         </Description>
         <Description>
-          <Highlight>Breed:</Highlight> {pet.type}
+          <Highlight>Type:</Highlight> {pet.type}
         </Description>
         <Description>
           <Highlight>Comments:</Highlight> {pet.comment}
         </Description>
+        <UniversalModal
+          active={deleteModalActive}
+          setActive={setDeleteModalActive}
+        >
+          <ModalDeleteAction
+            modalClose={() => {
+              deleteModalActive(false);
+            }}
+          />
+        </UniversalModal>
       </Box>
     </>
   );

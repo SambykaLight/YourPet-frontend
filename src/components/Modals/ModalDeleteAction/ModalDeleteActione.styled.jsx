@@ -75,66 +75,65 @@ const BtnWrapper = styled.div`
 `;
 
 const BtnCancel = styled.button`
-  width: 256px;
-  height: 40px;
-  cursor: pointer;
-  padding: 9px 0px;
-
-  background: transparent;
-  border-width: 2px;
-  border-color: var(--btn-bg-color);
-  border-style: solid;
-  border-radius: 40px;
-  font-size: 16px;
-
-  color: var(--btn-bg-color);
-  font-size: 16px;
-  font-weight: 700;
-
-  transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  &:hover,
-  &:focus {
-    background: linear-gradient(290.46deg, #419ef1 0%, #9bd0ff 107.89%);
-    color: var(--label-active-color);
-  }
-
-  @media screen and (min-width: 768px) {
-    width: 129px;
-  }
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 8px 28px;
+margin-right: 167 px;
+margin-left: 7px;
+width: 129px;
+height: 40px;
+color: #54adff;
+outline: none;
+background-color: transparent;
+border: 2px solid #54adff;
+border-radius: 40px;
+font-family: 'Manrope';
+font-weight: 700;
+font-size: 16px;
+line-height: 22px;
+margin-bottom: 60px;
+cursor: pointer;
+&:hover {
+  background: linear-gradient(290.46deg, #419ef1 0%, #9bd0ff 107.89%);
+  color: #fef9f9;
+}
+&:focus {
+  background: linear-gradient(290.46deg, #419ef1 0%, #9bd0ff 107.89%);
+  color: #fef9f9;
+}
 `;
 
 const BtnYes = styled.button`
-  width: 256px;
-  height: 40px;
-  cursor: pointer;
-  padding: 9px 0px;
-
-  background: var(--btn-bg-color);
-  border: none;
-  border-radius: 40px;
-  font-size: 16px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-
-  color: var(--label-active-color);
-  font-size: 16px;
-  font-weight: 700;
-
-  transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  &:hover,
-  &:focus {
-    background: linear-gradient(290.46deg, #419ef1 0%, #9bd0ff 107.89%);
-  }
-
-  @media screen and (min-width: 768px) {
-    width: 129px;
-  }
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 8px 28px;
+margin-right: 167 px;
+margin-left: 7px;
+width: 129px;
+height: 40px;
+color: #54adff;
+outline: none;
+background-color: transparent;
+border: 2px solid #54adff;
+border-radius: 40px;
+font-family: 'Manrope';
+font-weight: 700;
+font-size: 16px;
+line-height: 22px;
+margin-bottom: 60px;
+cursor: pointer;
+&:hover {
+  background: linear-gradient(290.46deg, #419ef1 0%, #9bd0ff 107.89%);
+  color: #fef9f9;
+}
+&:focus {
+  background: linear-gradient(290.46deg, #419ef1 0%, #9bd0ff 107.89%);
+  color: #fef9f9;
+}
 `;
 
 const TrashIcon = styled(FiTrash2)`
