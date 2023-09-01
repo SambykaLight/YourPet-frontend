@@ -6,7 +6,7 @@ const validationSchema = step => {
   if (step === 0) {
     schema = Yup.object().shape({
       category: Yup.string()
-        .oneOf(['my-pet', 'sell', 'lost-found', 'in-good-hands'])
+        .oneOf(['my-pet', 'sell', 'lost/found', 'in-good-hands'])
         .required(),
     });
   }
@@ -43,11 +43,6 @@ const validationSchema = step => {
         .min(2, 'Too Short!')
         .max(16, 'Too Long!')
         .trim(),
-      title: Yup.string().when('category', {
-        is: category =>
-          ['sell', 'lost-found', 'in-good-hands'].includes(category),
-        then: () => Yup.string().trim().required('Title is required'),
-      }),
     });
   }
 
@@ -55,7 +50,7 @@ const validationSchema = step => {
     schema = Yup.object().shape({
       sex: Yup.string().when('category', {
         is: category =>
-          ['sell', 'lost-found', 'in-good-hands'].includes(category),
+          ['sell', 'lost/found', 'in-good-hands'].includes(category),
         then: () =>
           Yup.string()
             .oneOf(['male', 'female'])
@@ -63,7 +58,7 @@ const validationSchema = step => {
       }),
       location: Yup.string().when('category', {
         is: category =>
-          ['sell', 'lost-found', 'in-good-hands'].includes(category),
+          ['sell', 'lost/found', 'in-good-hands'].includes(category),
         then: () => Yup.string().trim().required('Location is required'),
       }),
       price: Yup.number().when('category', {
@@ -78,7 +73,7 @@ const validationSchema = step => {
         .min(4, 'Comments should be at least 4 characters')
         .max(120, 'Comments should not exceed 120 characters')
         .trim(),
-      file: Yup.mixed()
+      image: Yup.mixed()
         .required('Image is required')
         .test(
           'avatar',

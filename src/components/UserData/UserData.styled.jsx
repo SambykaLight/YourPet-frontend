@@ -4,7 +4,6 @@ import { BsCamera } from 'react-icons/bs';
 import { RxCross1 } from 'react-icons/rx';
 import { AiOutlineCheck } from 'react-icons/ai';
 import { Field } from 'formik';
-// import { Typography } from '@mui/material';
 import { Button } from '@mui/material';
 
 export const ButtonSave = styled(Button)`

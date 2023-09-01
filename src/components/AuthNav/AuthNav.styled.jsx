@@ -7,7 +7,6 @@ export const AuthButtonsContainer = styled.div`
   @media (max-width: 767px) {
     gap: 8px;
   }
-  
 `;
 
 export const AuthButton = styled.button`

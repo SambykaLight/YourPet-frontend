@@ -82,28 +82,26 @@ const EditPhoto = ({ editMode }) => {
             style={{ display: 'none' }}
             onChange={handleFileChange}
           />
-          {
-            editMode === EDIT_MODE.editModeValue && (
-              <>
-                {isEditingPhoto ? (
-                  <>
-                    <IconWrapperVerify>
-                      <IconVerify onClick={handleConfirmPhoto} />
-                    </IconWrapperVerify>
-                    <span>Confirm</span>
-                    <IconWrapperRefuse>
-                      <IconRefuse onClick={handleCancelPhoto} />
-                    </IconWrapperRefuse>
-                  </>
-                ) : (
-                  <>
-                    <Camera />
-                    <span>Edit photo</span>
-                  </>
-                )}
-              </>
-            )
-          }
+          {editMode === EDIT_MODE.editModeValue && (
+            <>
+              {isEditingPhoto ? (
+                <>
+                  <IconWrapperVerify>
+                    <IconVerify onClick={handleConfirmPhoto} />
+                  </IconWrapperVerify>
+                  <span>Confirm</span>
+                  <IconWrapperRefuse>
+                    <IconRefuse onClick={handleCancelPhoto} />
+                  </IconWrapperRefuse>
+                </>
+              ) : (
+                <>
+                  <Camera />
+                  <span>Edit photo</span>
+                </>
+              )}
+            </>
+          )}
         </EditBtnPicture>
       </EditPicture>
     </PictureBox>

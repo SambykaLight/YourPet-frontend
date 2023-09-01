@@ -23,7 +23,7 @@ const initialValues = {
   name: '',
   date: '',
   type: '',
-  file: '',
+  image: '',
   sex: '',
   location: '',
   price: '',
@@ -36,8 +36,6 @@ const AddPetForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const steps = ['Choose option', 'Personal details', 'More info'];
-  // const isLoading = false;
-  // const isNoticeLoading = true;
 
   const handleClickNext = e => {
     e.preventDefault();
@@ -65,13 +63,13 @@ const AddPetForm = () => {
     formData.append('date', values.date);
     formData.append('type', values.type.trim());
     formData.append('comment', values.comment.trim());
-    formData.append('file', values.file, values.file.name);
+    formData.append('image', values.image, values.image.name);
     formData.append('category', values.category.trim());
 
     if (values.category !== 'my-pet') {
       formData.append('location', values.location.trim());
       formData.append('sex', values.sex.trim());
-      formData.append('title', values.title.trim());
+      // formData.append('title', values.title.trim());
     }
 
     if (values.category === 'sell') {
@@ -120,7 +118,7 @@ const AddPetForm = () => {
               ? 'Add pet'
               : values.category === 'sell'
               ? 'Add pet for sale'
-              : values.category === 'lost-found'
+              : values.category === 'lost/found'
               ? 'Add lost pet'
               : 'Add in good hands'}
           </FormTitle>
@@ -188,12 +186,10 @@ const AddPetForm = () => {
                       validateField('name');
                       validateField('date');
                       validateField('type');
-                      validateField('title');
                       setTouched({
                         name: true,
                         date: true,
                         type: true,
-                        title: true,
                       });
                     }
                     if (
@@ -206,7 +202,6 @@ const AddPetForm = () => {
                   }}
                 >
                   Next
-                  {/* <span>Next</span> */}
                   <Pets
                     sx={{ width: 24, height: 24, transform: 'rotate(25deg)' }}
                   />

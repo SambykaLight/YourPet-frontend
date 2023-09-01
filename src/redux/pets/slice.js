@@ -15,7 +15,7 @@ const contactsSlice = createSlice({
   extraReducers: builder =>
     builder
       .addCase(fetchPets.fulfilled, (state, { payload }) => {
-        state.petsInfo = payload.petsInfo;
+        state.petsInfo = payload;
       })
 
       .addCase(addPet.fulfilled, (state, { payload }) => {

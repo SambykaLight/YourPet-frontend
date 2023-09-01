@@ -4,7 +4,7 @@ import UserPetItem from './UserPetItem';
 export const UserPetsList = ({ pets }) => {
   return (
     <List>
-      {pets.lenght > 0 &&
+      {pets.length > 0 &&
         pets.map(pet => (
           <ListItem key={pet._id}>
             <UserPetItem pet={pet} />

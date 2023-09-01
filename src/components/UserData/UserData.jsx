@@ -1,20 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
 import * as yup from 'yup';
 import { CiEdit } from 'react-icons/ci';
 import { RxCross1 } from 'react-icons/rx';
-import { Button } from '@mui/material';
-
-// import { logout } from 'redux/auth/operations';
 import { updateUser } from '../../redux/auth/operations ';
 import { selectUser } from 'redux/auth/selectors';
-
-// import LogoutModal from '../Modal/LogoutModal';
-
 import { EDIT_MODE } from './constants';
-
-import useModal from 'hooks/useModal';
 import EditPhoto from './EditPhoto';
 
 import {
@@ -30,6 +22,9 @@ import {
   ButtonEdit,
   ButtonSave,
 } from './UserData.styled';
+import UniversalModal from 'components/Modals/UniversalModal';
+import ModalApproveAction from 'components/Modals/ModalApproveAction/ModalApproveAction';
+import ModalCongrats from 'components/Modals/ModalCongrats/ModalCongrats';
 
 const validationSchema = yup.object().shape({
   Name: yup.string('Invalid name').min(3).max(16),
@@ -44,7 +39,15 @@ const UserData = () => {
   const { name, email, phone, birthday, city } = useSelector(selectUser);
   const [editMode, setEditMode] = useState(EDIT_MODE.defaultValue);
   const [activeInput, setActiveInput] = useState(null);
-  const [toggleModal] = useModal();
+  const [modalActive, setModalActive] = useState(false);
+  const [modalCongratsActive, setModalCongratsActive] = useState();
+
+  useEffect(() => {
+    const modalCongratsAlreadyOpened = localStorage.getItem(
+      'modalCongratsAlreadyOpened'
+    );
+    setModalCongratsActive(!JSON.parse(modalCongratsAlreadyOpened));
+  }, []);
 
   const initialValues = {
     Name: name || 'Name',
@@ -89,11 +92,6 @@ const UserData = () => {
     updatedData.append('city', updatedValues.City);
     dispatch(updateUser(updatedData));
   };
-
-  // const handleLogout = () => {
-  //   toggleModal();
-  //   dispatch(logout());
-  // };
 
   const renderField = (name, errors) => {
     const isActive = activeInput === name;
@@ -155,9 +153,9 @@ const UserData = () => {
 
               <LogOut>
                 {editMode === EDIT_MODE.defaultValue && (
-                  <BtnLogOut type="button" onClick={toggleModal}>
-                    <IconLogOut />
+                  <BtnLogOut type="button" onClick={() => setModalActive(true)}>
                     Log Out
+                    <IconLogOut />
                   </BtnLogOut>
                 )}
                 {editMode === EDIT_MODE.editModeValue && (
@@ -168,41 +166,34 @@ const UserData = () => {
                       className="custom-button"
                       style={{
                         backgroundColor: '#54adff',
-                        // color: 'white',
-                        // borderRadius: '40px',
-                        // width: '255px',
-                        // cursor: 'pointer',
-                        // padding: '6px, 108px, 6px, 108px',
-                        // position: 'absolute',
-                        // bottom: '-29px',
-                        // right: '-15px',
-
-                        // '@media screen and (min-width: 768px)': {
-                        //   backgroundColor: 'green',
-                        //   bottom: '-29px',
-                        //   left: '262px',
-                        // },
-                        // '@media screen and (min-width: 1280px)': {
-                        //   backgroundColor: 'green',
-                        //   bottom: '-29px',
-                        //   right: '-15px',
-                        // },
                       }}
                     >
                       Save
                     </ButtonSave>
                   </BoxIconVerify>
                 )}
-                {/* <LogoutModal
-                isOpen={isOpen}
-                toggleModal={toggleModal}
-                onLogout={handleLogout}
-              /> */}
+                <UniversalModal active={modalActive} setActive={setModalActive}>
+                  <ModalApproveAction
+                    modalClose={() => {
+                      setModalActive(false);
+                    }}
+                  />
+                </UniversalModal>
               </LogOut>
             </Form>
           )}
         </Formik>
       </Box>
+      <UniversalModal
+        active={modalCongratsActive}
+        setActive={setModalCongratsActive}
+      >
+        <ModalCongrats
+          closeModal={() => {
+            setModalCongratsActive(false);
+          }}
+        />
+      </UniversalModal>
     </Container>
   );
 };

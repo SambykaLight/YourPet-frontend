@@ -1,5 +1,4 @@
 import { CategoryItem } from '../PetsItem/PetsItem';
-import cat from '../../UserPetsData/cat.json';
 import { List } from './PetsList.styled';
 import { useSelector } from 'react-redux';
 import noticeSelectors from 'redux/notices/selectors';

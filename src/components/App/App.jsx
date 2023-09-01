@@ -20,10 +20,10 @@ const NewsPage = lazy(() => import('pages/NewsPage'));
 export const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth;
-  const {token}= useAuth()
+  const { token } = useAuth();
 
   useEffect(() => {
-    if(!token) return;
+    if (!token) return;
     dispatch(getCurrentUser());
   }, [token, dispatch]);
 

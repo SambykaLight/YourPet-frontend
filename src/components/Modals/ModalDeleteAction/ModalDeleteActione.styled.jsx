@@ -1,8 +1,6 @@
 import styled from '@emotion/styled';
 import Box from '@mui/material/Box';
-import { FiTrash2 } from "react-icons/fi";
-
-
+import { FiTrash2 } from 'react-icons/fi';
 
 const ModalDeleteBox = styled(Box)`
   position: absolute;
@@ -23,7 +21,6 @@ const ModalDeleteBox = styled(Box)`
     padding-left: 40px;
     padding-right: 40px;
     border-radius: 40px;
-
   }
 `;
 
@@ -145,8 +142,6 @@ const TrashIcon = styled(FiTrash2)`
   height: 24px;
   color: #fef9f9;
 `;
-
-
 
 export {
   SectionDeleteBox,

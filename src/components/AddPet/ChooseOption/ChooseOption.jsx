@@ -24,12 +24,12 @@ const ChooseOption = ({ values }) => {
         sell
       </Label>
 
-      <Label checked={values.category === 'lost-found'}>
+      <Label checked={values.category === 'lost/found'}>
         <Field
           type="radio"
-          value="lost-found"
+          value="lost/found"
           name="category"
-          checked={values.category === 'lost-found'}
+          checked={values.category === 'lost/found'}
         />
         lost/found
       </Label>

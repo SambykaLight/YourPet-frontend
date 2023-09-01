@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 import {
   SectionDeleteBox,
   DeleteBoxHeader,
@@ -14,30 +13,28 @@ import {
 
 const ModalDeleteAction = ({
   toggleModal,
-  notice,//deleteText name
-  handleRemoveOwnNotice,// логіка видалення  Notice
+  notice, //deleteText name
+  handleRemoveOwnNotice, // логіка видалення  Notice
 }) => {
   return (
-
-      <ModalDeleteBox>
-        <SectionDeleteBox>
-          <DeleteBoxHeader>Delete adverstiment?</DeleteBoxHeader>
-          <DeleteNoticeText>
-            Are you sure you want to delete <strong>{notice.name}</strong>? You
-            can`t undo this action.
-          </DeleteNoticeText>
-          <BtnWrapper>
-            <BtnCancel type="button" onClick={toggleModal}>
-              Cancel
-            </BtnCancel>
-            <BtnYes type="button" onClick={handleRemoveOwnNotice}>
-              Yes
-              <TrashIcon />
-            </BtnYes>
-          </BtnWrapper>
-        </SectionDeleteBox>
-      </ModalDeleteBox>
-
+    <ModalDeleteBox>
+      <SectionDeleteBox>
+        <DeleteBoxHeader>Delete adverstiment?</DeleteBoxHeader>
+        <DeleteNoticeText>
+          Are you sure you want to delete <strong>{notice}</strong>? You can`t
+          undo this action.
+        </DeleteNoticeText>
+        <BtnWrapper>
+          <BtnCancel type="button" onClick={toggleModal}>
+            Cancel
+          </BtnCancel>
+          <BtnYes type="button" onClick={handleRemoveOwnNotice}>
+            Yes
+            <TrashIcon />
+          </BtnYes>
+        </BtnWrapper>
+      </SectionDeleteBox>
+    </ModalDeleteBox>
   );
 };
 

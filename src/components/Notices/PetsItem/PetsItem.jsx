@@ -1,9 +1,8 @@
-import { ReactComponent as Delete } from "../../SvgIcons/delete.svg"
+import { ReactComponent as Delete } from '../../SvgIcons/delete.svg';
 import { ReactComponent as PawIcon } from '../../SvgIcons/paw.svg';
 
 import {
   Btn,
-  // Image, Description, Highlight, Button ,
   BtnList,
   CardItem,
   CardWrapper,
@@ -20,20 +19,14 @@ import { LocationIcon } from 'components/SvgIcons/LocationIcon';
 import { IconTime } from 'components/SvgIcons/IconTime';
 import { FemaleIcon } from 'components/SvgIcons/FemaleIcon';
 import { MaleIcon } from 'components/SvgIcons/MaleIcon';
-import Context, { useModalContext } from "components/Modals/Context/Context";
-import Modal from "components/Modals/Modal";
-import CardMore from "components/CardMore/CardMore";
-import { useSelector } from "react-redux";
-import { selectIsLoggedIn } from "redux/auth/selectors";
-
-
-
-
+import CardMore from 'components/CardMore/CardMore';
+import { useSelector } from 'react-redux';
+import { selectIsLoggedIn } from 'redux/auth/selectors';
+import UniversalModal from 'components/Modals/UniversalModal';
+import ModalUnauthorized from 'components/Modals/ModalUnauthorized/ModalUnauthorized';
+import ModalDeleteAction from 'components/Modals/ModalDeleteAction/ModalDeleteAction';
 
 export const CategoryItem = ({
-
-  
-  
   imageURL,
   _id,
   category,
@@ -49,19 +42,10 @@ export const CategoryItem = ({
   ...restProps
 }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  
-  const context = useModalContext();
-
-  const { toggle } = context;
-
-
-  // const [showModal, setShowModal] = useState(false);
-
-  // const handleLearnClick = () => {
-  //   setShowModal(true);  
-  // };
-  
-  const [favorite] = useState(false)
+  const [modalActive, setModalActive] = useState(false);
+  const [favotiteModalActive, setFavoriteModalActive] = useState(false);
+  const [deleteModalActive, setDeleteModalActive] = useState(false);
+  const [favorite] = useState(false);
 
   function calcAge(birthDatein) {
     const birthDate = new Date(birthDatein);
@@ -83,32 +67,20 @@ export const CategoryItem = ({
     <CardItem key={_id}>
       <CardWrapper>
         <Img src={imageURL} alt={title} />
-        {/* <button
-          className={
-            favorite
-              ? `${css.favorite_btn} ${css.favoriteActive}`
-              : css.favorite_btn
-          }
-          type="button"
-        > */}
-        <FavoriteBtn>
+        <FavoriteBtn type="button" onClick={() => setFavoriteModalActive(true)}>
           <AddToFavoriteIcon id="svg" fill={favorite ? '#54adff' : 'none'} />
         </FavoriteBtn>
-{ isLoggedIn && (
-        <DelBtn type="button">
-          <Delete id="svg" />
-        </DelBtn>)}
+        {isLoggedIn && (
+          <DelBtn type="button" onClick={() => setDeleteModalActive(true)}>
+            <Delete id="svg" />
+          </DelBtn>
+        )}
         <BtnList>
           <Text>{category}</Text>
-          <li
-          // className={css.list_item}
-          >
+          <li>
             <ImgBtn>
               <span>
-                <LocationIcon id="svg"
-                //  className={css.locationIcon}
-
-                 />
+                <LocationIcon id="svg" />
               </span>
               {location}
             </ImgBtn>
@@ -134,29 +106,38 @@ export const CategoryItem = ({
 
         <Title>{title}</Title>
 
-
- {/* universal modal */}
-
- {/* <button onClick={() => toggle(!toggleValue)}>12312313</button> */}
-      
-
-
-
-
-
-
-         <Btn onClick={() => toggle(!toggleValue)}>
+        <Btn type="button" onClick={() => setModalActive(true)}>
           Learn more
           <PawIcon />
         </Btn>
-
-        <Modal>
-          <CardMore />
-        </Modal>
-
-
+        <UniversalModal active={modalActive} setActive={setModalActive}>
+          <CardMore
+            modalClose={() => {
+              setModalActive(false);
+            }}
+          />
+        </UniversalModal>
+        <UniversalModal
+          active={favotiteModalActive}
+          setActive={setFavoriteModalActive}
+        >
+          <ModalUnauthorized
+            modalClose={() => {
+              favotiteModalActive(false);
+            }}
+          />
+        </UniversalModal>
+        <UniversalModal
+          active={deleteModalActive}
+          setActive={setDeleteModalActive}
+        >
+          <ModalDeleteAction
+            modalClose={() => {
+              deleteModalActive(false);
+            }}
+          />
+        </UniversalModal>
       </CardWrapper>
     </CardItem>
   );
 };
-

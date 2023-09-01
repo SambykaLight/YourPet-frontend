@@ -28,10 +28,10 @@ const MoreInfo = ({
     const file = e.target.files[0];
 
     if (!file) {
-      setFieldValue('file', '');
+      setFieldValue('image', '');
       return;
     }
-    setFieldValue('file', file);
+    setFieldValue('image', file);
   };
 
   return (
@@ -46,7 +46,7 @@ const MoreInfo = ({
                   sx={{
                     width: 24,
                     height: 24,
-                    color: values.sex === 'male' ? '#F43F5E' : '#FFFFFF',
+                    color: values.sex === 'male' ? '#F43F5E' : '#888888',
                   }}
                 />
                 Female
@@ -62,7 +62,7 @@ const MoreInfo = ({
                   sx={{
                     width: 24,
                     height: 24,
-                    color: values.sex === 'female' ? '#54ADFF' : '#FFFFFF',
+                    color: values.sex === 'female' ? '#54ADFF' : '#888888',
                     transform: 'rotate(-45deg)',
                   }}
                 />
@@ -81,24 +81,24 @@ const MoreInfo = ({
 
         <PhotoWrap step={step} category={category}>
           <PhotoText step={step} category={category}>
-            {values.file ? 'Add photo' : 'Load the pet’s image: '}
+            {values.image ? 'Add photo' : 'Load the pet’s image: '}
           </PhotoText>
           <AddLabel>
-            {values.file ? (
-              <img src={URL.createObjectURL(values.file)} alt="pet" />
+            {values.image ? (
+              <img src={URL.createObjectURL(values.image)} alt="pet" />
             ) : (
               <Add sx={{ fontSize: 50, color: '#54ADFF' }} />
             )}
             <input
               type="file"
-              name="file"
+              name="image"
               accept=".png, .jpg"
               multiple={false}
               onChange={handleFileChange}
               hidden
             />
 
-            <Message name="file" component="div" />
+            <Message name="image" component="div" />
           </AddLabel>
         </PhotoWrap>
       </div>
@@ -134,13 +134,13 @@ const MoreInfo = ({
           Comments
           <TextArea
             as="textarea"
-            name="comments"
+            name="comment"
             placeholder="Type of pet"
             category={category}
             step={step}
-            errors={touched.comments && errors.comments}
+            errors={touched.comment && errors.comment}
           />
-          <Message name="comments" component="div" />
+          <Message name="comment" component="div" />
         </CommentsLabel>
       </FormFields>
     </MoreWrapper>

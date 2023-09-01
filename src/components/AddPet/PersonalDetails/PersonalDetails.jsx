@@ -11,6 +11,7 @@ const PersonalDetails = ({ category, touched, errors }) => {
             name="title"
             placeholder="Type name pet"
             errors={touched.title && errors.title}
+            value={category}
           />
           {touched.title && errors.title && <div>{errors.title}</div>}
         </Label>

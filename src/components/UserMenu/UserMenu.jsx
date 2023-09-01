@@ -1,55 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { LinksContainer, StyledLink } from './UserMenu.styled';
-import { logout } from 'redux/auth/operations ';
 import {
-  // LogoutButton,
+  LogoutButton,
   LogoutButtonContainer,
   UserIconButton,
   BurgerMenuButton,
 } from './UserMenu.styled';
-// import Context from 'components/Modals/Context/Context';
-// import Modal from 'components/Modals/Modal';
 
 import BurgerMenuIcon from '../AuthNav/burgerMenuIcon';
 
-import { Link } from 'react-router-dom';
 import UserIcon from '../AuthNav/userIcon';
-// import LogoutIcon from './logoutIcon';
-import { useDispatch, useSelector } from 'react-redux';
-// import ModalApprove from 'components/Modals/ApproveActions/ModalApprove';
+import LogoutIcon from './logoutIcon';
+import { useSelector } from 'react-redux';
 
-import { selectUser } from 'redux/auth/selectors'
-import Context from 'components/Modals/Context/Context';
-import Modal from 'components/Modals/Modal';
+import { selectUser } from 'redux/auth/selectors';
 import ModalApproveAction from 'components/Modals/ModalApproveAction/ModalApproveAction';
-
+import UniversalModal from 'components/Modals/UniversalModal';
 
 function UserMenu() {
-const dispatch = useDispatch()
-const userInfo = useSelector(selectUser)
+  const [modalActive, setModalActive] = useState(false);
 
-
-
-const handleLogout = ()=>{
-dispatch(logout())
-}
+  const userInfo = useSelector(selectUser);
 
   return (
     <>
       <LogoutButtonContainer>
-        {/* <Link to="/login" onClick={handleLogout}> */}
-          <Context>
-            <Modal >
-            <ModalApproveAction logoutFunc = {handleLogout}/>
-            </Modal>
-
-          </Context>
-        {/* </Link> */}
+        <LogoutButton type="button" onClick={() => setModalActive(true)}>
+          Log Out
+          <LogoutIcon />
+        </LogoutButton>
+        <UniversalModal active={modalActive} setActive={setModalActive}>
+          <ModalApproveAction
+            modalClose={() => {
+              setModalActive(false);
+            }}
+          />
+        </UniversalModal>
 
         <LinksContainer>
           <StyledLink to="/login">
             <UserIcon />
-            { userInfo?.name }
+            {userInfo?.name}
           </StyledLink>
         </LinksContainer>
 
