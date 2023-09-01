@@ -27,7 +27,12 @@ export const register = createAsyncThunk(
       setAuthHeader(data.token);
       //response.data is {message: 'New account created'} but must be ...
       console.log('Answer', data);
-      return data;
+      const loginResponse = await axios.post('/api/users/login', {
+        email: credentials.email,
+        password: credentials.password,
+      });
+      setAuthHeader(loginResponse.data.token);
+      return loginResponse.data;
     } catch (e) {
       toast.error(errMessage);
       return thunkAPI.rejectWithValue(e.message);
