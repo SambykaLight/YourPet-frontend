@@ -71,7 +71,12 @@ export const CategoryItem = ({
               <span>
                 <LocationIcon id="svg" />
               </span>
-              {card.location}
+              {/* {card.location} */}
+              {
+                card.location.length >5 ? card.location.slice(0, 5) + "..." : card.location
+                // ? card.location.join('')
+               // : card.location.slice(0, 2).join(', ') + '...'
+            }
             </ImgBtn>
           </li>
           <li>
