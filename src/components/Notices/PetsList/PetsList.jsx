@@ -15,7 +15,7 @@ const filteredNotices = notices.filter(notice=> notice.category === category)
    { filteredNotices.length > 0 ?
       (<List>
         {filteredNotices.map(card => (
-          <CategoryItem {...card} key={card._id} />
+          <CategoryItem card ={card} key={card._id} />
         ))}
       </List>): ( <div>
   <p>List is empty, please add pet</p>

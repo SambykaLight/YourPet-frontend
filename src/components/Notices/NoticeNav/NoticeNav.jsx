@@ -87,7 +87,7 @@ const NoticesNav = () => {
           </NoticesNavLinkBtn>
         </FilterLink>
         <AddButtonLink>
-          <AddButton type="button">
+          <AddButton to="/add-pet" type="button">
             <AddPetText>Add pet</AddPetText>
             <PlusSmallIcon />
           </AddButton>

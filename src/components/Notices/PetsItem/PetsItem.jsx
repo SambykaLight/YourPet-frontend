@@ -27,18 +27,7 @@ import ModalUnauthorized from 'components/Modals/ModalUnauthorized/ModalUnauthor
 import ModalDeleteAction from 'components/Modals/ModalDeleteAction/ModalDeleteAction';
 
 export const CategoryItem = ({
-  imageURL,
-  _id,
-  category,
-  name,
-  date,
-  type,
-  sex,
-  title,
-  location,
-  price,
-  comment,
-  owner,
+  card,
   ...restProps
 }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -64,9 +53,9 @@ export const CategoryItem = ({
   }
 
   return (
-    <CardItem key={_id}>
+    <CardItem key={card._id}>
       <CardWrapper>
-        <Img src={imageURL} alt={title} />
+        <Img src={card.imageURL} alt={card.title} />
         <FavoriteBtn type="button" onClick={() => setFavoriteModalActive(true)}>
           <AddToFavoriteIcon id="svg" fill={favorite ? '#54adff' : 'none'} />
         </FavoriteBtn>
@@ -76,35 +65,35 @@ export const CategoryItem = ({
           </DelBtn>
         )}
         <BtnList>
-          <Text>{category}</Text>
+          <Text>{card.category}</Text>
           <li>
             <ImgBtn>
               <span>
                 <LocationIcon id="svg" />
               </span>
-              {location}
+              {card.location}
             </ImgBtn>
           </li>
           <li>
             <ImgBtn>
               <IconTime id="svg" />
-              {calcAge(date)}
+              {calcAge(card.date)}
             </ImgBtn>
           </li>
           <li>
             <ImgBtn>
-              {sex === 'female' ? (
+              {card.sex === 'female' ? (
                 <FemaleIcon id="svg" />
               ) : (
                 <MaleIcon id="svg" />
               )}
 
-              {sex}
+              {card.sex}
             </ImgBtn>
           </li>
         </BtnList>
 
-        <Title>{title}</Title>
+        <Title>{card.title}</Title>
 
         <Btn type="button" onClick={() => setModalActive(true)}>
           Learn more
@@ -115,6 +104,8 @@ export const CategoryItem = ({
             modalClose={() => {
               setModalActive(false);
             }}
+            id ={card._id}
+            card = {card}
           />
         </UniversalModal>
         <UniversalModal
