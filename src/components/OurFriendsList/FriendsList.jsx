@@ -5,13 +5,17 @@ import {
   FriendsName,
   FriendsContacts,
   ContactsLink,
+  WorkTitle,
 } from './FriendsList.styled';
 import Box from '@mui/material/Box';
 import { useSelector } from 'react-redux';
 import { darkTheme } from 'redux/themeSlice/selectors';
+import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export const OurFriendsList = ({ FriendsData }) => {
   const isDarkTheme = useSelector(darkTheme);
+  const { t } = useTranslation();
 
   function formatPhone(number) {
     if (number === 'email only') {
@@ -20,11 +24,25 @@ export const OurFriendsList = ({ FriendsData }) => {
     return number.split(' ').join('');
   }
 
+  const [openMenus, setOpenMenus] = useState(
+    Array(FriendsData.length).fill(false)
+  );
+
+  const handleTimeClick = index => {
+    const newOpenMenus = [...openMenus];
+    if (FriendsData[index].time !== 'day and night') {
+      newOpenMenus[index] = !newOpenMenus[index];
+    }
+    setOpenMenus(newOpenMenus);
+  };
+
+  const workingHours = [t('MN'), t('TU'), t('WE'), t('TH'), t('FR')];
+
   return (
     <>
-      <FriendsList >
+      <FriendsList>
         {FriendsData.length > 0 &&
-          FriendsData.map(friend => (
+          FriendsData.map((friend, index) => (
             <FriendsItem
               key={friend.id}
               style={{ backgroundColor: isDarkTheme === 'dark' && '#6b818f' }}
@@ -51,18 +69,53 @@ export const OurFriendsList = ({ FriendsData }) => {
                     textAlign: 'left',
                   }}
                 >
-                  <FriendsContacts>
-                    Time
-                    <br />
-                    {friend.time}
-                  </FriendsContacts>
-                  <FriendsContacts>
-                    Address
+                  <Box
+                    sx={{
+                      position: 'relative',
+                      display: 'flex',
+                      width: '100%',
+                      textAlign: 'left',
+                    }}
+                  >
+                    <div
+                      onClick={() => handleTimeClick(index)}
+                      style={{ cursor: 'pointer' }}
+                    >
+                      <FriendsContacts>
+                        {' '}
+                        {t('Time')}: {friend.time}
+                      </FriendsContacts>
+                    </div>
+                    {openMenus[index] && friend.time !== 'day and night' && (
+                      <WorkTitle
+                        style={{
+                          backgroundColor: isDarkTheme === 'dark' && '#7791a8',
+                        }}
+                      >
+                        {workingHours.map(day => {
+                          return (
+                            <p key={day}>
+                              {day}{' '}
+                              {friend.time.split(' ').map(time => {
+                                return <span key={time}>{time}</span>;
+                              })}
+                            </p>
+                          );
+                        })}
+                      </WorkTitle>
+                    )}
+                  </Box>
+                  <FriendsContacts
+                    style={{
+                      marginTop: '12px',
+                    }}
+                  >
+                    {t('Address')}
                     <br />
                     {friend.address}
                   </FriendsContacts>
                   <FriendsContacts>
-                    Email
+                    {t('Email')}
                     <br />
                     <ContactsLink href={`mailto:${friend.email}`}>
                       {' '}
@@ -70,7 +123,7 @@ export const OurFriendsList = ({ FriendsData }) => {
                     </ContactsLink>
                   </FriendsContacts>
                   <FriendsContacts>
-                    Phone
+                    {t('Phone')}
                     <br />
                     <ContactsLink href={`tel:${formatPhone(friend.phone)}`}>
                       {' '}

@@ -11,6 +11,20 @@ export const FriendsList = styled.ul`
   }
 `;
 
+export const WorkTitle = styled.div`
+  position: absolute;
+  z-index: 999;
+  top: 20px;
+  box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
+  border: 1px solid #54adff;
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  background-color: #fff;
+`;
+
 export const FriendsItem = styled.li`
   text-align: center;
   border-radius: 40px;
@@ -49,6 +63,12 @@ export const FriendsContacts = styled.p`
   font-size: 12px;
   font-weight: 500;
   color: #111111;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    color: #3291e9;
+  }
 
   :not(:first-of-type) {
     margin-top: 12px;
