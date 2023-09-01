@@ -13,7 +13,7 @@ function Modal({ children, openButtonLabel }) {
   const { toggleValue, toggle } = context;
 
   const toggleModal = () => {
-    toggle(!context.toggleValue);
+    toggle(!toggleValue);
   };
 
   const close = () => {
@@ -42,9 +42,9 @@ function Modal({ children, openButtonLabel }) {
 
   return (
     <div>
-      <StyledButtonOpen className="open-button" onClick={toggleModal}>
+      {/* <StyledButtonOpen className="open-button" onClick={toggleModal}>
         {openButtonLabel}
-      </StyledButtonOpen>
+      </StyledButtonOpen> */}
 
       <ModalOverlay className={toggleValue ? 'active' : ''} onClick={close}>
         <ModalContent

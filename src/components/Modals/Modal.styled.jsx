@@ -50,8 +50,8 @@ const ModalOverlay = styled.div`
   transform: scale(0.3);
   border-radius: 200px;
   transition: opacity 0.3s, visibility 0.3s, transform 0.3s, border-radius 0.3s;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
-  backdrop-filter: blur(10px);
+  /* background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)); */
+  /* backdrop-filter: blur(10px); */
   z-index: 100;
 
   
