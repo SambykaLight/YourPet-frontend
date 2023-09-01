@@ -51,10 +51,9 @@ export const CategoryItem = ({
   const isLoggedIn = useSelector(selectIsLoggedIn);
   
   const context = useModalContext();
-  // console.log(context);
 
-  const { toggleValue, toggle } = context;
-  console.log(toggleValue);
+  const { toggle } = context;
+
 
   // const [showModal, setShowModal] = useState(false);
 
@@ -154,6 +153,8 @@ export const CategoryItem = ({
         <Modal>
           <CardMore />
         </Modal>
+
+
       </CardWrapper>
     </CardItem>
   );
