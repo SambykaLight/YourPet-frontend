@@ -17,9 +17,11 @@ import {
   StyledTitle,
   StyledWrapperImage,
 } from './CardMore.styled';
+import { useAuth } from 'hooks';
 
-function CardMore() {
+function CardMore({id, card}) {
   const context = useModalContext();
+const {user}= useAuth()
 
   const { toggle } = context;
 
@@ -28,42 +30,45 @@ function CardMore() {
       <StyledCardWrapperImgTab>
         <StyledWrapperImage>
           <StyledImage
-            src="https://img1.akspic.ru/previews/1/4/5/2/7/172541/172541-zemlya-luna-planeta-noch-atmosfera-500x.jpg"
+            src={card.imageURL}
             alt="Placeholder"
           />
-          <StyledParDescription>In good hands</StyledParDescription>
+          <StyledParDescription>{card.category}</StyledParDescription>
         </StyledWrapperImage>
 
         <StyledCardWrapperH2Tab>
-          <StyledTitle>Сute dog looking for a home</StyledTitle>
+          <StyledTitle>{card.category}Сute dog looking for a home</StyledTitle>
           <StyledTable>
             <tbody>
               <tr>
                 <StyledTableItemStatic>Name:</StyledTableItemStatic>
-                <StyledTableItemDynamic>Rich</StyledTableItemDynamic>
+                <StyledTableItemDynamic>{card.name}</StyledTableItemDynamic>
               </tr>
               <tr>
                 <StyledTableItemStatic>Birthday:</StyledTableItemStatic>
-                <StyledTableItemDynamic>21.09.2020</StyledTableItemDynamic>
+                <StyledTableItemDynamic>2{card.date}</StyledTableItemDynamic>
               </tr>
               <tr>
                 <StyledTableItemStatic>Type:</StyledTableItemStatic>
-                <StyledTableItemDynamic> Pomeranian</StyledTableItemDynamic>
+                <StyledTableItemDynamic>{card.type}</StyledTableItemDynamic>
               </tr>
               <tr>
                 <StyledTableItemStatic>The sex:</StyledTableItemStatic>
-                <StyledTableItemDynamic>Lviv</StyledTableItemDynamic>
+                <StyledTableItemDynamic>{card.sex}</StyledTableItemDynamic>
               </tr>
               <tr>
                 <StyledTableItemStatic>Email:</StyledTableItemStatic>
                 <StyledTableItemDynamicContact>
-                  user@mail.com
+                 { user.email}
                 </StyledTableItemDynamicContact>
               </tr>
               <tr>
                 <StyledTableItemStatic>Phone:</StyledTableItemStatic>
                 <StyledTableItemDynamicContact>
-                  +380971234567
+                {user.phome === true?
+                  user.phone : "+38 000 000 00 00" 
+                }
+
                 </StyledTableItemDynamicContact>
               </tr>
             </tbody>
@@ -72,9 +77,7 @@ function CardMore() {
       </StyledCardWrapperImgTab>
 
       <StyledParText>
-        Comments: Rich would be the perfect addition to an active family that
-        loves to play and go on walks. I bet he would love having a doggy
-        playmate too!
+        Comments: {card.comment}
       </StyledParText>
 
       <StyledButtonGroup>

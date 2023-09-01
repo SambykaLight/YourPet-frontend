@@ -96,7 +96,7 @@ export const updateUser = createAsyncThunk(
     console.log('Entry Data User', userData);
     try {
 
-      const response = await axios.put(`/api/users/update`, userData);
+      const response = await axios.patch(`/api/users/update`, userData);
       console.log('Data User', response);
       return response;
 
@@ -110,10 +110,8 @@ export const updateUser = createAsyncThunk(
 export const updateAvatars = createAsyncThunk(
   'pets/updateAvatars',
   async (userData, { rejectWithValue }) => {
-    console.log('Entry Data Avatars', userData);
     try {
       const { data } = await axios.post(`/api/users/avatars`, userData);
-      console.log('Data Avatar', data);
       return data;
     } catch (error) {
       toast.error(errMessage);

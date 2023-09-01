@@ -159,7 +159,7 @@ export const AddButtonLink = styled(NavLink)`
     height: 35px;
   }
 `;
-export const AddButton = styled.button`
+export const AddButton = styled(NavLink)`
   display: flex;
   align-items: center;
   justify-content: center;
