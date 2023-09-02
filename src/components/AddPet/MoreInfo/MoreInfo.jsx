@@ -37,7 +37,7 @@ const MoreInfo = ({
   return (
     <MoreWrapper step={step} category={category}>
       <div>
-        {category !== 'my-pet' && (
+        {category !== 'my pet' && (
           <SexWrapper>
             <SexTitle>The sex</SexTitle>
             <div>
@@ -104,7 +104,7 @@ const MoreInfo = ({
       </div>
 
       <FormFields>
-        {category !== 'my-pet' && (
+        {category !== 'my pet' && (
           <Label>
             Location
             <Input
@@ -134,13 +134,13 @@ const MoreInfo = ({
           Comments
           <TextArea
             as="textarea"
-            name="comment"
-            placeholder="Type of pet"
+            name="comments"
+            placeholder="Please leave comment"
             category={category}
             step={step}
-            errors={touched.comment && errors.comment}
+            errors={touched.comments && errors.comments}
           />
-          <Message name="comment" component="div" />
+          <Message name="comments" component="div" />
         </CommentsLabel>
       </FormFields>
     </MoreWrapper>

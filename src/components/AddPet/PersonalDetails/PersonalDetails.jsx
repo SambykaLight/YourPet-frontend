@@ -3,15 +3,15 @@ import { Label, Input, PersonalDetailsWrapper } from './PersonalDetails.styled';
 const PersonalDetails = ({ category, touched, errors }) => {
   return (
     <PersonalDetailsWrapper category={category}>
-      {category !== 'my-pet' && (
+      {category !== 'my pet' && (
         <Label>
           Title of add
           <Input
             type="text"
             name="title"
-            placeholder="Type name pet"
+            placeholder="Type title"
             errors={touched.title && errors.title}
-            value={category}
+            // value={category}
           />
           {touched.title && errors.title && <div>{errors.title}</div>}
         </Label>
@@ -31,7 +31,7 @@ const PersonalDetails = ({ category, touched, errors }) => {
         <Input
           type="text"
           name="date"
-          placeholder="Type date of birth"
+          placeholder="00.00.0000"
           errors={touched.date && errors.date}
         />
         {touched.date && errors.date && <div>{errors.date}</div>}

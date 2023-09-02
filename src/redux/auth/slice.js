@@ -11,14 +11,14 @@ import {
 
 const initialState = {
   user: {
-    name: null,
-    email: null,
-    birthday: '',
-    phone: '',
-    city: '',
-    imageURL: '',
-    favorite: [],
-    itemsFavorite: [],
+    // name: null,
+    // email: null,
+    // birthday: '',
+    // phone: '',
+    // city: '',
+    // imageURL: '',
+    // favorite: [],
+    // itemsFavorite: [],
   },
   pets: [],
   token: null,
@@ -90,6 +90,7 @@ const authSlice = createSlice({
       })
       .addCase(updateUser.pending, handlePending)
       .addCase(updateUser.fulfilled, (state, { payload }) => {
+        console.log("PAYLOAD UPDATE", payload)
         state.user = {
           ...state.user,
           ...payload.data,

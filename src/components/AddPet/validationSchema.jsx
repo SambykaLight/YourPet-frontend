@@ -6,7 +6,7 @@ const validationSchema = step => {
   if (step === 0) {
     schema = Yup.object().shape({
       category: Yup.string()
-        .oneOf(['my-pet', 'sell', 'lost/found', 'in-good-hands'])
+        .oneOf(['my pet', 'sell', 'lost-found', 'in-good-hands'])
         .required(),
     });
   }
@@ -18,25 +18,25 @@ const validationSchema = step => {
         .trim()
         .min(2, 'Too Short!')
         .max(16, 'Too Long!'),
-      date: Yup.string()
-        .required('Date is required')
-        .matches(
-          /^(0[1-9]|1[0-9]|2[0-9]|3[01])\.(0[1-9]|1[012])\.\d{4}$/,
-          'Invalid date format (dd.mm.yyyy)'
-        )
-        .test(
-          'not-in-future',
-          'Date should not exceed the current date',
-          function (value) {
-            const currentDate = new Date();
-            const inputDate = new Date(
-              value.substring(6),
-              value.substring(3, 5) - 1,
-              value.substring(0, 2)
-            );
-            return inputDate <= currentDate;
-          }
-        ),
+      date:  Yup.string()
+      .required('Date is required')
+      .matches(
+        /^(0[1-9]|1[0-9]|2[0-9]|3[01])\.(0[1-9]|1[012])\.\d{4}$/,
+        'Invalid date format (dd.mm.yyyy)'
+      )
+      .test(
+        'not-in-future',
+        'Date should not exceed the current date',
+        function (value) {
+          const currentDate = new Date();
+          const inputDate = new Date(
+            value.substring(6),
+            value.substring(3, 5) - 1,
+            value.substring(0, 2)
+          );
+          return inputDate <= currentDate;
+        }
+      ),
 
       type: Yup.string()
         .required()
@@ -50,7 +50,7 @@ const validationSchema = step => {
     schema = Yup.object().shape({
       sex: Yup.string().when('category', {
         is: category =>
-          ['sell', 'lost/found', 'in-good-hands'].includes(category),
+          ['sell', 'lost-found', 'in-good-hands'].includes(category),
         then: () =>
           Yup.string()
             .oneOf(['male', 'female'])
@@ -58,7 +58,7 @@ const validationSchema = step => {
       }),
       location: Yup.string().when('category', {
         is: category =>
-          ['sell', 'lost/found', 'in-good-hands'].includes(category),
+          ['sell', 'lost-found', 'in-good-hands'].includes(category),
         then: () => Yup.string().trim().required('Location is required'),
       }),
       price: Yup.number().when('category', {
@@ -69,7 +69,7 @@ const validationSchema = step => {
             .positive('Price should be positive')
             .typeError('please enter a valid number'),
       }),
-      comment: Yup.string()
+      comments: Yup.string()
         .min(4, 'Comments should be at least 4 characters')
         .max(120, 'Comments should not exceed 120 characters')
         .trim(),
