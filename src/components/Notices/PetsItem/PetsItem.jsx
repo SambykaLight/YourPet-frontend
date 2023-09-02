@@ -20,11 +20,12 @@ import { IconTime } from 'components/SvgIcons/IconTime';
 import { FemaleIcon } from 'components/SvgIcons/FemaleIcon';
 import { MaleIcon } from 'components/SvgIcons/MaleIcon';
 import CardMore from 'components/CardMore/CardMore';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectIsLoggedIn } from 'redux/auth/selectors';
 import UniversalModal from 'components/Modals/UniversalModal';
 import ModalUnauthorized from 'components/Modals/ModalUnauthorized/ModalUnauthorized';
 import ModalDeleteAction from 'components/Modals/ModalDeleteAction/ModalDeleteAction';
+import { makeNoticeFavorite } from 'redux/notices/operations';
 
 export const CategoryItem = ({
   card,
@@ -35,6 +36,7 @@ export const CategoryItem = ({
   const [favotiteModalActive, setFavoriteModalActive] = useState(false);
   const [deleteModalActive, setDeleteModalActive] = useState(false);
   const [favorite] = useState(false);
+const dispatch = useDispatch()
 
   function calcAge(birthDatein) {
     const birthDate = new Date(birthDatein);
@@ -51,12 +53,17 @@ export const CategoryItem = ({
       return ageInYears + ' year';
     }
   }
+  const addToFavorite= (id)=>{
+    if(!isLoggedIn){
+      setFavoriteModalActive(true)}
+      dispatch(makeNoticeFavorite(id))
 
+  }
   return (
     <CardItem key={card._id}>
       <CardWrapper>
         <Img src={card.imageURL} alt={card.title} />
-        <FavoriteBtn type="button" onClick={() => setFavoriteModalActive(true)}>
+        <FavoriteBtn type="button" onClick={()=>addToFavorite(card._id)}>
           <AddToFavoriteIcon id="svg" fill={favorite ? '#54adff' : 'none'} />
         </FavoriteBtn>
         {isLoggedIn && (
@@ -71,11 +78,8 @@ export const CategoryItem = ({
               <span>
                 <LocationIcon id="svg" />
               </span>
-              {/* {card.location} */}
               {
                 card.location.length >5 ? card.location.slice(0, 5) + "..." : card.location
-                // ? card.location.join('')
-               // : card.location.slice(0, 2).join(', ') + '...'
             }
             </ImgBtn>
           </li>

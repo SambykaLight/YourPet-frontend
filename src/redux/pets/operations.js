@@ -33,9 +33,9 @@ export const deletePet = createAsyncThunk(
 export const addPet = createAsyncThunk(
   'notices/addPet',
   async (newPet, thunkAPI) => {
+    console.log("Data in AddPet is", newPet)
     try {
       const {data}= await axios.post(`/api/pets`, newPet);
-      console.log("Return pets", data)
       return data;
     } catch (error) {
       toast.error(errMessage);

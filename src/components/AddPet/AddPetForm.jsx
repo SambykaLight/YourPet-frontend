@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addPet } from 'redux/pets/operations';
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form } from 'formik';
@@ -17,9 +17,11 @@ import {
 } from './AddPetForm.styled';
 import { Pets, West } from '@mui/icons-material';
 import validationSchema from './validationSchema';
+import { addNotice } from 'redux/notices/operations';
+import { useAuth } from 'hooks';
 
 const initialValues = {
-  category: 'my-pet',
+  category: 'my pet',
   name: '',
   date: '',
   type: '',
@@ -27,11 +29,16 @@ const initialValues = {
   sex: '',
   location: '',
   price: '',
-  comment: '',
+  comments: '',
   title: '',
 };
 
 const AddPetForm = () => {
+  const { user}= useAuth();
+    console.log("user",user)
+// const notice = useSelector(state=>state.notices)
+// const [isFavorite, setIsFavorite]= useState()
+// console.log("NOTICE", notice)
   const [step, setStep] = useState(0);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -58,38 +65,65 @@ const AddPetForm = () => {
 
   const handleSubmit = async (values, { resetForm }) => {
     const formData = new FormData();
-
-    formData.append('name', values.name.trim());
+    formData.append('name', values.name);
+    formData.append('type', values.type);
+    formData.append('image', values.image);
+    formData.append('comments', values.comments);
     formData.append('date', values.date);
-    formData.append('type', values.type.trim());
-    formData.append('comment', values.comment.trim());
-    formData.append('image', values.image, values.image.name);
-    formData.append('category', values.category.trim());
 
-    if (values.category !== 'my-pet') {
-      formData.append('location', values.location.trim());
-      formData.append('sex', values.sex.trim());
-      // formData.append('title', values.title.trim());
-    }
 
-    if (values.category === 'sell') {
-      formData.append('price', values.price.trim());
-    }
+    if (values.category !== 'my pet') {
+      formData.append('category', values.category);
+      formData.append('sex', values.sex)
+      formData.append('location', values.location);
+      // formData.append('sex', values.sex.trim());
+      formData.append('title', values.title);
+      if (values.category === 'sell') {
+        formData.append('price', values.price);
 
-    for (var pair of formData.entries()) {
-      console.log(pair[0] + ', ' + pair[1]);
-    }
+      }
 
-    dispatch(addPet(formData))
+      dispatch(addNotice(formData))
       .then(response => {
         if (!response.error) {
-          navigate('/user');
+            navigate('/notices');
+
           resetForm();
           return;
         }
         return;
       })
       .catch(error => console.log(error));
+return
+    }
+    for (var pair of formData.entries()) {
+      console.log( "-------------",pair[0] + ', ' + pair[1]);
+}
+        dispatch(addPet(formData))
+      .then(response => {
+        if (!response.error) {
+            navigate('/user');
+          resetForm();
+          return;
+        }
+        return;
+      })
+      .catch(error => console.log(error));
+
+    // dispatch(addPet(formData))
+    //   .then(response => {
+    //     if (!response.error) {
+    //       if (values.category === 'my pet') {
+    //         navigate('/user');
+    //       } else {
+    //         navigate('/notices');
+    //       }
+    //       resetForm();
+    //       return;
+    //     }
+    //     return;
+    //   })
+    //   .catch(error => console.log(error));
   };
 
   return (
@@ -114,11 +148,11 @@ const AddPetForm = () => {
           <FormTitle step={step} category={values.category}>
             {step === 0
               ? 'Add pet'
-              : values.category === 'my-pet'
+              : values.category === 'my pet'
               ? 'Add pet'
               : values.category === 'sell'
               ? 'Add pet for sale'
-              : values.category === 'lost/found'
+              : values.category === 'lost-found'
               ? 'Add lost pet'
               : 'Add in good hands'}
           </FormTitle>

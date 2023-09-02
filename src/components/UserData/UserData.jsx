@@ -25,6 +25,7 @@ import {
 import UniversalModal from 'components/Modals/UniversalModal';
 import ModalApproveAction from 'components/Modals/ModalApproveAction/ModalApproveAction';
 import ModalCongrats from 'components/Modals/ModalCongrats/ModalCongrats';
+import { CleaningServices } from '@mui/icons-material';
 
 const validationSchema = yup.object().shape({
   Name: yup.string('Invalid name').min(3).max(16),
@@ -51,23 +52,34 @@ const UserData = () => {
 
   const initialValues = {
     Name: name || 'Name',
-    Email: email || 'anna00@gmail.com|',
+    Email: email || 'anna00@gmail.com',
     Phone: phone || '+38000000000',
     Birthday: birthday || '00.00.0000',
     City: city || 'Kyiv',
   };
-  const [formValues, setFormValues] = useState(initialValues);
+  const [formValues, setFieldValue] = useState(initialValues);
 
   const handleEditMode = value => {
     setEditMode(value);
   };
+  // const handleFieldChange = (fieldName, fieldValue) => {
+  //   setActiveInput(fieldName);
+  //   setFieldValue(fieldName, fieldValue);
+  // }
+
 
   const handleFieldChange = (fieldName, fieldValue) => {
     setActiveInput(fieldName);
-    setFormValues(prevValues => ({
-      ...prevValues,
-      [fieldName]: fieldValue,
-    }));
+    // setFieldValue(prevValues => ({
+    //   ...prevValues,
+    //   [fieldName]: fieldValue,
+    // })
+    // );
+    setFieldValue(prevValues => ({
+        ...prevValues,
+        [fieldName]: fieldValue,
+      }));
+
   };
 
   const handleFormSubmit = values => {
@@ -83,7 +95,6 @@ const UserData = () => {
     if (hasEmptyValues) {
       return;
     }
-
     const updatedData = new FormData();
     updatedData.append('name', updatedValues.Name);
     updatedData.append('email', updatedValues.Email);
@@ -92,8 +103,7 @@ const UserData = () => {
     updatedData.append('city', updatedValues.City);
     dispatch(updateUser(updatedData));
   };
-
-  const renderField = (name, errors) => {
+    const renderField = (name, errors) => {
     const isActive = activeInput === name;
     const isEditing = isActive && activeInput !== null;
 
@@ -109,6 +119,7 @@ const UserData = () => {
                 readOnly={editMode === EDIT_MODE.defaultValue}
                 className={isEditing ? 'editing' : ''}
                 onChange={e => {
+
                   field.onChange(e);
                   handleFieldChange(name, e.target.value);
                 }}

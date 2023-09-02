@@ -46,6 +46,7 @@ const noticesSlice = createSlice({
         };
       })
       .addCase(addNotice.fulfilled, (state, { payload }) => {
+        console.log("New Notice from Backend in payload", payload)
         state.items.push(payload);
         state.isLoading = false;
       })
