@@ -20,6 +20,7 @@ const initialState = {
     // favorite: [],
     // itemsFavorite: [],
   },
+  favorites: [],
   pets: [],
   token: null,
   isLoading: false,

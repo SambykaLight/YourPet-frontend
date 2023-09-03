@@ -13,6 +13,7 @@ import {
 const initialState = {
   item: null,
   items: [],
+  favorites:[],
   isLoading: false,
 };
 
@@ -29,10 +30,11 @@ const noticesSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(fetchUserNotices.fulfilled, (state, { payload }) => {
+        console.log("🚀 ~ file: slice.js:33 ~ .addCase ~ payload:", payload)
         return {
           ...state,
-          items: [...payload.data.notices],
-          totalPages: payload.data.totalPages,
+          items: [...payload],
+          // totalPages: payload.data.totalPages,
           isLoading: false,
         };
       })
@@ -45,7 +47,6 @@ const noticesSlice = createSlice({
         };
       })
       .addCase(addNotice.fulfilled, (state, { payload }) => {
-        console.log('New Notice from Backend in payload', payload);
         state.items.push(payload);
         state.isLoading = false;
       })
@@ -60,8 +61,8 @@ const noticesSlice = createSlice({
       .addCase(fetchNoticesFavorite.fulfilled, (state, { payload }) => {
         return {
           ...state,
-          items: [...payload.data.notices],
-          totalPages: payload.data.totalPages,
+          favorites: [...payload],
+          // totalPages: payload.data.totalPages,
           isLoading: false,
         };
       })

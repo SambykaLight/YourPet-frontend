@@ -16,7 +16,7 @@ export const UniversalWrap = styled.div`
   border-radius: 200px;
   transition: opacity 0.3s, visibility 0.3s, transform 0.3s, border-radius 0.3s;
   z-index: 9999;
-  overflow-y: auto;
+
 
   &.active {
     opacity: 1;
@@ -41,7 +41,7 @@ export const UniversalContent = styled.div`
   margin-right: auto;
   transform: scale(0, 3);
   visibility: hidden;
-  overflow: auto;
+
 
   transition: opacity 0.3s, visibility 0.3s, transform 0.3s, border-radius 0.3s;
   z-index: 9999;
