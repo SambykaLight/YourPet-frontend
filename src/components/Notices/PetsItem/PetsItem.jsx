@@ -27,16 +27,13 @@ import ModalUnauthorized from 'components/Modals/ModalUnauthorized/ModalUnauthor
 import ModalDeleteAction from 'components/Modals/ModalDeleteAction/ModalDeleteAction';
 import { makeNoticeFavorite } from 'redux/notices/operations';
 
-export const CategoryItem = ({
-  card,
-  ...restProps
-}) => {
+export const CategoryItem = ({ card, ...restProps }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const [modalActive, setModalActive] = useState(false);
   const [favotiteModalActive, setFavoriteModalActive] = useState(false);
   const [deleteModalActive, setDeleteModalActive] = useState(false);
-  const [favorite] = useState(false);
-const dispatch = useDispatch()
+  const [isFavorite, setFavorite] = useState(false);
+  const dispatch = useDispatch();
 
   function calcAge(birthDatein) {
     const birthDate = new Date(birthDatein);
@@ -53,18 +50,22 @@ const dispatch = useDispatch()
       return ageInYears + ' year';
     }
   }
-  const addToFavorite= (id)=>{
-    if(!isLoggedIn){
-      setFavoriteModalActive(true)}
-      dispatch(makeNoticeFavorite(id))
+  const addToFavorite = id => {
+    if (!isLoggedIn) {
+      setFavoriteModalActive(true);
+    }
+    dispatch(makeNoticeFavorite(id)).then(action => {
+      const { isFavorite } = action.payload;
 
-  }
+      setFavorite(isFavorite);
+    });
+  };
   return (
     <CardItem key={card._id}>
       <CardWrapper>
         <Img src={card.imageURL} alt={card.title} />
-        <FavoriteBtn type="button" onClick={()=>addToFavorite(card._id)}>
-          <AddToFavoriteIcon id="svg" fill={favorite ? '#54adff' : 'none'} />
+        <FavoriteBtn type="button" onClick={() => addToFavorite(card._id)}>
+          <AddToFavoriteIcon id="svg" fill={isFavorite ? '#54adff' : 'none'} />
         </FavoriteBtn>
         {isLoggedIn && (
           <DelBtn type="button" onClick={() => setDeleteModalActive(true)}>
@@ -78,9 +79,9 @@ const dispatch = useDispatch()
               <span>
                 <LocationIcon id="svg" />
               </span>
-              {
-                card.location.length >5 ? card.location.slice(0, 5) + "..." : card.location
-            }
+              {card.location.length > 5
+                ? card.location.slice(0, 5) + '...'
+                : card.location}
             </ImgBtn>
           </li>
           <li>
@@ -113,8 +114,8 @@ const dispatch = useDispatch()
             modalClose={() => {
               setModalActive(false);
             }}
-            id ={card._id}
-            card = {card}
+            id={card._id}
+            card={card}
           />
         </UniversalModal>
         <UniversalModal
