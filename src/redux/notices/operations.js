@@ -8,7 +8,7 @@ export const fetchUserNotices = createAsyncThunk(
   'notices/fetchNotices',
   async (page, thunkAPI) => {
     try {
-      const { data } = await axios.get(`/api/notices/user`, {
+      const { data } = await axios.get(`/api/notices/byOwner`, {
         params: { page },
       });
       return data;
@@ -73,7 +73,7 @@ export const fetchNoticesFavorite = createAsyncThunk(
   'notices/fetchNoticesFavorite',
   async (_, thunkAPI) => {
     try {
-      const { data } = await axios.get(`/api/notices/favorite`);
+      const { data } = await axios.get(`/api/notices/favorites`);
       return data;
     } catch (error) {
       toast.error(errMessage);

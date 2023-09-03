@@ -7,6 +7,7 @@ export const selectIsRefreshing = state => state.auth.isRefreshing;
 export const selectToken = state => state.auth.token;
 
 export const selectIsLoading = state => state.auth.isLoading;
+export const selectFavorites = state=> state.notices.favorites;
 
 export const selectModalSuccessRegister = state =>
   state.auth.modalSuccessRegister;
@@ -17,7 +18,8 @@ const authSelectors = {
   selectIsRefreshing,
   selectIsLoading,
   selectModalSuccessRegister,
-  selectToken
+  selectToken,
+  selectFavorites
 };
 
 export default authSelectors;

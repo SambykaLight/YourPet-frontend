@@ -25,7 +25,6 @@ import {
 import UniversalModal from 'components/Modals/UniversalModal';
 import ModalApproveAction from 'components/Modals/ModalApproveAction/ModalApproveAction';
 import ModalCongrats from 'components/Modals/ModalCongrats/ModalCongrats';
-// import { CleaningServices } from '@mui/icons-material';
 
 const validationSchema = yup.object().shape({
   Name: yup.string('Invalid name').min(3).max(16),
@@ -62,19 +61,11 @@ const UserData = () => {
   const handleEditMode = value => {
     setEditMode(value);
   };
-  // const handleFieldChange = (fieldName, fieldValue) => {
-  //   setActiveInput(fieldName);
-  //   setFieldValue(fieldName, fieldValue);
-  // }
 
 
   const handleFieldChange = (fieldName, fieldValue) => {
     setActiveInput(fieldName);
-    // setFieldValue(prevValues => ({
-    //   ...prevValues,
-    //   [fieldName]: fieldValue,
-    // })
-    // );
+
     setFieldValue(prevValues => ({
         ...prevValues,
         [fieldName]: fieldValue,

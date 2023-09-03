@@ -5,17 +5,17 @@ import Box from '@mui/material/Box';
 import { useState } from 'react';
 import UniversalModal from 'components/Modals/UniversalModal';
 import ModalDeleteAction from 'components/Modals/ModalDeleteAction/ModalDeleteAction';
-import { deletePet } from 'redux/pets/operations';
-import { useDispatch } from 'react-redux';
+// import { deletePet } from 'redux/pets/operations';
+// import { useDispatch } from 'react-redux';
 
 
 export const UserPetItem = ({ pet }) => {
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
+  // const petId = pet._id
   const [deleteModalActive, setDeleteModalActive] = useState(false);
-  const handleRemoveOwnNotice = (id)=>{
-    dispatch(deletePet(id))
-    setDeleteModalActive(true)
-  }
+  // const handleRemoveOwnNotice = (id)=>{
+  //   dispatch(deletePet(id))
+  // }
   return (
     <>
       <div>
@@ -31,7 +31,7 @@ export const UserPetItem = ({ pet }) => {
           <Highlight>Name:</Highlight> {pet.name}
         </Description>
 
-        <Button type="button" onClick={() => handleRemoveOwnNotice(pet._id)}>
+        <Button type="button" onClick={() => setDeleteModalActive(true)}>
           <DeleteOutlinedIcon size="42" />
         </Button>
 
@@ -50,11 +50,14 @@ export const UserPetItem = ({ pet }) => {
         >
           <ModalDeleteAction
           title= {pet.name}
-          toggleModal={() => {
-            setDeleteModalActive(false);
-            }}
-            id= {pet._id}
-            handleRemoveOwnNotice = {handleRemoveOwnNotice}
+          // toggleModal={() => {
+          //   setDeleteModalActive(false);
+          //   }}
+          modalClose = {
+            ()=>{deleteModalActive(false)}
+          }
+            // id= {petId}
+            // handleRemoveOwnNotice = {handleRemoveOwnNotice}
           />
         </UniversalModal>
       </Box>
