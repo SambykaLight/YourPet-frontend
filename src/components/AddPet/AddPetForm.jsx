@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addPet } from 'redux/pets/operations';
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form } from 'formik';
@@ -18,7 +18,6 @@ import {
 import { Pets, West } from '@mui/icons-material';
 import validationSchema from './validationSchema';
 import { addNotice } from 'redux/notices/operations';
-import { useAuth } from 'hooks';
 
 const initialValues = {
   category: 'my pet',
@@ -34,7 +33,6 @@ const initialValues = {
 };
 
 const AddPetForm = () => {
-  const { user } = useAuth();
   // console.log("user",user)
   // const notice = useSelector(state=>state.notices)
   // const [isFavorite, setIsFavorite]= useState()

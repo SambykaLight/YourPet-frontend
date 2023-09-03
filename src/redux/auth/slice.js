@@ -8,7 +8,6 @@ import {
   hideModalSuccessRegister,
   updateAvatars,
 } from './operations ';
-import { PURGE } from "redux-persist";
 
 const initialState = {
   user: {
