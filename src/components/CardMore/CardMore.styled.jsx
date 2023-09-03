@@ -14,6 +14,7 @@ const StyledCardWrapper = styled.div`
 
 const StyledCardWrapperImgTab = styled.div`
   height: auto;
+ 
 
   @media (min-width: 768px) {
     display: flex;

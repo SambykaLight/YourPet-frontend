@@ -33,12 +33,12 @@ export const CardWrapper = styled.div`
   width: 286px;
   border-radius: 14px 14px;
   box-sizing: border-box;
-  img {
-    min-width: 280px;
-    width: 286px;
-    height: 288px;
-    object-fit: cover;
-  }
+  // img {
+  //   min-width: 280px;
+  //   width: 286px;
+  //   height: 288px;
+  //   object-fit: cover;
+  // }
 `;
 export const Img = styled.img`
   width: 100%;
@@ -224,6 +224,7 @@ export const Btn = styled.button`
   }
 `;
 export const Image = styled.img`
+
   display: block;
   width: 240px;
   height: 240px;
