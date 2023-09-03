@@ -1,12 +1,14 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { selectPetsInfo, selectIsLoading } from 'redux/pets/selectors';
 import { useEffect } from 'react';
-import AddIcon from '@mui/icons-material/Add';
+import { ReactComponent as PlusSmallIcon } from '../SvgIcons/SmallIconPlus.svg';
+// import { ReactComponent as PlusSmallIcon } from '../../SvgIcons/SmallIconPlus.svg';
 import {
   Container,
   Title,
   Button,
   TitleContainer,
+  AddText,
 } from './UserPetsData.styled';
 import UserPetsList from 'components/UserPetsData/UserPetsList/UserPetsList';
 import NotFound from './NotFound';
@@ -25,8 +27,9 @@ const UserPetsData = () => {
     <Container>
       <TitleContainer>
         <Title>My pets:</Title>
-        <Button to="/add-pet">
-          Add pet <AddIcon />
+        <Button to="/add-pet" type="button">
+          <AddText>Add pet</AddText>
+          <PlusSmallIcon />
         </Button>
       </TitleContainer>
 

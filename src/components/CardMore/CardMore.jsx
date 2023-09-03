@@ -1,6 +1,10 @@
 import React from 'react';
 import { useModalContext } from '../Modals/Context/Context';
+import { AddToFavoriteIcon } from 'components/SvgIcons/AddToFavoriteIcon2';
+import { RxCross1 } from 'react-icons/rx';
 import {
+  ButClose,
+  PetText,
   StyledButton1,
   StyledButton2,
   StyledButtonGroup,
@@ -19,20 +23,20 @@ import {
 } from './CardMore.styled';
 import { useAuth } from 'hooks';
 
-function CardMore({id, card}) {
+function CardMore({ id, card }) {
   const context = useModalContext();
-const {user}= useAuth()
+  const { user } = useAuth();
 
   const { toggle } = context;
 
   return (
     <StyledCardWrapper>
+      <ButClose>
+        <RxCross1 />
+      </ButClose>
       <StyledCardWrapperImgTab>
         <StyledWrapperImage>
-          <StyledImage
-            src={card.imageURL}
-            alt="Placeholder"
-          />
+          <StyledImage src={card.imageURL} alt="Placeholder" />
           <StyledParDescription>{card.category}</StyledParDescription>
         </StyledWrapperImage>
 
@@ -59,16 +63,13 @@ const {user}= useAuth()
               <tr>
                 <StyledTableItemStatic>Email:</StyledTableItemStatic>
                 <StyledTableItemDynamicContact>
-                 { user.email}
+                  {user.email}
                 </StyledTableItemDynamicContact>
               </tr>
               <tr>
                 <StyledTableItemStatic>Phone:</StyledTableItemStatic>
                 <StyledTableItemDynamicContact>
-                {user.phome === true?
-                  user.phone : "+38 000 000 00 00" 
-                }
-
+                  {user.phome === true ? user.phone : '+38 000 000 00 00'}
                 </StyledTableItemDynamicContact>
               </tr>
             </tbody>
@@ -76,13 +77,14 @@ const {user}= useAuth()
         </StyledCardWrapperH2Tab>
       </StyledCardWrapperImgTab>
 
-      <StyledParText>
-        Comments: {card.comment}
-      </StyledParText>
+      <StyledParText>Comments: {card.comment}</StyledParText>
 
       <StyledButtonGroup>
         <StyledButton1 onClick={() => toggle()}>Contact</StyledButton1>
-        <StyledButton2 onClick={() => toggle()}>Add to</StyledButton2>
+        <StyledButton2 onClick={() => toggle()}>
+          <PetText>Add to</PetText>
+          <AddToFavoriteIcon id="svg" />
+        </StyledButton2>
       </StyledButtonGroup>
     </StyledCardWrapper>
   );

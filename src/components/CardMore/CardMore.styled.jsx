@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { RxCross1 } from 'react-icons/rx';
 
 const StyledCardWrapper = styled.div`
   padding: 44px 20px 16px 20px;
@@ -200,6 +201,42 @@ const StyledButton2 = styled.button`
   }
 
   @media (min-width: 1024px) {
+  }
+`;
+export const PetText = styled.p`
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 16px;
+  text-decoration: none;
+  margin-right: 5px;
+
+  @media screen and (max-width: 767px) {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+  }
+`;
+export const IconRefuse = styled(RxCross1)`
+  font-size: 18px;
+
+  cursor: pointer;
+  color: #e82d20;
+`;
+export const ButClose = styled.button`
+  position: absolute;
+  right: 1px;
+  top: 10px;
+  border: none;
+  color: #54adff;
+  background-color: transparent;
+
+  @media screen and (min-width: 768px) {
+    right: 1px;
+    top: 10px;
+  }
+  @media screen and (min-width: 1280px) {
+    right: 15px;
+    top: 10px;
   }
 `;
 
