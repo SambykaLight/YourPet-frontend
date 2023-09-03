@@ -24,7 +24,7 @@ const contactsSlice = createSlice({
       })
       .addCase(deletePet.fulfilled, (state, { payload }) => {
         state.petsInfo = state.petsInfo.filter(
-          pet => pet._id !== payload.data._id
+          pet => pet._id !== payload._id
         );
       })
 

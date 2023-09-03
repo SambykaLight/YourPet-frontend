@@ -85,7 +85,6 @@ export const fetchNoticesFavorite = createAsyncThunk(
 export const addNotice = createAsyncThunk(
   'notices/addNotice',
   async (data, thunkAPI) => {
-    console.log('Data in AddNotice is', data);
     try {
       const response = await axios.post(`/api/notices/`, data);
       return response.data;
