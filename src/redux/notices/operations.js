@@ -34,11 +34,9 @@ export const fetchNoticeById = createAsyncThunk(
 
 export const fetchNoticesByCategory = createAsyncThunk(
   'notices/fetchNoticesByCategory',
-  async ({category}, thunkAPI) => {
+  async ({ category }, thunkAPI) => {
     try {
-      const { data } = await axios.get(
-        `/api/notices/?${category}}`
-      );
+      const { data } = await axios.get(`/api/notices/?${category}}`);
       return data;
     } catch (error) {
       toast.error(errMessage);
@@ -62,12 +60,10 @@ export const fetchNoticesFavorite = createAsyncThunk(
 
 export const addNotice = createAsyncThunk(
   'notices/addNotice',
-  async ( data, thunkAPI) => {
-    console.log("Data in AddNotice is", data)
+  async (data, thunkAPI) => {
+    console.log('Data in AddNotice is', data);
     try {
-      const response= await axios.post(
-        `/api/notices/`, data
-      );
+      const response = await axios.post(`/api/notices/`, data);
       return response.data;
     } catch (error) {
       toast.error(errMessage);
@@ -82,7 +78,12 @@ export const makeNoticeFavorite = createAsyncThunk(
     try {
       const { data } = await axios.patch(`/api/notices/add/${id}`);
 
-      return data.result;
+      const { data: favoriteNotices } = await axios.get(
+        `/api/notices/favorites`
+      );
+      const isFavorite = favoriteNotices.some(notice => notice._id === id);
+
+      return { result: data.result, isFavorite };
     } catch (error) {
       toast.error(errMessage);
       return thunkAPI.rejectWithValue(error.message);

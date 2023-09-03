@@ -7,7 +7,7 @@ const noticeSelectors = {
   selectNotices,
   selectTotalPages,
   selectIsNoticeLoading,
-  selectCategory
+  selectCategory,
 };
 
 export default noticeSelectors;
