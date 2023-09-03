@@ -123,7 +123,7 @@ const MoreInfo = ({
             <Input
               type="text"
               name="price"
-              placeholder="Type of price"
+              placeholder="Type price"
               errors={touched.price && errors.price}
             />
             <Message name="price" component="div" />

@@ -35,7 +35,7 @@ const initialValues = {
 
 const AddPetForm = () => {
   const { user}= useAuth();
-    console.log("user",user)
+    // console.log("user",user)
 // const notice = useSelector(state=>state.notices)
 // const [isFavorite, setIsFavorite]= useState()
 // console.log("NOTICE", notice)
@@ -73,15 +73,14 @@ const AddPetForm = () => {
 
 
     if (values.category !== 'my pet') {
+      if (values.category === 'sell') {
+        formData.append('price', values.price);
+      }
+      console.log("Sell but continue")
       formData.append('category', values.category);
       formData.append('sex', values.sex)
       formData.append('location', values.location);
-      // formData.append('sex', values.sex.trim());
       formData.append('title', values.title);
-      if (values.category === 'sell') {
-        formData.append('price', values.price);
-
-      }
 
       dispatch(addNotice(formData))
       .then(response => {
