@@ -34,11 +34,11 @@ const initialValues = {
 };
 
 const AddPetForm = () => {
-  const { user}= useAuth();
-    // console.log("user",user)
-// const notice = useSelector(state=>state.notices)
-// const [isFavorite, setIsFavorite]= useState()
-// console.log("NOTICE", notice)
+  const { user } = useAuth();
+  // console.log("user",user)
+  // const notice = useSelector(state=>state.notices)
+  // const [isFavorite, setIsFavorite]= useState()
+  // console.log("NOTICE", notice)
   const [step, setStep] = useState(0);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -71,58 +71,52 @@ const AddPetForm = () => {
     formData.append('comments', values.comments);
     formData.append('date', values.date);
 
+    // const formData = {};
+    // formData['name'] = values.name;
+    // formData['type'] = values.type;
+    // formData['image'] = values.image;
+    // formData['comments'] = values.comments;
+    // formData['date'] = values.date;
 
     if (values.category !== 'my pet') {
       if (values.category === 'sell') {
         formData.append('price', values.price);
+        // formData['price'] = +values.price;
       }
-      console.log("Sell but continue")
+      // formData['category'] = values.category;
+      // formData['sex'] = values.sex;
+      // formData['location'] = values.location;
+      // formData['title'] = values.title;
       formData.append('category', values.category);
       formData.append('sex', values.sex)
       formData.append('location', values.location);
       formData.append('title', values.title);
 
+      console.log("formData", formData)
       dispatch(addNotice(formData))
-      .then(response => {
-        if (!response.error) {
+        .then(response => {
+          if (!response.error) {
             navigate('/notices');
 
-          resetForm();
+            resetForm();
+            return;
+          }
           return;
-        }
-        return;
-      })
-      .catch(error => console.log(error));
-return
+        })
+        .catch(error => console.log(error));
+      return;
     }
-    for (var pair of formData.entries()) {
-      console.log( "-------------",pair[0] + ', ' + pair[1]);
-}
-        dispatch(addPet(formData))
+
+    dispatch(addPet(formData))
       .then(response => {
         if (!response.error) {
-            navigate('/user');
+          navigate('/user');
           resetForm();
           return;
         }
         return;
       })
       .catch(error => console.log(error));
-
-    // dispatch(addPet(formData))
-    //   .then(response => {
-    //     if (!response.error) {
-    //       if (values.category === 'my pet') {
-    //         navigate('/user');
-    //       } else {
-    //         navigate('/notices');
-    //       }
-    //       resetForm();
-    //       return;
-    //     }
-    //     return;
-    //   })
-    //   .catch(error => console.log(error));
   };
 
   return (

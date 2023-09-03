@@ -19,9 +19,9 @@ export const fetchPets = createAsyncThunk(
 
 export const deletePet = createAsyncThunk(
   'pets/deletePet',
-  async (petId, thunkAPI) => {
+  async (id, thunkAPI) => {
     try {
-      const { data } = await axios.delete(`/api/pets/${petId}`);
+      const { data } = await axios.delete(`/api/pets/${id}`);
       return data;
     } catch (error) {
       toast.error(errMessage);
@@ -33,7 +33,6 @@ export const deletePet = createAsyncThunk(
 export const addPet = createAsyncThunk(
   'notices/addPet',
   async (newPet, thunkAPI) => {
-    console.log("Data in AddPet is", newPet)
     try {
       const {data}= await axios.post(`/api/pets`, newPet);
       return data;

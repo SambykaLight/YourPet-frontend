@@ -21,6 +21,8 @@ const UserPetsData = () => {
     dispatch(fetchPets()).catch(error => console.log(error));
   }, [dispatch]);
 
+  console.log("🚀 ~ file: UserPetsData.jsx:17 ~ UserPetsData ~ petsInfo:", petsInfo)
+
   return (
     <Container>
       <TitleContainer>

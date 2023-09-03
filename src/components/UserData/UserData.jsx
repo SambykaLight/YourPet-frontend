@@ -25,7 +25,7 @@ import {
 import UniversalModal from 'components/Modals/UniversalModal';
 import ModalApproveAction from 'components/Modals/ModalApproveAction/ModalApproveAction';
 import ModalCongrats from 'components/Modals/ModalCongrats/ModalCongrats';
-import { CleaningServices } from '@mui/icons-material';
+// import { CleaningServices } from '@mui/icons-material';
 
 const validationSchema = yup.object().shape({
   Name: yup.string('Invalid name').min(3).max(16),
@@ -95,12 +95,12 @@ const UserData = () => {
     if (hasEmptyValues) {
       return;
     }
-    const updatedData = new FormData();
-    updatedData.append('name', updatedValues.Name);
-    updatedData.append('email', updatedValues.Email);
-    updatedData.append('phone', updatedValues.Phone);
-    updatedData.append('birthday', updatedValues.Birthday);
-    updatedData.append('city', updatedValues.City);
+    const updatedData = {}
+    updatedData["name"] = updatedValues.Name
+    updatedData["email"] = updatedValues.Email
+    updatedData["phone"] = updatedValues.Phone
+    updatedData["birthday"] = updatedValues.Birthday
+    updatedData["city"] = updatedValues.City
     dispatch(updateUser(updatedData));
   };
     const renderField = (name, errors) => {

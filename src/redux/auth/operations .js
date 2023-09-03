@@ -3,6 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import toast from 'react-hot-toast';
 
 // api який треба вставити для запитів за користувачами !!!!!!!!!!!!!!!!!!!!!!!!!!
+// axios.defaults.baseURL = 'http://localhost:3000/';
 axios.defaults.baseURL = 'https://your-pet-api-a9zk.onrender.com';
 
 const errMessage = 'Something went wrong. Please try again';
@@ -93,11 +94,8 @@ export const getCurrentUser = createAsyncThunk(
 export const updateUser = createAsyncThunk(
   'pets/updateUser',
   async (userData, { rejectWithValue }) => {
-    console.log('Entry Data User', userData);
     try {
-
       const response = await axios.patch(`/api/users/update`, userData);
-      console.log('Data User', response);
       return response;
 
     } catch (error) {
