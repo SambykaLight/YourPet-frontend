@@ -40,25 +40,49 @@ export const TitleContainer = styled.div`
 `;
 
 export const Button = styled(NavLink)`
-  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
   border-radius: 40px;
-  font-family: 'Manrope', sans-serif;
-  font-style: normal;
+  min-height: 35px;
+  border: 2px solid #54adff;
+  text-decoration: none;
+  min-width: 129px;
+  background: #54adff;
+  color: #fff;
+
+  @media screen and (max-width: 767px) {
+    position: fixed;
+    right: 0;
+    top: 70%;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    flex-direction: column-reverse;
+    /* flex-direction: row; */
+    border-radius: 40px;
+    min-height: 80px;
+    min-width: 80px;
+    border: 2px solid #54adff;
+    text-decoration: none;
+  }
+  :hover {
+    background: linear-gradient(290.46deg, #419ef1 0%, #9bd0ff 107.89%);
+    color: rgb(253, 247, 242);
+    border: none;
+    background-color: transparent;
+  }
+`;
+export const AddText = styled.p`
   font-weight: 700;
   font-size: 16px;
-  line-height: 22px;
-  align-items: center;
-  letter-spacing: 0.04em;
-  gap: 15px;
-  cursor: pointer;
-  border: none;
-  box-sizing: border-box;
-  color: #fef9f9;
-  background: #54adff;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  &:hover {
-    background: linear-gradient(290.46deg, #419ef1 0%, #9bd0ff 107.89%);
+  line-height: 16px;
+  text-decoration: none;
+
+  @media screen and (max-width: 767px) {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
   }
 `;

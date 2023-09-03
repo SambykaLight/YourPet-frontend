@@ -75,71 +75,68 @@ const BtnWrapper = styled.div`
 `;
 
 const BtnCancel = styled.button`
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-padding: 8px 28px;
-margin-right: 167 px;
-margin-left: 7px;
-width: 129px;
-height: 40px;
-color: #54adff;
-outline: none;
-background-color: transparent;
-border: 2px solid #54adff;
-border-radius: 40px;
-font-family: 'Manrope';
-font-weight: 700;
-font-size: 16px;
-line-height: 22px;
-margin-bottom: 60px;
-cursor: pointer;
-&:hover {
-  background: linear-gradient(290.46deg, #419ef1 0%, #9bd0ff 107.89%);
-  color: #fef9f9;
-}
-&:focus {
-  background: linear-gradient(290.46deg, #419ef1 0%, #9bd0ff 107.89%);
-  color: #fef9f9;
-}
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 28px;
+  margin-right: 167 px;
+  margin-left: 7px;
+  width: 129px;
+  height: 40px;
+  color: #54adff;
+  outline: none;
+  background-color: transparent;
+  border: 2px solid #54adff;
+  border-radius: 40px;
+  font-family: 'Manrope';
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  cursor: pointer;
+  &:hover {
+    background: linear-gradient(290.46deg, #419ef1 0%, #9bd0ff 107.89%);
+    color: #fef9f9;
+  }
+  &:focus {
+    background: linear-gradient(290.46deg, #419ef1 0%, #9bd0ff 107.89%);
+    color: #fef9f9;
+  }
 `;
 
 const BtnYes = styled.button`
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-padding: 8px 28px;
-margin-right: 167 px;
-margin-left: 7px;
-width: 129px;
-height: 40px;
-color: #54adff;
-outline: none;
-background-color: transparent;
-border: 2px solid #54adff;
-border-radius: 40px;
-font-family: 'Manrope';
-font-weight: 700;
-font-size: 16px;
-line-height: 22px;
-margin-bottom: 60px;
-cursor: pointer;
-&:hover {
-  background: linear-gradient(290.46deg, #419ef1 0%, #9bd0ff 107.89%);
-  color: #fef9f9;
-}
-&:focus {
-  background: linear-gradient(290.46deg, #419ef1 0%, #9bd0ff 107.89%);
-  color: #fef9f9;
-}
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 28px;
+  margin-right: 167 px;
+  margin-left: 7px;
+  width: 129px;
+  height: 40px;
+  color: #54adff;
+  outline: none;
+  background-color: transparent;
+  border: 2px solid #54adff;
+  border-radius: 40px;
+  font-family: 'Manrope';
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  cursor: pointer;
+  &:hover {
+    background: linear-gradient(290.46deg, #419ef1 0%, #9bd0ff 107.89%);
+    color: #fef9f9;
+  }
+  &:focus {
+    background: linear-gradient(290.46deg, #419ef1 0%, #9bd0ff 107.89%);
+    color: #fef9f9;
+  }
 `;
 
 const TrashIcon = styled(FiTrash2)`
   width: 24px;
   height: 24px;
-  color: #fef9f9;
 `;
 
 export {
