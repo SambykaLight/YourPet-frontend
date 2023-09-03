@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { ReactComponent as IconClose } from '../../../images/icon/error_red.svg';
 
 export const Form = styled.form`
   text-align: center;
@@ -44,6 +45,20 @@ export const Input = styled.input`
     right: 40px;
   }
 `;
+
+export const ClearIcon = styled(IconClose)`
+  position: absolute;
+  top: 50%;
+  right: 50px;
+  transform: translateY(-50%);
+  cursor: pointer;
+`;
+
+export const InputContainer = styled.div`
+  position: relative;
+  display: inline-block;
+`;
+
 export const BtnSearch = styled.button`
   width: 24px;
   height: 24px;
