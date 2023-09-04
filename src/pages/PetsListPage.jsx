@@ -6,7 +6,7 @@ import NoticesSearch from 'components/Notices/NoticeSearch/NoticeSearch';
 import NoticesNav from 'components/Notices/NoticeNav/NoticeNav';
 import AddPagination from 'components/Pagination/Pagination';
 import { useDispatch } from 'react-redux';
-import { fetchNoticesByCategory } from 'redux/notices/operations';
+import { fetchNoticesByCategory, fetchNoticesFavorite, fetchUserNotices } from 'redux/notices/operations';
 import { useParams } from 'react-router-dom';
 
 const PetsListPage = () => {
@@ -15,8 +15,15 @@ const PetsListPage = () => {
 
 
   useEffect(() => {
-    dispatch(fetchNoticesByCategory({category: category}));
+if (category === "favorite") {
+  dispatch(fetchNoticesFavorite())
+}
+if (category === "own") {
+  dispatch(fetchUserNotices())
+}
+    dispatch(fetchNoticesByCategory({category}));
   }, [dispatch, category]);
+
 
   return (
     <Container>

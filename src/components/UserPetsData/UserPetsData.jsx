@@ -22,7 +22,6 @@ const UserPetsData = () => {
   useEffect(() => {
     dispatch(fetchPets()).catch(error => console.log(error));
   }, [dispatch]);
-
   return (
     <Container>
       <TitleContainer>

@@ -22,7 +22,6 @@ function AuthNav() {
         <Link to="register">
           <AuthButton>{t('Registration')}</AuthButton>
         </Link>
-
         <BurgerMenu />
       </AuthButtonsContainer>
     </>

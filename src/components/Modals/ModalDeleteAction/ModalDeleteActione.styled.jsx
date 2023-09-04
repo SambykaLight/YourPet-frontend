@@ -95,6 +95,7 @@ const BtnCancel = styled.button`
   line-height: 22px;
 
   cursor: pointer;
+  margin-bottom: 60px;
   &:hover {
     background: linear-gradient(290.46deg, #419ef1 0%, #9bd0ff 107.89%);
     color: #fef9f9;

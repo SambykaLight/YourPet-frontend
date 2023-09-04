@@ -8,7 +8,7 @@ export const fetchUserNotices = createAsyncThunk(
   'notices/fetchNotices',
   async (page, thunkAPI) => {
     try {
-      const { data } = await axios.get(`/api/notices/user`, {
+      const { data } = await axios.get(`/api/notices/byOwner`, {
         params: { page },
       });
       return data;
@@ -32,11 +32,35 @@ export const fetchNoticeById = createAsyncThunk(
   }
 );
 
+// export const fetchNoticesByCategory = createAsyncThunk(
+//   'notices/fetchNoticesByCategory',
+//   async ({ category }, thunkAPI) => {
+//     try {
+//       const { data } = await axios.get(`/api/notices/?${category}}`);
+//       return data;
+//     } catch (error) {
+//       toast.error(errMessage);
+//       return thunkAPI.rejectWithValue(error.message);
+//     }
+//   }
+// );
+
 export const fetchNoticesByCategory = createAsyncThunk(
   'notices/fetchNoticesByCategory',
-  async ({ category }, thunkAPI) => {
+  async ({ category, title, page }, thunkAPI) => {
     try {
-      const { data } = await axios.get(`/api/notices/?${category}}`);
+      const queryParams = new URLSearchParams();
+      queryParams.append('category', category);
+      if (title) {
+        queryParams.append('title', title);
+      }
+      if (page) {
+        queryParams.append('page', page);
+      }
+
+      const { data } = await axios.get(
+        `/api/notices/?${queryParams.toString()}&limit=8`
+      );
       return data;
     } catch (error) {
       toast.error(errMessage);
@@ -49,7 +73,7 @@ export const fetchNoticesFavorite = createAsyncThunk(
   'notices/fetchNoticesFavorite',
   async (_, thunkAPI) => {
     try {
-      const { data } = await axios.get(`/api/notices/favorite`);
+      const { data } = await axios.get(`/api/notices/favorites`);
       return data;
     } catch (error) {
       toast.error(errMessage);
@@ -61,7 +85,6 @@ export const fetchNoticesFavorite = createAsyncThunk(
 export const addNotice = createAsyncThunk(
   'notices/addNotice',
   async (data, thunkAPI) => {
-    console.log('Data in AddNotice is', data);
     try {
       const response = await axios.post(`/api/notices/`, data);
       return response.data;

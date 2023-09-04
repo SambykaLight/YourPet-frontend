@@ -12,23 +12,23 @@ import {
 } from './ModalDeleteActione.styled';
 
 const ModalDeleteAction = ({
-  toggleModal,
-  notice, //deleteText name
-  handleRemoveOwnNotice, // логіка видалення  Notice
+  modalClose,
+  handleRemoveOwnNotice,// логіка видалення  Notice
+  // id
 }) => {
   return (
     <ModalDeleteBox>
       <SectionDeleteBox>
         <DeleteBoxHeader>Delete adverstiment?</DeleteBoxHeader>
         <DeleteNoticeText>
-          Are you sure you want to delete <strong>{notice}</strong>? You can`t
+          Are you sure you want to delete "<strong>{}</strong>"? You can`t
           undo this action.
         </DeleteNoticeText>
         <BtnWrapper>
-          <BtnCancel type="button" onClick={toggleModal}>
+          <BtnCancel type="button" onClick={modalClose}>
             Cancel
           </BtnCancel>
-          <BtnYes type="button" onClick={handleRemoveOwnNotice}>
+          <BtnYes type="button" onClick={handleRemoveOwnNotice} >
             Yes
             <TrashIcon />
           </BtnYes>

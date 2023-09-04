@@ -4,10 +4,9 @@ import {
   LogoutButton,
   LogoutButtonContainer,
   UserIconButton,
-  BurgerMenuButton,
 } from './UserMenu.styled';
 
-import BurgerMenuIcon from '../AuthNav/burgerMenuIcon';
+import BurgerMenu from 'components/BurgerMenu';
 
 import UserIcon from '../AuthNav/userIcon';
 import LogoutIcon from './logoutIcon';
@@ -37,20 +36,12 @@ function UserMenu() {
           />
         </UniversalModal>
 
-        <LinksContainer>
-          <StyledLink to="/login">
-            <UserIcon />
-            {userInfo?.name}
-          </StyledLink>
-        </LinksContainer>
-
-        <UserIconButton>
+        <StyledLink to="/login">
           <UserIcon />
-        </UserIconButton>
+          {userInfo?.name}
+        </StyledLink>
 
-        <BurgerMenuButton>
-          <BurgerMenuIcon />
-        </BurgerMenuButton>
+        <BurgerMenu />
       </LogoutButtonContainer>
     </>
   );
