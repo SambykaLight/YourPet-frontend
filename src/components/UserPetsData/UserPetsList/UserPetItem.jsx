@@ -8,6 +8,14 @@ import ModalDeleteAction from 'components/Modals/ModalDeleteAction/ModalDeleteAc
 // import { deletePet } from 'redux/pets/operations';
 // import { useDispatch } from 'react-redux';
 
+function formatDate(date) {
+  const dateObj = new Date(date);
+  const day = String(dateObj.getDate()).padStart(2, '0');
+  const month = String(dateObj.getMonth() + 1).padStart(2, '0');
+  const year = dateObj.getFullYear();
+
+  return `${day}.${month}.${year}`;
+}
 
 export const UserPetItem = ({ pet }) => {
   // const dispatch = useDispatch()
@@ -36,7 +44,7 @@ export const UserPetItem = ({ pet }) => {
         </Button>
 
         <Description>
-          <Highlight>Date of birth:</Highlight> {pet.date}
+          <Highlight>Date of birth:</Highlight> {formatDate(pet.date)}
         </Description>
         <Description>
           <Highlight>Type:</Highlight> {pet.type}

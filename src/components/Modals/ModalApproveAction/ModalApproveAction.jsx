@@ -14,7 +14,7 @@ import {
 const ModalApproveAction = ({ modalClose }) => {
   const pageNavigate = useNavigate();
   const dispatch = useDispatch();
-
+  
   const handleClose = e => {
     e.preventDefault();
     modalClose();

@@ -64,6 +64,10 @@ export const StyledLink = styled(Link)`
   &:hover {
     color: #ffc107;
   }
+  <StyledActiveLink
+  activeStyle={{
+    color: 'red',
+  }}
 `;
 
 export const AuthButtonsContainer = styled.div`

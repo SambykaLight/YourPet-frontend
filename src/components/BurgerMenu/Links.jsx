@@ -5,13 +5,13 @@ function Links({ onClick }) {
   return (
     <>
       <LinksContainer>
-        <StyledLink to="/news" onClick={onClick}>
+        <StyledLink to="/news"  onClick={onClick}>
           News
         </StyledLink>
-        <StyledLink to="/notices/sell" onClick={onClick}>
+        <StyledLink to="/notices/sell"  onClick={onClick}>
           Find Pet
         </StyledLink>
-        <StyledLink to="/friends" onClick={onClick}>
+        <StyledLink to="/friends"  onClick={onClick}>
           Our friends
         </StyledLink>
       </LinksContainer>
