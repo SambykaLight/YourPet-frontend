@@ -4,7 +4,7 @@ import LogoIcon from '../Navigation/logo';
 import BurgerMenuIcon from '../AuthNav/burgerMenuIcon';
 import BurgerMenuCloseIcon from '../AuthNav/burgerMenuCloseIcon';
 import AuthNavBurgerMenu from './AuthNavBurgerMenu';
-import UserLogo from './UserIcon';
+// import UserLogo from './UserIcon';
 import LogoutButtonMenu from './LogoutButton';
 import {
   BurgerMenuButton,

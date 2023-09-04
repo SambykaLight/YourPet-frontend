@@ -29,12 +29,7 @@ function CardMore({ id, card }) {
   const { user } = useAuth();
   const { toggle } = context;
 
-  function formatPhone(number) {
-    if (number === 'email only') {
-      return 0;
-    }
-    return number.split(' ').join('');
-  }
+  
 
   return (
     <StyledCardWrapper>
@@ -78,7 +73,7 @@ function CardMore({ id, card }) {
               </tr>
               <tr>
                 <StyledTableItemStatic>Phone:</StyledTableItemStatic>
-                <ContactsLink href={`tel:${formatPhone(user.phone)}`}>
+                <ContactsLink href={`tel:${user.phone}`}>
                 <StyledTableItemDynamicContact>
                   {user.phone === true ? user.phone : '+38 000 000 00 00'}
                 </StyledTableItemDynamicContact>

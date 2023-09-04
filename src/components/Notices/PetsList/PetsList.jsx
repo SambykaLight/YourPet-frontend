@@ -1,6 +1,6 @@
 import { CategoryItem } from '../PetsItem/PetsItem';
 import { List } from './PetsList.styled';
-import { useDispatch, useSelector } from 'react-redux';
+import {  useSelector } from 'react-redux';
 import noticeSelectors from 'redux/notices/selectors';
 import Context from 'components/Modals/Context/Context';
 import { useParams } from 'react-router-dom';
