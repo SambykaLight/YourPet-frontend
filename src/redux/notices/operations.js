@@ -115,19 +115,19 @@ export const makeNoticeFavorite = createAsyncThunk(
   }
 );
 
-export const removeNoticeFavorite = createAsyncThunk(
-  'notices/removeNoticeFavourite',
-  async (id, thunkAPI) => {
-    try {
-      const { data } = await axios.patch(`api/notices/remove/${id}`);
+// export const removeNoticeFavorite = createAsyncThunk(
+//   'notices/removeNoticeFavourite',
+//   async (id, thunkAPI) => {
+//     try {
+//       const { data } = await axios.patch(`api/notices/remove/${id}`);
 
-      return data.result;
-    } catch (error) {
-      toast.error(errMessage);
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
+//       return data.result;
+//     } catch (error) {
+//       toast.error(errMessage);
+//       return thunkAPI.rejectWithValue(error.message);
+//     }
+//   }
+// );
 
 // export const unMakeNoticeFavorite = createAsyncThunk(
 //   'notices/unMakeNoticeFavourite',

@@ -24,7 +24,7 @@ import { selectIsLoggedIn } from 'redux/auth/selectors';
 import UniversalModal from 'components/Modals/UniversalModal';
 import ModalUnauthorized from 'components/Modals/ModalUnauthorized/ModalUnauthorized';
 import ModalDeleteAction from 'components/Modals/ModalDeleteAction/ModalDeleteAction';
-import { deleteNotice, fetchNoticesFavorite, makeNoticeFavorite, removeNoticeFavorite } from 'redux/notices/operations';
+import { deleteNotice, fetchNoticesFavorite, makeNoticeFavorite } from 'redux/notices/operations';
 
 export const CategoryItem = ({ card, ...restProps }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -65,14 +65,12 @@ const handleFavorite =(id)=>{
   }
 
   if(isFavorite){
-    dispatch(removeNoticeFavorite(id)).then(action => {
-      console.log("🚀 Remove action:", action.payload)
+    dispatch(makeNoticeFavorite(id)).then(action => {
       setFavorite(false);
       dispatch(fetchNoticesFavorite())
     });
   }else{
     dispatch(makeNoticeFavorite(id)).then(action => {
-      console.log("🚀 Make action:", action.payload)
       setFavorite(true);
     });
   }
@@ -129,9 +127,11 @@ const handleFavorite =(id)=>{
         </Btn>
         <UniversalModal active={modalActive} setActive={setModalActive}>
           <CardMore
+
             modalClose={() => {
               setModalActive(false);
             }}
+            handleFavorite
             id={card._id}
             card={card}
           />

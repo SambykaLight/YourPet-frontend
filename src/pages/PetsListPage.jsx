@@ -22,13 +22,11 @@ const PetsListPage = () => {
   const [input, setInput] = useState('');
 
   useEffect(() => {
-    if (category === 'favorite') {
-      dispatch(fetchNoticesFavorite());
-    }
-    if (category === 'own') {
-      dispatch(fetchUserNotices());
-    }
+    if (category !== 'favorite' && category !== 'own') {
     dispatch(fetchNoticesByCategory({ category }));
+    }
+      dispatch(fetchUserNotices());
+    dispatch(fetchNoticesFavorite());
   }, [dispatch, category]);
 
   const handleSearch = searchValue => {

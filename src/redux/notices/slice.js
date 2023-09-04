@@ -6,7 +6,7 @@ import {
   fetchNoticesFavorite,
   addNotice,
   makeNoticeFavorite,
-  removeNoticeFavorite,
+  // removeNoticeFavorite,
   fetchNoticeById,
 } from './operations';
 
@@ -50,6 +50,7 @@ const noticesSlice = createSlice({
         };
       })
       .addCase(addNotice.fulfilled, (state, { payload }) => {
+        console.log("🚀 ~ file: slice.js:53 ~ .addCase ~ payload:", payload)
         state.items.push(payload);
         state.isLoading = false;
       })
@@ -75,12 +76,12 @@ const noticesSlice = createSlice({
         );
         state.items.splice(index, 1, payload);
       })
-      .addCase(removeNoticeFavorite.fulfilled, (state, { payload }) => {
-        const index = state.items.findIndex(
-          notice => notice._id === payload._id
-        );
-        state.items.splice(index, 1, payload);
-      })
+      // .addCase(removeNoticeFavorite.fulfilled, (state, { payload }) => {
+      //   const index = state.items.findIndex(
+      //     notice => notice._id === payload._id
+      //   );
+      //   state.items.splice(index, 1, payload);
+      // })
       .addCase(fetchNoticeById.fulfilled, (_, { payload }) => {
         return {
           item: { ...payload.data.notice },
@@ -93,14 +94,14 @@ const noticesSlice = createSlice({
       .addCase(fetchNoticesFavorite.rejected, handleRejected)
       .addCase(addNotice.rejected, handleRejected)
       .addCase(makeNoticeFavorite.rejected, handleRejected)
-      .addCase(removeNoticeFavorite.rejected, handleRejected)
+      // .addCase(removeNoticeFavorite.rejected, handleRejected)
       .addCase(fetchUserNotices.pending, handlePending)
       .addCase(fetchNoticesByCategory.pending, handlePending)
       .addCase(deleteNotice.pending, handlePending)
       .addCase(fetchNoticesFavorite.pending, handlePending)
       .addCase(addNotice.pending, handlePending)
       .addCase(makeNoticeFavorite.pending, handlePending)
-      .addCase(removeNoticeFavorite.pending, handlePending)
+      // .addCase(removeNoticeFavorite.pending, handlePending)
       .addCase(fetchNoticeById.pending, handlePending)
       .addCase(fetchNoticeById.rejected, handleRejected);
   },

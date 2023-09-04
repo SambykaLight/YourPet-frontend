@@ -33,7 +33,7 @@ function formatDate(date) {
   return `${day}.${month}.${year}`;
 }
 
-function CardMore({ id, card }) {
+function CardMore({ id, card , handleFavorite}) {
 
   const context = useModalContext();
   const { user } = useAuth();
@@ -96,11 +96,11 @@ function CardMore({ id, card }) {
         </StyledCardWrapperH2Tab>
       </StyledCardWrapperImgTab>
 
-      <StyledParText>Comments: {card.comment}</StyledParText>
+      <StyledParText>Comments: {card.comments}</StyledParText>
 
       <StyledButtonGroup>
         <StyledButton1 onClick={() => toggle()}>Contact</StyledButton1>
-        <StyledButton2 onClick={() => toggle()}>
+        <StyledButton2 onClick={ handleFavorite}>
           <PetText>Add to</PetText>
           <AddToFavoriteIcon id="svg" />
         </StyledButton2>

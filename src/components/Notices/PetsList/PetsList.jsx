@@ -10,9 +10,7 @@ const CategoryList = () => {
   const {category} = useParams()
   const notices = useSelector(noticeSelectors.selectNotices);
 const {favoritesNotices} = useAuth()
-
-
-const filteredNotices = notices.filter(notice=> notice.category === category)
+ const filteredNotices = notices.filter(notice=> notice.category === category)
   return (
     <Context>
    { category === "favorite" ? (<List>
