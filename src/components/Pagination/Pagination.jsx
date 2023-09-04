@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import { fetchNoticesByCategory } from 'redux/notices/operations';
 import { useParams } from 'react-router-dom';
 
-function AddPagination() {
+function AddPagination({ currentPage, total, query }) {
   const dispatch = useDispatch();
   const { category } = useParams();
 
@@ -18,9 +18,10 @@ function AddPagination() {
   return (
     <Box sx={boxStyles}>
       <Pagination
-        count={5}
+        count={total}
         color="primary"
         variant="outlined"
+        page={currentPage}
         sx={{
           marginX: 'auto',
           marginBottom: '20px',

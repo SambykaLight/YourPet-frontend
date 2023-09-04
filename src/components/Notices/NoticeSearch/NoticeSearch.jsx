@@ -12,7 +12,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { fetchNoticesByCategory } from 'redux/notices/operations';
 
-const NoticesSearch = () => {
+const NoticesSearch = ({ onSearch }) => {
   const dispatch = useDispatch();
   const { category } = useParams();
   const [value, setValue] = useState('');
@@ -29,6 +29,7 @@ const NoticesSearch = () => {
     e.preventDefault();
 
     dispatch(fetchNoticesByCategory({ category, title: value }));
+    onSearch(value);
   };
 
   const handleClearClick = () => {
