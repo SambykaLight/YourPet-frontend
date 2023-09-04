@@ -6,7 +6,11 @@ import BurgerMenuCloseIcon from '../AuthNav/burgerMenuCloseIcon';
 import AuthNavBurgerMenu from './AuthNavBurgerMenu';
 import UserLogo from './UserIcon';
 import LogoutButtonMenu from './LogoutButton';
-import { BurgerMenuButton, LogoContainer } from './BurgerMenu.styled';
+import {
+  BurgerMenuButton,
+  LogoContainer,
+  HeaderWrapper,
+} from './BurgerMenu.styled';
 import { ExpandedMenuWrapper } from './BurgerMenu.styled';
 import Links from './Links';
 import { useSelector } from 'react-redux';
@@ -43,22 +47,29 @@ function ExpandedMenu({ onCloseMenu }) {
   return (
     <>
       <ExpandedMenuWrapper>
-        <LogoContainer>
-          <Link to="/" onClick={handleLinkClick}>
-            <LogoIcon />
-          </Link>
-        </LogoContainer>
         {isLoggedIn ? (
           <>
-            <UserLogo onClick={handleLinkClick} />
+            <HeaderWrapper>
+              <LogoContainer>
+                <Link to="/" onClick={handleLinkClick}>
+                  <LogoIcon />
+                </Link>
+              </LogoContainer>
+              <LogoutButtonMenu />
+            </HeaderWrapper>
+
             <Links onClick={handleLinkClick} />
-            <LogoutButtonMenu />
           </>
         ) : (
-          <AuthNavBurgerMenu onClick={handleLinkClick} />
+          <>
+            <LogoContainer>
+              <Link to="/" onClick={handleLinkClick}>
+                <LogoIcon />
+              </Link>
+            </LogoContainer>
+            <AuthNavBurgerMenu onClick={handleLinkClick} />
+          </>
         )}
-
-        <Links onClick={handleLinkClick} />
       </ExpandedMenuWrapper>
     </>
   );
