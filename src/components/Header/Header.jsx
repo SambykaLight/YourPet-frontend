@@ -11,6 +11,7 @@ import { darkTheme } from 'redux/themeSlice/selectors';
 function Header() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const isDarkTheme = useSelector(darkTheme);
+
   return (
     <HeaderContainer
       style={{ backgroundColor: isDarkTheme === 'dark' && '#7791a8' }}

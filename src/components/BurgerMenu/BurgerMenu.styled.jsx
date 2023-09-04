@@ -1,16 +1,17 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+export const HeaderWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 92px;
+`;
+
 export const LogoContainer = styled.div`
   display: flex;
   align-items: center;
 
   @media (max-width: 768px) {
-    margin-right: auto;
-    margin-left: 20px;
-    margin-top: 22px;
-    margin-bottom: 40px;
-
     z-index: 1000;
   }
 `;
@@ -33,22 +34,24 @@ export const BurgerMenuButton = styled.button`
 export const ExpandedMenuWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  position: absolute;
+  padding: 16px;
+
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
+
   background-color: #fef9f9;
   z-index: 999;
+  overflow-y: auto;
 `;
 
 export const LinksContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 60px;
 `;
 
 export const StyledLink = styled(Link)`
@@ -107,14 +110,11 @@ export const UserIconButton = styled.button`
 
 export const LogoutButton = styled.button`
   height: 40px;
+  margin-right: 44px;
 
   display: flex;
   align-items: center;
   gap: 8px;
-
-  margin-top: 159px;
-  margin-right: auto;
-  margin-left: 20px;
 
   font-family: 'Manrope', sans-serif;
   font-size: 16px;
