@@ -13,8 +13,10 @@ import {
 const initialState = {
   item: null,
   items: [],
-  favorites:[],
+  favorites: [],
   isLoading: false,
+  page: 1,
+  totalPages: 1,
 };
 
 const handlePending = state => {
@@ -30,7 +32,7 @@ const noticesSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(fetchUserNotices.fulfilled, (state, { payload }) => {
-        console.log("🚀 ~ file: slice.js:33 ~ .addCase ~ payload:", payload)
+        console.log('🚀 ~ file: slice.js:33 ~ .addCase ~ payload:', payload);
         return {
           ...state,
           items: [...payload],
@@ -41,8 +43,9 @@ const noticesSlice = createSlice({
       .addCase(fetchNoticesByCategory.fulfilled, (state, { payload }) => {
         return {
           ...state,
-          items: [...payload],
-          totalPages: payload,
+          items: [...payload.pets],
+          page: Number(payload.page),
+          totalPages: payload.total,
           isLoading: false,
         };
       })
