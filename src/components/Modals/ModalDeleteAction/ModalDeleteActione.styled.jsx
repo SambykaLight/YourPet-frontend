@@ -93,6 +93,7 @@ const BtnCancel = styled.button`
   font-weight: 700;
   font-size: 16px;
   line-height: 22px;
+
   cursor: pointer;
   &:hover {
     background: linear-gradient(290.46deg, #419ef1 0%, #9bd0ff 107.89%);
@@ -123,6 +124,7 @@ const BtnYes = styled.button`
   font-weight: 700;
   font-size: 16px;
   line-height: 22px;
+
   cursor: pointer;
   &:hover {
     background: linear-gradient(290.46deg, #419ef1 0%, #9bd0ff 107.89%);
