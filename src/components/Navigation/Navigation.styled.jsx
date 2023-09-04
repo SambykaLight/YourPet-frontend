@@ -25,4 +25,7 @@ export const StyledLink = styled(Link)`
   &:hover {
     color: #ffc107;
   }
+  &.active{
+    color:#ffc107;
+  }
 `;
