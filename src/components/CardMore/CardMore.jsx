@@ -39,7 +39,7 @@ function CardMore({ id, card }) {
   const { user } = useAuth();
   const { toggle } = context;
 
-  
+
 
   return (
     <StyledCardWrapper>
@@ -53,7 +53,7 @@ function CardMore({ id, card }) {
         </StyledWrapperImage>
 
         <StyledCardWrapperH2Tab>
-          <StyledTitle>{card.category}Сute dog looking for a home</StyledTitle>
+          <StyledTitle>{card.title}</StyledTitle>
           <StyledTable>
             <div>
               <tr>
@@ -79,7 +79,7 @@ function CardMore({ id, card }) {
                   {user.email}
                 </StyledTableItemDynamicContact>
                 </ContactsLink>
-               
+
               </tr>
               <tr>
                 <StyledTableItemStatic>Phone:</StyledTableItemStatic>
@@ -89,7 +89,7 @@ function CardMore({ id, card }) {
                 </StyledTableItemDynamicContact>
                 </ContactsLink>
 
-                
+
               </tr>
             </div>
           </StyledTable>

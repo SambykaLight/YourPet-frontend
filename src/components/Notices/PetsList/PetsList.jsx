@@ -17,7 +17,7 @@ const filteredNotices = notices.filter(notice=> notice.category === category)
     <Context>
    { category === "favorite" ? (<List>
         {favoritesNotices.map(card => (
-          <CategoryItem card ={card} key={card._id} />
+          <CategoryItem card ={card} key={card._id} activeFavorite/>
         ))}
       </List>):
    ( filteredNotices.length > 0 ?
