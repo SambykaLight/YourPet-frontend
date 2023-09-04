@@ -14,7 +14,6 @@ BtnYes,
   BtnsWrapper,
 } from './ModalApproveAction.styled';
 
-
 const ModalApproveAction = ({ modalClose }) => {
     const pageNavigate = useNavigate();
     const dispatch = useDispatch();

@@ -24,7 +24,17 @@ import {
 import { useAuth } from 'hooks';
 import { ContactsLink } from 'components/OurFriendsList/FriendsList.styled';
 
+function formatDate(date) {
+  const dateObj = new Date(date);
+  const day = String(dateObj.getDate()).padStart(2, '0');
+  const month = String(dateObj.getMonth() + 1).padStart(2, '0');
+  const year = dateObj.getFullYear();
+
+  return `${day}.${month}.${year}`;
+}
+
 function CardMore({ id, card }) {
+
   const context = useModalContext();
   const { user } = useAuth();
   const { toggle } = context;
@@ -45,14 +55,14 @@ function CardMore({ id, card }) {
         <StyledCardWrapperH2Tab>
           <StyledTitle>{card.category}Сute dog looking for a home</StyledTitle>
           <StyledTable>
-            <tbody>
+            <div>
               <tr>
                 <StyledTableItemStatic>Name:</StyledTableItemStatic>
                 <StyledTableItemDynamic>{card.name}</StyledTableItemDynamic>
               </tr>
               <tr>
                 <StyledTableItemStatic>Birthday:</StyledTableItemStatic>
-                <StyledTableItemDynamic>2{card.date}</StyledTableItemDynamic>
+                <StyledTableItemDynamic> {formatDate(card.date)}</StyledTableItemDynamic>
               </tr>
               <tr>
                 <StyledTableItemStatic>Type:</StyledTableItemStatic>
@@ -81,7 +91,7 @@ function CardMore({ id, card }) {
 
                 
               </tr>
-            </tbody>
+            </div>
           </StyledTable>
         </StyledCardWrapperH2Tab>
       </StyledCardWrapperImgTab>
