@@ -26,7 +26,7 @@ import UniversalModal from 'components/Modals/UniversalModal';
 import ModalUnauthorized from 'components/Modals/ModalUnauthorized/ModalUnauthorized';
 import ModalDeleteAction from 'components/Modals/ModalDeleteAction/ModalDeleteAction';
 import { makeNoticeFavorite } from 'redux/notices/operations';
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 
 export const CategoryItem = ({ card, ...restProps }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);

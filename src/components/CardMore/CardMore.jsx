@@ -22,12 +22,19 @@ import {
   StyledWrapperImage,
 } from './CardMore.styled';
 import { useAuth } from 'hooks';
+import { ContactsLink } from 'components/OurFriendsList/FriendsList.styled';
 
 function CardMore({ id, card }) {
   const context = useModalContext();
   const { user } = useAuth();
-
   const { toggle } = context;
+
+  function formatPhone(number) {
+    if (number === 'email only') {
+      return 0;
+    }
+    return number.split(' ').join('');
+  }
 
   return (
     <StyledCardWrapper>
@@ -61,16 +68,23 @@ function CardMore({ id, card }) {
                 <StyledTableItemDynamic>{card.sex}</StyledTableItemDynamic>
               </tr>
               <tr>
-                <StyledTableItemStatic>Email:</StyledTableItemStatic>
+                <StyledTableItemStatic >Email:</StyledTableItemStatic>
+                <ContactsLink href={`mailto:${user.email}`}>
                 <StyledTableItemDynamicContact>
                   {user.email}
                 </StyledTableItemDynamicContact>
+                </ContactsLink>
+               
               </tr>
               <tr>
                 <StyledTableItemStatic>Phone:</StyledTableItemStatic>
+                <ContactsLink href={`tel:${formatPhone(user.phone)}`}>
                 <StyledTableItemDynamicContact>
-                  {user.phome === true ? user.phone : '+38 000 000 00 00'}
+                  {user.phone === true ? user.phone : '+38 000 000 00 00'}
                 </StyledTableItemDynamicContact>
+                </ContactsLink>
+
+                
               </tr>
             </tbody>
           </StyledTable>

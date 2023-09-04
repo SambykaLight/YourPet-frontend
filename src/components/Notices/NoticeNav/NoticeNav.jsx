@@ -1,19 +1,19 @@
 import React from 'react';
 import { ReactComponent as PlusSmallIcon } from '../../SvgIcons/SmallIconPlus.svg';
-import { ReactComponent as Filter } from '../../SvgIcons/Filter.svg';
+// import { ReactComponent as Filter } from '../../SvgIcons/Filter.svg';
 import {
   NavContainer,
   List,
   Li,
   AddBtnContainer,
-  FilterLink,
-  Button,
+  // FilterLink,
+  // Button,
   AddButtonLink,
   AddButton,
-  FilterText,
+  // FilterText,
   AddPetText,
   NoticesNavLink,
-  NoticesNavLinkBtn,
+  // NoticesNavLinkBtn,
 } from './NoticeNav.styled';
 
 import { useSelector } from 'react-redux';
@@ -25,8 +25,7 @@ const NoticesNav = () => {
     <NavContainer>
       <List>
         <Li>
-          <NoticesNavLink
-            // className={({ isActive }) => (isActive ? css.active : '')}
+          <NoticesNavLink 
             to="/notices/sell"
           >
             sell
@@ -34,7 +33,6 @@ const NoticesNav = () => {
         </Li>
         <Li>
           <NoticesNavLink
-            // className={({ isActive }) => (isActive ? css.active : '')}
             to="/notices/lost-found"
           >
             lost/found
@@ -42,7 +40,6 @@ const NoticesNav = () => {
         </Li>
         <Li>
           <NoticesNavLink
-            // className={({ isActive }) => (isActive ? css.active : '')}
             to="/notices/in-good-hands"
           >
             in good hands
@@ -72,7 +69,7 @@ const NoticesNav = () => {
       </List>
 
       <AddBtnContainer>
-        <FilterLink>
+        {/* <FilterLink>
           <NoticesNavLinkBtn
             // className={({ isActive }) => (isActive ? css.active : '')}
             to="/notices/filter"
@@ -85,7 +82,7 @@ const NoticesNav = () => {
               <Filter />
             </Button>
           </NoticesNavLinkBtn>
-        </FilterLink>
+        </FilterLink> */}
         <AddButtonLink>
           <AddButton to="/add-pet" type="button">
             <AddPetText>Add pet</AddPetText>

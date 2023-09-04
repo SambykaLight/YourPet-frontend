@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { LinksContainer, StyledLink } from './UserMenu.styled';
+import {  StyledLink } from './UserMenu.styled';
 import {
   LogoutButton,
   LogoutButtonContainer,
-  UserIconButton,
 } from './UserMenu.styled';
 
 import BurgerMenu from 'components/BurgerMenu';

@@ -66,9 +66,6 @@ export const FriendsContacts = styled.p`
 
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  &:hover {
-    color: #3291e9;
-  }
 
   :not(:first-of-type) {
     margin-top: 12px;

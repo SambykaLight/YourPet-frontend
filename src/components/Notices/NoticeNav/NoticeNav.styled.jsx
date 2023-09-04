@@ -60,6 +60,9 @@ export const NoticesNavLinkBtn = styled(NavLink)`
     color: #fef9f9;
     background: #54adff;
   }
+  &.selected {
+    color: red;
+  }
 `;
 export const List = styled.ul`
   display: flex;

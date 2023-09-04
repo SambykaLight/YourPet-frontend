@@ -142,10 +142,18 @@ const UserData = () => {
               <ButtonEdit variant="text">
                 {editMode === EDIT_MODE.defaultValue ? (
                   <CiEdit
+                  style={{
+                    width: '24px',
+                    height: '24px',
+                  }}
                     onClick={() => handleEditMode(EDIT_MODE.editModeValue)}
                   />
                 ) : (
                   <RxCross1
+                  style={{
+                    width: '24px',
+                    height: '24px',
+                  }}
                     onClick={() => handleEditMode(EDIT_MODE.defaultValue)}
                   />
                 )}

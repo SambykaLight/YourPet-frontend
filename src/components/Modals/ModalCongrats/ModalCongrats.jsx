@@ -22,7 +22,7 @@ const ModalCongrats = ({ closeModal }) => {
         type="button"
         color="blue"
         width="248px"
-      ></ButtonCongrat>
+      >Go To Profile</ButtonCongrat>
     </CongratsContainer>
   );
 };

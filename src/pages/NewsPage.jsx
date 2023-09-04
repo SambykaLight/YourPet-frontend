@@ -1,5 +1,5 @@
 import NewsSearch from 'components/News/NewsSearch/NewsSearch';
-import { Title } from '../components/News/NewsSearch/NewsSearch.styled';
+import { Title } from '../components/Title/Title.styled';
 import { useTranslation } from 'react-i18next';
 import { getLoader } from '../redux/news/selectors';
 import { useSelector } from 'react-redux';
