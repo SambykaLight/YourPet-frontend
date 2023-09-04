@@ -6,7 +6,7 @@ import {
   fetchNoticesFavorite,
   addNotice,
   makeNoticeFavorite,
-  unMakeNoticeFavorite,
+  removeNoticeFavorite,
   fetchNoticeById,
 } from './operations';
 
@@ -75,7 +75,7 @@ const noticesSlice = createSlice({
         );
         state.items.splice(index, 1, payload);
       })
-      .addCase(unMakeNoticeFavorite.fulfilled, (state, { payload }) => {
+      .addCase(removeNoticeFavorite.fulfilled, (state, { payload }) => {
         const index = state.items.findIndex(
           notice => notice._id === payload._id
         );
@@ -93,14 +93,14 @@ const noticesSlice = createSlice({
       .addCase(fetchNoticesFavorite.rejected, handleRejected)
       .addCase(addNotice.rejected, handleRejected)
       .addCase(makeNoticeFavorite.rejected, handleRejected)
-      .addCase(unMakeNoticeFavorite.rejected, handleRejected)
+      .addCase(removeNoticeFavorite.rejected, handleRejected)
       .addCase(fetchUserNotices.pending, handlePending)
       .addCase(fetchNoticesByCategory.pending, handlePending)
       .addCase(deleteNotice.pending, handlePending)
       .addCase(fetchNoticesFavorite.pending, handlePending)
       .addCase(addNotice.pending, handlePending)
       .addCase(makeNoticeFavorite.pending, handlePending)
-      .addCase(unMakeNoticeFavorite.pending, handlePending)
+      .addCase(removeNoticeFavorite.pending, handlePending)
       .addCase(fetchNoticeById.pending, handlePending)
       .addCase(fetchNoticeById.rejected, handleRejected);
   },

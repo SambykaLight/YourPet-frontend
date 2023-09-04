@@ -101,12 +101,13 @@ export const makeNoticeFavorite = createAsyncThunk(
     try {
       const { data } = await axios.patch(`/api/notices/add/${id}`);
 
+      console.log("🚀 ~ file: operations.js:104 ~ data:", data)
       const { data: favoriteNotices } = await axios.get(
         `/api/notices/favorites`
       );
       const isFavorite = favoriteNotices.some(notice => notice._id === id);
 
-      return { result: data.result, isFavorite };
+      return { result: data.message, isFavorite };
     } catch (error) {
       toast.error(errMessage);
       return thunkAPI.rejectWithValue(error.message);
@@ -118,7 +119,7 @@ export const removeNoticeFavorite = createAsyncThunk(
   'notices/removeNoticeFavourite',
   async (id, thunkAPI) => {
     try {
-      const { data } = await axios.delete(`api/notices/remove/${id}`);
+      const { data } = await axios.patch(`api/notices/remove/${id}`);
 
       return data.result;
     } catch (error) {
@@ -128,19 +129,19 @@ export const removeNoticeFavorite = createAsyncThunk(
   }
 );
 
-export const unMakeNoticeFavorite = createAsyncThunk(
-  'notices/unMakeNoticeFavourite',
-  async (id, thunkAPI) => {
-    try {
-      const { data } = await axios.delete(`api/notices/favorite/${id}`);
+// export const unMakeNoticeFavorite = createAsyncThunk(
+//   'notices/unMakeNoticeFavourite',
+//   async (id, thunkAPI) => {
+//     try {
+//       const { data } = await axios.delete(`api/notices/favorite/${id}`);
 
-      return data.result;
-    } catch (error) {
-      toast.error(errMessage);
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
+//       return data.result;
+//     } catch (error) {
+//       toast.error(errMessage);
+//       return thunkAPI.rejectWithValue(error.message);
+//     }
+//   }
+// );
 
 export const deleteNotice = createAsyncThunk(
   'notices/deleteNotice',

@@ -25,7 +25,7 @@ const NoticesNav = () => {
     <NavContainer>
       <List>
         <Li>
-          <NoticesNavLink 
+          <NoticesNavLink
             to="/notices/sell"
           >
             sell
@@ -35,14 +35,14 @@ const NoticesNav = () => {
           <NoticesNavLink
             to="/notices/lost-found"
           >
-            lost/found
+            lost-found
           </NoticesNavLink>
         </Li>
         <Li>
           <NoticesNavLink
             to="/notices/in-good-hands"
           >
-            in good hands
+            in-good-hands
           </NoticesNavLink>
         </Li>
 

@@ -1,6 +1,5 @@
 import { ReactComponent as Delete } from '../../SvgIcons/delete.svg';
 import { ReactComponent as PawIcon } from '../../SvgIcons/paw.svg';
-
 import {
   Btn,
   BtnList,
@@ -13,7 +12,7 @@ import {
   Text,
   Title,
 } from './PetsItem.styled';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AddToFavoriteIcon } from 'components/SvgIcons/AddToFavoriteIcon';
 import { LocationIcon } from 'components/SvgIcons/LocationIcon';
 import { IconTime } from 'components/SvgIcons/IconTime';
@@ -25,8 +24,7 @@ import { selectIsLoggedIn } from 'redux/auth/selectors';
 import UniversalModal from 'components/Modals/UniversalModal';
 import ModalUnauthorized from 'components/Modals/ModalUnauthorized/ModalUnauthorized';
 import ModalDeleteAction from 'components/Modals/ModalDeleteAction/ModalDeleteAction';
-import { makeNoticeFavorite } from 'redux/notices/operations';
-// import { useParams } from 'react-router-dom';
+import { deleteNotice, fetchNoticesFavorite, makeNoticeFavorite, removeNoticeFavorite } from 'redux/notices/operations';
 
 export const CategoryItem = ({ card, ...restProps }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -35,6 +33,15 @@ export const CategoryItem = ({ card, ...restProps }) => {
   const [deleteModalActive, setDeleteModalActive] = useState(false);
   const [isFavorite, setFavorite] = useState(false);
   const dispatch = useDispatch();
+
+
+  useEffect(() => {
+    const { activeFavorite } = restProps;
+    if (activeFavorite) {
+      setFavorite(activeFavorite);
+    }
+
+  }, [restProps]);
 
   function calcAge(birthDatein) {
     const birthDate = new Date(birthDatein);
@@ -51,21 +58,31 @@ export const CategoryItem = ({ card, ...restProps }) => {
       return ageInYears + ' year';
     }
   }
-  const addToFavorite = id => {
-    if (!isLoggedIn) {
-      setFavoriteModalActive(true);
-    }
-    dispatch(makeNoticeFavorite(id)).then(action => {
-      const { isFavorite } = action.payload;
 
-      setFavorite(isFavorite);
+const handleFavorite =(id)=>{
+  if (!isLoggedIn) {
+    setFavoriteModalActive(true);
+  }
+
+  if(isFavorite){
+    dispatch(removeNoticeFavorite(id)).then(action => {
+      console.log("🚀 Remove action:", action.payload)
+      setFavorite(false);
+      dispatch(fetchNoticesFavorite())
     });
-  };
+  }else{
+    dispatch(makeNoticeFavorite(id)).then(action => {
+      console.log("🚀 Make action:", action.payload)
+      setFavorite(true);
+    });
+  }
+}
+
   return (
-    <CardItem key={card._id}>
+    <CardItem >
       <CardWrapper>
         <Img src={card.imageURL} alt={card.title} />
-        <FavoriteBtn type="button" onClick={() => addToFavorite(card._id)}>
+        <FavoriteBtn type="button" onClick={() => handleFavorite(card._id)}>
           <AddToFavoriteIcon id="svg" fill={isFavorite ? '#54adff' : 'none'} />
         </FavoriteBtn>
         {isLoggedIn && (
@@ -135,8 +152,15 @@ export const CategoryItem = ({ card, ...restProps }) => {
         >
           <ModalDeleteAction
             modalClose={() => {
-              deleteModalActive(false);
+              setDeleteModalActive(false);
             }}
+            handleRemoveOwnNotice={()=>{
+              dispatch(deleteNotice(card._id)).then(()=>{
+              setDeleteModalActive(false);
+              })
+
+            }
+              }
           />
         </UniversalModal>
       </CardWrapper>
