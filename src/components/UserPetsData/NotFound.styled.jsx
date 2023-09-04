@@ -16,10 +16,11 @@ export const Notification = styled.div`
   width: 280px;
   background-color: #ffffff;
   text-align: center;
+  margin: 0 auto;
   @media screen and (min-width: 768px) {
-    width: 703px;
+    width: 403px;
   }
   @media screen and (min-width: 1280px) {
-    width: 821px;
+    width: 421px;
   }
 `;
